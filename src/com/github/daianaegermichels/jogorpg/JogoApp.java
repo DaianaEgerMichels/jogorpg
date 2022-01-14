@@ -2,8 +2,6 @@ package com.github.daianaegermichels.jogorpg;
 
 import java.util.Scanner;
 
-import com.github.daianaegermichels.jogorpg.entidades.Jogador;
-
 public class JogoApp {
 	static Scanner entrada = new Scanner(System.in);
 
@@ -237,15 +235,32 @@ public class JogoApp {
 					+ "Enquanto seu olhar percorre a sala, você ouve a porta se fechando e gira rapidamente para olhar para trás. Ali, de pé entre você e a porta fechada, bloqueando o caminho do seu destino, está um dos capitães do inimigo. Um orque horrendo, de armadura, capacete e espada em punho, em posição de combate. Ele avança em sua direção.\r\n"
 					+ "");
 			
+			System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
+			int continua = entrada. nextInt();
 			
-			System.out.println("Loop de combate");
+			if (continua == 1) {
+				System.out.println("Loop de combate");
+				//dentro do loop de combate, até que termine deve ser perguntado sobre desistir ou não
+				
+			} else {
+				System.out.println("Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
+			}
 			
 			
 			//caso vença o combate e queira continuar: contiunua...
 			
-			System.out.printf("Após derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, e olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.");
+			System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
+			continua = entrada. nextInt();
 			
-			System.out.println("Decidi se usa a armadura ou não ");
+			if (continua == 1) {
+				System.out.printf("Após derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, e olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.");
+				
+				System.out.println("Decidi se usa a armadura ou não ");
+				
+			} else {
+				System.out.println("Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
+			}
+			
 			
 			/*
 			 * [jogador escolhe pegar ou não as armaduras novas.

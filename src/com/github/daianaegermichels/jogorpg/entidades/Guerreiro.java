@@ -1,11 +1,11 @@
 package com.github.daianaegermichels.jogorpg.entidades;
 
-public class Guerreiro extends Personagem {
+public class Guerreiro extends Jogador {
 
 	public Guerreiro(String nome, int sexo, int arma, int vida, int defesa, int golpe) {
-		super(nome, sexo, arma, vida, defesa, golpe);
+		super(nome, sexo, arma);
 	}
 	
-//martelo, machado, espada, clava
-	//defesa= escudo, armadura
+//arma= martelo, machado, espada, clava
+
 }

@@ -1,19 +1,25 @@
-package com.github.daianaegermichels.jogorpg.propriedades.combate;
+package com.github.daianaegermichels.jogorpg.entidades;
 
 import java.util.Random;
 import java.util.Scanner;
 
+import com.github.daianaegermichels.jogorpg.propriedades.combate.ClasseDeCombate;
+
 public class Combate {
-	// Scanner entrada = new Scanner(System.in);
+	int vidaJogador;
+	int pontosDefesaJogador;
+	int golpeJogador;
+	int ataqueJogador;
+	int vidaAdversario;
+	int pontosDefesaAdversario;
+	int golpeAdversario;
+	int ataqueAdversario;
+	int armaJogador;//vai depender da arma escolhida de acordo com o personagem;
+	int armaAdversario;
+	int danoNoAdversario;
+	int danoNoJogador;
+	String motivacao;
 
-	public int classeCombate() {
-		ClasseDeCombate escolhaClasse = new ClasseDeCombate();
-	}
-
-	public int atacar() {
-		Random geradorGolpe = new Random();
-		return geradorGolpe.nextInt(20) + 1;
-	}
 
 	public int ataqueJogador() {
 		Random geradorGolpe = new Random();
@@ -28,6 +34,77 @@ public class Combate {
 	public void imprimeVida(int vidaJogador, int vidaAdversario) {
 		System.out.println("Vida do jogador:" + vidaJogador);
 		System.out.println("Vida do Adversário: " + vidaAdversario);
+	}
+	
+	
+	public void combateFacilPortaDireita() {
+		this.vidaJogador = 5;
+		this.pontosDefesaJogador = 100;
+		this.golpeJogador = ataqueJogador();
+		this.ataqueJogador = 15;
+		this.vidaAdversario = 3;
+		this.pontosDefesaAdversario = 10;
+		this.golpeAdversario = ataqueAdversario();
+		this.ataqueAdversario = 5;
+		this.armaJogador = 15;//vai depender da arma escolhida de acordo com o personagem;
+		this.armaAdversario = 5;
+		this.motivacao= 1;
+		
+		this.danoNoAdversario = ataqueJogador + armaJogador + golpeJogador ;
+		this.danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
+		
+		if(golpeJogador == 1) {
+			danoNoAdversario = 0;
+			//errou o golpe
+		} else if (golpeJogador == 20) {
+			danoNoAdversario = pontosDefesaAdversario;
+			vidaAdversario = 0;
+			//golpe crítico, óbito do adversário, vitória do jogador
+		} else {
+			danoNoAdversario = ataqueJogador + armaJogador + golpeJogador ;
+			pontosDefesaAdversario -= danoNoAdversario;
+			vidaAdversario --;
+		}
+		
+		
+		if(golpeAdversario == 1) {
+			danoNoJogador = 0;
+			//errou o golpe
+		} else if (golpeAdversario == 3) {
+			danoNoJogador = pontosDefesaJogador;
+			vidaJogador = 0;
+			System.out.printf("O inimigo acertou um ataque crítico! Você sofreu %d de dano e agora possui %d pontos de vida.", danoNoJogador, vidaJogador);
+		} else {
+			danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
+			pontosDefesaJogador -= danoNoJogador;
+			vidaJogador --;
+			System.out.printf("O inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.", danoNoJogador, vidaJogador);
+		}
+		
+		if(motivacao.equals("vingança")) {
+			String vinganca;
+			vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
+			motivacao = vinganca;
+		} else {
+			String gloria;
+			String genero;
+			String mensagemGeneroEscolhido;
+			if(genero.equals("Feminino")) {
+				mensagemGeneroEscolhido = "sua próxima heróina";
+			} else {
+				mensagemGeneroescolhido = "seu próximo herói";
+			}
+			gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
+			
+			motivacao= gloria + mensagemGeneroEscolhido;
+			
+		}
+		
+		if(vidaJogador == 0) {
+			System.out.printf("Você não estava preparado para a força do inimigo. %s", motivacao);
+			System.out.println("JOGO ENCERRADO");
+		}
+		
 	}
 
 	public void batalha() {

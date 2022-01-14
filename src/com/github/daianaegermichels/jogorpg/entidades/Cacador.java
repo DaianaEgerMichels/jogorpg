@@ -1,4 +1,4 @@
-package com.github.daianaegermichels.jogorpg.propriedades.combate;
+package com.github.daianaegermichels.jogorpg.entidades;
 
 public class Cacador extends classeDeCombate{
 //arma = arcoFlecha ou bestaVirote

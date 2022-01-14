@@ -1,21 +1,45 @@
 package com.github.daianaegermichels.jogorpg.entidades;
 
-import java.util.Random;
 
-public abstract class Personagem {
+public class Personagem {
 	private String nome;
 	private int sexo;
+	private int arma;
+	private int vida;
+	private int defesa;
+	private int golpe;
 	
-	public Personagem() {
-		
-	}
-	
-	public Personagem(String nome) {
+	public Personagem(String nome, int sexo, int arma, int vida, int defesa, int golpe) {
 		this.nome = nome;
-	}
-	
-	public Personagem(int sexo) {
 		this.sexo = sexo;
+		this.arma = arma;
+		this.vida = vida;
+		this.defesa = defesa;
+		this.golpe = golpe;
+	}
+
+	public int getArma() {
+		return arma;
+	}
+
+	public void setArma(int arma) {
+		this.arma = arma;
+	}
+
+	public int getVida() {
+		return vida;
+	}
+
+	public void setVida(int vida) {
+		this.vida = vida;
+	}
+
+	public int getDefesa() {
+		return defesa;
+	}
+
+	public void setDefesa(int defesa) {
+		this.defesa = defesa;
 	}
 
 	public String getNome() {
@@ -34,26 +58,9 @@ public abstract class Personagem {
 		this.sexo = sexo;
 	}
 	
-	
-	
-	private int vida;
-	private int golpe;
-	private int defesa;
-	private int geradorGolpe;
-	
-	
-	public int ataque(int geradorGolpe){
-		Random geradorGolpe = new Random();
-		return this.geradorGolpe= geradorGolpe;
-	}
-
-	
-
-
 	public int getGolpe() {
 		return golpe;
 	}
-
 
 	public void setGolpe(int golpe) {
 		this.golpe = golpe;

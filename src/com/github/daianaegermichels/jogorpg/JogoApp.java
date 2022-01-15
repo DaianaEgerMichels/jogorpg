@@ -58,15 +58,15 @@ public class JogoApp {
 			System.out.println(entrada.nextLine());
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 			System.out.println("De um nome ao seu avatar");
-			String nome = entrada.nextLine().toUpperCase();
-			if (nome.length() > 0) {
-				System.out.printf("O nome do seu avatar será %s, confirmar? %n1 - Sim %n2 - Não, alterar", nome);
+			String nomeAvatar = entrada.nextLine().toUpperCase();
+			if (nomeAvatar.length() > 0) {
+				System.out.printf("O nome do seu avatar será %s, confirmar? %n1 - Sim %n2 - Não, alterar", nomeAvatar);
 				int confirmacaoNome = entrada.nextInt();
 				if (confirmacaoNome == 1) {
-					System.out.printf("Nome do Avatar: %s ", nome);
+					System.out.printf("Nome do Avatar: %s ", nomeAvatar);
 				} else {
 					System.out.println("Altere o nome do seu avatar");
-					nome = entrada.nextLine();
+					nomeAvatar = entrada.nextLine();
 				}
 			}
 
@@ -207,6 +207,10 @@ public class JogoApp {
 			case 1:
 				System.out.printf(
 						"Você toma cuidado e vai caminhando vagarosamente em direção à luz. Quando você pisa exatamente embaixo da porta, você sente o chão ceder levemente, como se tivesse pisado em uma pedra solta. Você ouve um ruído de mecanismos se movimentando, e uma escotilha se abre no teto atrás de você, no corredor. Flechas voam da escotilha em sua direção, e você salta para dentro da sala, porém uma delas te acerta na perna.");
+				
+					//pontosDefesaJogador = 100 - ataqueFlechas();
+
+				
 				// [toma dano utilizando mecanismo de ataque descrito abaixo, porém o rolamento
 				// de dados é só de 1-10]
 				break;

@@ -1,16 +1,19 @@
 package com.github.daianaegermichels.jogorpg.entidades;
 
-
 public class Jogador {
-	private String nome;
-	private int sexo;
-	private int arma;
+	protected String nome;
+	protected int sexo;
+	protected int arma;
 	
 	public Jogador(String nome, int sexo, int arma) {
 		this.nome = nome;
 		this.sexo = sexo;
 		this.arma = arma;
 	
+	}
+	
+	public int EscolhaArma() {
+		return this.arma = 0;
 	}
 
 	public int getArma() {

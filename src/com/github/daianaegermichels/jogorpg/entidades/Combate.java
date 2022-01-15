@@ -17,6 +17,14 @@ public class Combate {
 	int danoNoAdversario;
 	int danoNoJogador;
 	String motivacao;
+	int modoDeAndar;
+	String tipoJogador;
+
+	public int ataqueFlechas() {
+		Random geradorFlechas = new Random();
+		return geradorFlechas.nextInt(10) + 1;
+
+	}
 
 	public int ataqueJogador() {
 		Random geradorGolpe = new Random();
@@ -34,13 +42,14 @@ public class Combate {
 	}
 
 	public void combateFacilPortaDireita() {
+		this.modoDeAndar = 0;
 		this.vidaJogador = 5;
 		this.pontosDefesaJogador = 100;
 		this.golpeJogador = ataqueJogador();
 		this.ataqueJogador = 15; // somado com arma e golpe tem que dar 10% da defesa do Adversario no nivel
 									// dificil
 		this.vidaAdversario = 3;
-		this.pontosDefesaAdversario = 10;// vai para 50 nivel dificil
+		this.pontosDefesaAdversario = 20;// vai para 50 nivel dificil
 		this.golpeAdversario = ataqueAdversario();
 		this.ataqueAdversario = 13;
 		this.armaJogador = 15;// vai depender da arma escolhida de acordo com o personagem;
@@ -49,6 +58,12 @@ public class Combate {
 
 		this.danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
 		this.danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
+
+		if (modoDeAndar == 1) {
+			pontosDefesaJogador -= ataqueFlechas();
+		} else {
+			return;
+		}
 
 		if (golpeJogador == 1) {
 			danoNoAdversario = 0;
@@ -61,11 +76,43 @@ public class Combate {
 			danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
 			pontosDefesaAdversario -= danoNoAdversario;
 			vidaAdversario--;
+			String complementoArma ="";
+			String arma = "";
+			if(tipoJogador.equals("Guerreiro") ) {
+				if(armaJogador == 3) {
+					arma = "Martelo";
+				} else if (armaJogador == 7) {
+					arma = "Machado";
+				}else if (armaJogador == 5) {
+					arma = "Espada";
+				}else {
+					arma = "Clava";
+				}
+				complementoArma = "com sua/seu " + arma;
+			} else if (tipoJogador.equals("Mago")) {
+				if(armaJogador == 5) {
+					arma = "Livro";
+					complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
+				} else {
+					arma = "Cajado";
+					complementoArma = "com seu cajado, lançando uma bola de fogo";
+				}
+			} else if (tipoJogador.equals("Caçador")) {
+				if(armaJogador == 7) {
+					arma = "Arco e Flecha";
+					complementoArma = "com seu Arco, a Flecha atingiu";
+				} else {
+					arma = "Besta e Virote";
+					complementoArma = "com sua Besta, o Virote atingiu";
+				}
+			}
+			
+			System.out.printf("“Você atacou %s e causou %d de dano no inimigo!", complementoArma, danoNoAdversario );
 		}
 
 		if (golpeAdversario == 1) {
 			danoNoJogador = 0;
-			// errou o golpe
+			System.out.println("O inimigo errou o ataque! Você não sofreu dano.");
 		} else if (golpeAdversario == 3) {
 			danoNoJogador = pontosDefesaJogador;
 			vidaJogador = 0;
@@ -107,6 +154,11 @@ public class Combate {
 		if (vidaAdversario == 0) {
 			System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 		}
+		
+		//após cada rodada de combate::::: se seguir em frente, vai refazer o combate, 
+		//parando pela desistencia ou óbito do jogador
+		System.out.printf("O que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
+		int escolhaSeguimentoJogo = entrada.nextInt();
 
 	}
 
@@ -192,5 +244,4 @@ public class Combate {
 	 * personagens ou inimigos.
 	 */
 
-	
 }

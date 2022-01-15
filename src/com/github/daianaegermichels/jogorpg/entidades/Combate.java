@@ -67,11 +67,14 @@ public class Combate {
 
 		if (golpeJogador == 1) {
 			danoNoAdversario = 0;
-			// errou o golpe
+			System.out.println("Você errou seu ataque! O inimigo não sofreu dano algum.");
 		} else if (golpeJogador == 20) {
 			danoNoAdversario = pontosDefesaAdversario;
 			vidaAdversario = 0;
-			// golpe crítico, óbito do adversário, vitória do jogador
+			System.out.println("Você acertou um ataque crítico! {COMPLEMENTO Mensagem do else abaixo}");
+			if (vidaAdversario == 0) {
+				System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
+			}
 		} else {
 			danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
 			pontosDefesaAdversario -= danoNoAdversario;
@@ -158,14 +161,13 @@ public class Combate {
 		//após cada rodada de combate::::: se seguir em frente, vai refazer o combate, 
 		//parando pela desistencia ou óbito do jogador
 		System.out.printf("O que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
-		int escolhaSeguimentoJogo = entrada.nextInt();
+		//int escolhaSeguimentoJogo = entrada.nextInt();
 
 	}
 
 	public void batalha() {
 		int vidaJogador = 100;
 		int vidaAdversario = 100;
-		int contagemEspecial = 20;
 		int escolhaAtaque;
 		while (vidaJogador > 0) {
 			while (vidaJogador > 0 && vidaAdversario > 0) {

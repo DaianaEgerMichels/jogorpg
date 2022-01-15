@@ -3,17 +3,18 @@ package com.github.daianaegermichels.jogorpg.entidades;
 public class Jogador {
 	protected String nome;
 	protected int sexo;
-	protected int arma;
+	protected static int arma;
 	
-	public Jogador(String nome, int sexo, int arma) {
+	public static final int ESCOLHA_ARMA = arma;
+	
+	public Jogador(String nome, int sexo) {
 		this.nome = nome;
 		this.sexo = sexo;
-		this.arma = arma;
 	
 	}
 	
-	public int EscolhaArma() {
-		return this.arma = 0;
+	public int EscolhaArma(int arma) {
+		return Jogador.arma = arma;
 	}
 
 	public int getArma() {
@@ -21,7 +22,7 @@ public class Jogador {
 	}
 
 	public void setArma(int arma) {
-		this.arma = arma;
+		Jogador.arma = arma;
 	}
 
 

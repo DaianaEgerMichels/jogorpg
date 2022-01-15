@@ -2,29 +2,28 @@ package com.github.daianaegermichels.jogorpg.entidades;
 
 public class Cacador extends Jogador {
 
-	public Cacador(String nome, int sexo, int arma) {
-		super(nome, sexo, arma);
+	public Cacador(String nome, int sexo) {
+		super(nome, sexo);
 	}
 	
 	@Override
 	public int getArma() {
-		return super.getArma();
+		return ESCOLHA_ARMA;
 	}
 
 
 	@Override
 	public void setArma(int armaJogador) {
-		super.setArma(armaJogador);
+		setArma(armaJogador);
 	}
 	
-	public int EscolhaArma() {
+	public int EscolhaArma(int arma) {
 		int armaJogador = 0;
-		getArma();
 		setArma(armaJogador);
-		if(getArma() == 1) {
+		if(arma == 1) {
 			System.out.println("Arma escolhida: Arco e Flecha");
 			return armaJogador = 7;
-		} else if (getArma() == 2) {
+		} else if (arma == 2) {
 			System.out.println("Arma escolhida: Besta e Virote");
 			return armaJogador = 5;
 		} else {

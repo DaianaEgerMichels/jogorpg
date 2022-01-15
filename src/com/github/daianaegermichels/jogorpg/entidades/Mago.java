@@ -2,29 +2,30 @@ package com.github.daianaegermichels.jogorpg.entidades;
 
 public class Mago extends Jogador{
 
-	public Mago(String nome, int sexo, int arma) {
-		super(nome, sexo, arma);
+
+	public Mago(String nome, int sexo) {
+		super(nome, sexo);
 	}
 	
 	@Override
 	public int getArma() {
-		return super.getArma();
+		return ESCOLHA_ARMA;
 	}
 
 
 	@Override
 	public void setArma(int armaJogador) {
-		super.setArma(armaJogador);
+		setArma(EscolhaArma(armaJogador));
 	}
 	
-	public int EscolhaArma() {
+	public int EscolhaArma(int arma) {//getArma ao inves do int arma??
+		
 		int armaJogador = 0;
-		getArma();
-		setArma(armaJogador);
-		if(getArma() == 1) {
+		
+		if(arma == 1) {
 			System.out.println("Arma escolhida: Livro");
-			return armaJogador = 5;
-		} else if (getArma() == 2) {
+			return armaJogador = 5; //pontos da arma escolhida
+		} else if (arma == 2) {
 			System.out.println("Arma escolhida: Cajado");
 			return armaJogador = 7;
 		} else {

@@ -2,6 +2,11 @@ package com.github.daianaegermichels.jogorpg;
 
 import java.util.Scanner;
 
+import com.github.daianaegermichels.jogorpg.entidades.Cacador;
+import com.github.daianaegermichels.jogorpg.entidades.Guerreiro;
+import com.github.daianaegermichels.jogorpg.entidades.Jogador;
+import com.github.daianaegermichels.jogorpg.entidades.Mago;
+
 public class JogoApp {
 	static Scanner entrada = new Scanner(System.in);
 
@@ -105,6 +110,11 @@ public class JogoApp {
 				int confirmacaoClasse = entrada.nextInt();
 				if (confirmacaoClasse == 1) {
 					System.out.println("Classe de combate: GUERREIRO ");
+					Guerreiro guerreiro = new Guerreiro(nomeAvatar, sexoAvatar);
+					System.out.printf("Escolha uma arma para o combate: %n1 - Martelo %n2 - Machado %n3 - Espada %n4 - Clava");
+					int arma = entrada.nextInt();
+					int armaJogador = guerreiro.EscolhaArma(arma);
+					System.out.println(armaJogador);
 				} else {
 					System.out.println("Altere a classe de combate do seu avatar");
 					System.out.printf("Escolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
@@ -115,6 +125,11 @@ public class JogoApp {
 				int confirmacaoClasse = entrada.nextInt();
 				if (confirmacaoClasse == 1) {
 					System.out.println("Classe de combate: MAGO ");
+					Mago mago = new Mago(nomeAvatar, sexoAvatar);
+					System.out.printf("Escolha uma arma para o combate: %n1 - Livro %n2 - Cajado");
+					int arma = entrada.nextInt();
+					int armaJogador = mago.EscolhaArma(arma);
+					System.out.println(armaJogador); 
 				} else {
 					System.out.println("Altere a classe de combate do seu avatar");
 					System.out.printf("Escolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
@@ -125,6 +140,12 @@ public class JogoApp {
 				int confirmacaoClasse = entrada.nextInt();
 				if (confirmacaoClasse == 1) {
 					System.out.println("Classe de combate: CAÇADOR ");
+					Cacador cacador = new Cacador(nomeAvatar, sexoAvatar);
+					System.out.printf("Escolha uma arma para o combate: %n1 - Arco e Flecha %n2 - Besta e Virote");
+					int arma = entrada.nextInt();
+					int armaJogador = cacador.EscolhaArma(arma);
+					System.out.println(armaJogador); 
+					// se armaJogador == 0 perguntar a arma novamente, pois a arma escolhida foi invalida
 				} else {
 					System.out.println("Altere a classe de combate do seu avatar");
 					System.out.printf("Escolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
@@ -137,14 +158,6 @@ public class JogoApp {
 			}
 
 			System.out.println(entrada.nextLine());
-			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-			System.out.println("Escolha do armamento: ");
-			String armas = "";
-			if (classeCombate.equals("G")) {
-				armas = "martelo, espada, cajado";
-
-			}
-			System.out.println(armas);
 
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 			System.out.printf(

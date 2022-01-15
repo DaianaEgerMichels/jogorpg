@@ -9,13 +9,13 @@ public class Guerreiro extends Jogador {
 	
 	@Override
 	public int getArma() {
-		return ESCOLHA_ARMA;
+		return arma;
 	}
 
 
 	@Override
-	public void setArma(int armaJogador) {
-		setArma(armaJogador);
+	public void setArma(int arma) {
+		setArma(EscolhaArma(arma));
 	}
 	
 

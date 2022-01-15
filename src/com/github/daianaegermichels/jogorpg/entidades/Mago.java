@@ -9,13 +9,13 @@ public class Mago extends Jogador{
 	
 	@Override
 	public int getArma() {
-		return ESCOLHA_ARMA;
+		return arma;
 	}
 
 
 	@Override
-	public void setArma(int armaJogador) {
-		setArma(EscolhaArma(armaJogador));
+	public void setArma(int arma) {
+		setArma(EscolhaArma(arma));
 	}
 	
 	public int EscolhaArma(int arma) {//getArma ao inves do int arma??

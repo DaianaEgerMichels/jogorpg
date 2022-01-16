@@ -78,7 +78,7 @@ public class Combate {
 		} else if (golpeJogador == 20) {
 			danoNoAdversario = pontosDefesaAdversario;
 			vidaAdversario = 0;
-			System.out.println("Você acertou um ataque crítico! {COMPLEMENTO Mensagem do else abaixo}");
+			System.out.println("Você acertou um ataque crítico!");
 			if (vidaAdversario == 0) {
 				System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 			}
@@ -117,7 +117,7 @@ public class Combate {
 				}
 			}
 
-			System.out.printf("“Você atacou %s e causou %d de dano no inimigo!", complementoArma, danoNoAdversario);
+			System.out.printf("“Você atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
 		}
 	}
 
@@ -146,18 +146,18 @@ public class Combate {
 
 		if (golpeAdversario == 1) {
 			danoNoJogador = 0;
-			System.out.println("O inimigo errou o ataque! Você não sofreu dano.");
+			System.out.println("O inimigo errou o ataque! Você não sofreu dano.%n");
 		} else if (golpeAdversario == 3) {
 			danoNoJogador = pontosDefesaJogador;
 			vidaJogador = 0;
 			System.out.printf(
-					"O inimigo acertou um ataque crítico! Você sofreu %d de dano e agora possui %d pontos de vida.",
+					"O inimigo acertou um ataque crítico! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
 					danoNoJogador, vidaJogador);
 		} else {
 			danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
 			pontosDefesaJogador -= danoNoJogador;
 			vidaJogador--;
-			System.out.printf("O inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.",
+			System.out.printf("O inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
 					danoNoJogador, vidaJogador);
 		}
 
@@ -167,24 +167,24 @@ public class Combate {
 	public int batalhaFacilPortaDireita(
 			int escolhaSeguimentoJogo) {
 		Scanner entrada = new Scanner(System.in);
-		this.modoDeAndar = 0; // se modo de andar for 1 - jogador perde de 1 a 10 pontos pontosDefesaJogador -
+		//this.modoDeAndar = 0; // se modo de andar for 1 - jogador perde de 1 a 10 pontos pontosDefesaJogador -
 								// ataqueFlechas();
-		this.vidaJogador = 5;
-		this.pontosDefesaJogador = 100;
-		this.golpeJogador = ataqueJogador();
-		this.ataqueJogador = 15; // somado com arma e golpe tem que dar 10% da defesa do Adversario no nivel
+		//this.vidaJogador = 5;
+		//this.pontosDefesaJogador = 100;
+		//this.golpeJogador = ataqueJogador();
+		//this.ataqueJogador = 15; // somado com arma e golpe tem que dar 10% da defesa do Adversario no nivel
 									// dificil
-		this.vidaAdversario = 3;
-		this.pontosDefesaAdversario = 20;// vai para 50 nivel dificil
-		this.golpeAdversario = ataqueAdversario();
-		this.ataqueAdversario = 13;
-		this.armaJogador = 15;// vai depender da arma escolhida de acordo com o personagem;
-		this.armaAdversario = 5;
-		this.escolhaMotivacao = "";
-		this.classeCombate = "";
+		//this.vidaAdversario = 3;
+		//this.pontosDefesaAdversario = 20;// vai para 50 nivel dificil
+		//this.golpeAdversario = ataqueAdversario();
+		//this.ataqueAdversario = 13;
+		//this.armaJogador = 15;// vai depender da arma escolhida de acordo com o personagem;
+		//this.armaAdversario = 5;
+		//this.escolhaMotivacao = "";
+		//this.classeCombate = "";
 
-		this.danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
-		this.danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
+		//this.danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
+		//this.danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
 
 		while (vidaJogador > 0 && escolhaSeguimentoJogo == 1) {
 			/*if (modoDeAndar == 1) {
@@ -283,8 +283,8 @@ public class Combate {
 					escolhaMotivacao = gloria + mensagemGeneroEscolhido;
 
 				}
-				System.out.printf("Você não estava preparado para a força do inimigo. %s", escolhaMotivacao);
-				System.out.println("JOGO ENCERRADO");
+				System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
+				System.out.printf("JOGO ENCERRADO%n");
 			} else if (vidaJogador > 0 && vidaAdversario > 0) {
 
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
@@ -294,7 +294,7 @@ public class Combate {
 				} else {
 					System.out.printf(
 							"O medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
-					System.out.println("JOGO ENCERRADO!");
+					System.out.printf("%nJOGO ENCERRADO!");
 					break;
 				}
 
@@ -311,7 +311,7 @@ public class Combate {
 					System.out.println(
 							"Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
 				
-					System.out.println(":::::::::::::::::::::  JOGO ENCERRADO  ::::::::::::::::::::::::::");
+					System.out.printf("%n:::::::::::::::::::::  JOGO ENCERRADO  ::::::::::::::::::::::::::");
 				}
 				
 			}

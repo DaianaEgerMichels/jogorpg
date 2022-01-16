@@ -65,16 +65,21 @@ public class JogoApp {
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 			System.out.println("De um nome ao seu avatar");
 			String nomeAvatar = entrada.nextLine().toUpperCase();
+			Jogador jogador = new Jogador();
+			
 			if (nomeAvatar.length() > 0) {
 				System.out.printf("O nome do seu avatar será %s, confirmar? %n1 - Sim %n2 - Não, alterar", nomeAvatar);
 				int confirmacaoNome = entrada.nextInt();
 				if (confirmacaoNome == 1) {
-					System.out.printf("Nome do Avatar: %s ", nomeAvatar);
+					jogador.setNome(nomeAvatar);
+					System.out.printf("Nome do Avatar: %s ", jogador.getNome());
 				} else {
 					System.out.println("Altere o nome do seu avatar");
 					nomeAvatar = entrada.nextLine();
 				}
 			}
+			
+			
 
 			System.out.println(entrada.nextLine());
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
@@ -85,6 +90,7 @@ public class JogoApp {
 				int confirmacaoSexo = entrada.nextInt();
 				if (confirmacaoSexo == 1) {
 					System.out.println("Sexo do Avatar: FEMININO ");
+					jogador.setSexo(sexoAvatar);
 				} else {
 					System.out.println("Altere o sexo do seu avatar");
 					System.out.printf("Escolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
@@ -95,13 +101,17 @@ public class JogoApp {
 				int confirmacaoSexo = entrada.nextInt();
 				if (confirmacaoSexo == 1) {
 					System.out.println("Sexo do Avatar: MASCULINO ");
+					jogador.setSexo(sexoAvatar);
 				} else {
 					System.out.println("Altere o sexo do seu avatar");
 					System.out.printf("Escolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
 					sexoAvatar = entrada.nextInt();
 				}
 			}
-
+			
+			
+			
+			
 			System.out.println(entrada.nextLine());
 			int arma;
 			int armaJogador = 0;
@@ -117,8 +127,7 @@ public class JogoApp {
 					System.out.printf(
 							"Escolha uma arma para o combate: %n1 - Martelo %n2 - Machado %n3 - Espada %n4 - Clava");
 					arma = entrada.nextInt();
-					guerreiro.setArma(arma);
-					armaJogador = guerreiro.EscolhaArma(arma);
+					armaJogador = guerreiro.setArma(arma);
 					System.out.println(armaJogador);
 				} else {
 					System.out.println("Altere a classe de combate do seu avatar");
@@ -133,8 +142,7 @@ public class JogoApp {
 					Mago mago = new Mago(nomeAvatar, sexoAvatar);
 					System.out.printf("Escolha uma arma para o combate: %n1 - Livro %n2 - Cajado");
 					arma = entrada.nextInt();
-					mago.setArma(arma);
-					armaJogador = mago.EscolhaArma(arma);
+					armaJogador = mago.setArma(arma);
 					System.out.println(armaJogador);
 				} else {
 					System.out.println("Altere a classe de combate do seu avatar");
@@ -149,8 +157,7 @@ public class JogoApp {
 					Cacador cacador = new Cacador(nomeAvatar, sexoAvatar);
 					System.out.printf("Escolha uma arma para o combate: %n1 - Arco e Flecha %n2 - Besta e Virote");
 					arma = entrada.nextInt();
-					cacador.setArma(arma);
-					armaJogador = cacador.EscolhaArma(arma);
+					armaJogador = cacador.setArma(arma);
 					System.out.println(armaJogador);
 					// se armaJogador == 0 perguntar a arma novamente, pois a arma escolhida foi
 					// invalida

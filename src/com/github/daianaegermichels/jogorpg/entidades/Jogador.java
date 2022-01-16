@@ -5,6 +5,10 @@ public class Jogador {
 	protected int sexo;
 	protected int arma;
 	
+	public Jogador() {
+		
+	}
+	
 	public Jogador(String nome, int sexo) {
 		this.nome = nome;
 		this.sexo = sexo;
@@ -19,8 +23,8 @@ public class Jogador {
 		return arma;
 	}
 
-	public void setArma(int arma) {
-		this.arma = arma;
+	public int setArma(int arma) {
+		return this.arma = arma;
 	}
 
 
@@ -39,6 +43,9 @@ public class Jogador {
 	public void setSexo(int sexo) {
 		this.sexo = sexo;
 	}
+
+
+	
 	
 	
 }

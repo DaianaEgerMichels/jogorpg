@@ -14,14 +14,14 @@ public class Mago extends Jogador{
 
 
 	@Override
-	public void setArma(int arma) {
-		this.arma = EscolhaArma(arma);
+	public int setArma(int arma) {
+		return this.arma = EscolhaArma(arma);
 	}
 	
 	public int EscolhaArma(int arma) {//getArma ao inves do int arma??
 		
 		int armaJogador = 0;
-		//setArma(armaJogador);
+		
 		if(arma == 1) {
 			System.out.println("Arma escolhida: Livro");
 			return armaJogador = 5; //pontos da arma escolhida

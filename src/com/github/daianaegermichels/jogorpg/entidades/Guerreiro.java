@@ -14,14 +14,14 @@ public class Guerreiro extends Jogador {
 
 
 	@Override
-	public void setArma(int arma) {
-		setArma(EscolhaArma(arma));
+	public int setArma(int arma) {
+		return this.arma = EscolhaArma(arma);
 	}
 	
 
 	public int EscolhaArma(int arma) {
 		int armaJogador = 0;
-		//setArma(armaJogador);
+		
 		if(arma == 1) {
 			System.out.println("Arma escolhida: Martelo");
 			return armaJogador = 3;

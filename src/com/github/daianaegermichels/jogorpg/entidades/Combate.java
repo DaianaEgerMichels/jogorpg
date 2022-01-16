@@ -18,7 +18,11 @@ public class Combate {
 	int danoNoJogador;
 	String escolhaMotivacao;
 	int modoDeAndar;
-	String tipoJogador;
+	String classeCombate;
+
+	public Combate() {
+
+	}
 
 	public void imprimeVida(int vidaJogador, int vidaAdversario) {
 		System.out.println("Vida do jogador:" + vidaJogador);
@@ -42,7 +46,7 @@ public class Combate {
 	}
 
 	public void combateJogador(int armaJogador, int modoDeAndar, String escolhaMotivacao, String classeCombate) {
-		
+
 		this.modoDeAndar = 0; // se modo de andar for 1 - jogador perde de 1 a 10 pontos pontosDefesaJogador -
 								// ataqueFlechas();
 		this.vidaJogador = 5;
@@ -57,7 +61,7 @@ public class Combate {
 		this.armaJogador = 15;// vai depender da arma escolhida de acordo com o personagem;
 		// this.armaAdversario = 5;
 		this.escolhaMotivacao = "";
-		this.tipoJogador = classeCombate;
+		this.classeCombate = classeCombate;
 
 		this.danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
 		this.danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
@@ -84,7 +88,7 @@ public class Combate {
 			vidaAdversario--;
 			String complementoArma = "";
 			String arma = "";
-			if (tipoJogador.equals("G")) {
+			if (classeCombate.equals("G")) {
 				if (armaJogador == 3) {
 					arma = "Martelo";
 				} else if (armaJogador == 7) {
@@ -95,7 +99,7 @@ public class Combate {
 					arma = "Clava";
 				}
 				complementoArma = "com sua/seu " + arma;
-			} else if (tipoJogador.equals("M")) {
+			} else if (classeCombate.equals("M")) {
 				if (armaJogador == 5) {
 					arma = "Livro";
 					complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
@@ -103,7 +107,7 @@ public class Combate {
 					arma = "Cajado";
 					complementoArma = "com seu cajado, lançando uma bola de fogo";
 				}
-			} else if (tipoJogador.equals("C")) {
+			} else if (classeCombate.equals("C")) {
 				if (armaJogador == 7) {
 					arma = "Arco e Flecha";
 					complementoArma = "com seu Arco, a Flecha atingiu";
@@ -117,9 +121,51 @@ public class Combate {
 		}
 	}
 
+	
+	public void combateAdversario() {
+		//this.modoDeAndar = 0; // se modo de andar for 1 - jogador perde de 1 a 10 pontos pontosDefesaJogador -
+		// ataqueFlechas();
+		this.vidaJogador = 5;
+		this.pontosDefesaJogador = 100;
+		//this.golpeJogador = ataqueJogador();
+		//this.ataqueJogador = 15; // somado com arma e golpe tem que dar 10% da defesa do Adversario no nivel
+		// dificil
+		this.vidaAdversario = 3;
+		this.pontosDefesaAdversario = 20;// vai para 50 nivel dificil
+		this.golpeAdversario = ataqueAdversario();
+		this.ataqueAdversario = 13;
+		//this.armaJogador = 15;// vai depender da arma escolhida de acordo com o personagem;
+		this.armaAdversario = 5;
+		this.escolhaMotivacao = "";
+		//this.tipoJogador = classeCombate;
+
+		//this.danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
+		this.danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
+
+		ataqueAdversario();
+
+		if (golpeAdversario == 1) {
+			danoNoJogador = 0;
+			System.out.println("O inimigo errou o ataque! Você não sofreu dano.");
+		} else if (golpeAdversario == 3) {
+			danoNoJogador = pontosDefesaJogador;
+			vidaJogador = 0;
+			System.out.printf(
+					"O inimigo acertou um ataque crítico! Você sofreu %d de dano e agora possui %d pontos de vida.",
+					danoNoJogador, vidaJogador);
+		} else {
+			danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
+			pontosDefesaJogador -= danoNoJogador;
+			vidaJogador--;
+			System.out.printf("O inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.",
+					danoNoJogador, vidaJogador);
+		}
+
+	}
+
 	@SuppressWarnings("resource")
-	public void combateFacilPortaDireita(int armaJogador, int modoDeAndar, String escolhaMotivacao,
-			String classeCombate, int escolhaSeguimentoJogo) {
+	public int batalhaFacilPortaDireita(
+			int escolhaSeguimentoJogo) {
 		Scanner entrada = new Scanner(System.in);
 		this.modoDeAndar = 0; // se modo de andar for 1 - jogador perde de 1 a 10 pontos pontosDefesaJogador -
 								// ataqueFlechas();
@@ -135,16 +181,16 @@ public class Combate {
 		this.armaJogador = 15;// vai depender da arma escolhida de acordo com o personagem;
 		this.armaAdversario = 5;
 		this.escolhaMotivacao = "";
-		this.tipoJogador = classeCombate;
+		this.classeCombate = "";
 
 		this.danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
 		this.danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
 
 		while (vidaJogador > 0 && escolhaSeguimentoJogo == 1) {
-			if (modoDeAndar == 1) {
+			/*if (modoDeAndar == 1) {
 				pontosDefesaJogador -= ataqueFlechas();
 			} else {
-				return;
+				return pontosDefesaJogador;
 			}
 
 			ataqueJogador();
@@ -165,7 +211,7 @@ public class Combate {
 				vidaAdversario--;
 				String complementoArma = "";
 				String arma = "";
-				if (tipoJogador.equals("G")) {
+				if (classeCombate.equals("G")) {
 					if (armaJogador == 3) {
 						arma = "Martelo";
 					} else if (armaJogador == 7) {
@@ -176,7 +222,7 @@ public class Combate {
 						arma = "Clava";
 					}
 					complementoArma = "com sua/seu " + arma;
-				} else if (tipoJogador.equals("M")) {
+				} else if (classeCombate.equals("M")) {
 					if (armaJogador == 5) {
 						arma = "Livro";
 						complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
@@ -184,7 +230,7 @@ public class Combate {
 						arma = "Cajado";
 						complementoArma = "com seu cajado, lançando uma bola de fogo";
 					}
-				} else if (tipoJogador.equals("C")) {
+				} else if (classeCombate.equals("C")) {
 					if (armaJogador == 7) {
 						arma = "Arco e Flecha";
 						complementoArma = "com seu Arco, a Flecha atingiu";
@@ -195,9 +241,11 @@ public class Combate {
 				}
 
 				System.out.printf("“Você atacou %s e causou %d de dano no inimigo!", complementoArma, danoNoAdversario);
-			}
+			}*/
+			combateJogador(armaJogador, modoDeAndar, escolhaMotivacao, classeCombate);
+			combateAdversario();
 
-			ataqueAdversario();
+			/*ataqueAdversario();
 
 			if (golpeAdversario == 1) {
 				danoNoJogador = 0;
@@ -214,7 +262,7 @@ public class Combate {
 				vidaJogador--;
 				System.out.printf("O inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.",
 						danoNoJogador, vidaJogador);
-			}
+			}*/
 
 			if (vidaJogador == 0) {
 				if (escolhaMotivacao.equals("V")) {
@@ -238,7 +286,7 @@ public class Combate {
 				System.out.printf("Você não estava preparado para a força do inimigo. %s", escolhaMotivacao);
 				System.out.println("JOGO ENCERRADO");
 			} else if (vidaJogador > 0 && vidaAdversario > 0) {
-			
+
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 				if (escolhaSeguimentoJogo == 1) {
@@ -256,10 +304,21 @@ public class Combate {
 				System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 				System.out.printf("O que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 				escolhaSeguimentoJogo = entrada.nextInt();
+				
+				if(escolhaSeguimentoJogo == 1) {
+					return escolhaSeguimentoJogo;
+				} else {
+					System.out.println(
+							"Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
+				
+					System.out.println(":::::::::::::::::::::  JOGO ENCERRADO  ::::::::::::::::::::::::::");
+				}
+				
 			}
 		}
+		return escolhaSeguimentoJogo;
 
-		if (vidaJogador == 0) {
+		/*if (vidaJogador == 0) {
 			if (escolhaMotivacao.equals("V")) {
 				String vinganca;
 				vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -283,31 +342,35 @@ public class Combate {
 		} else {
 			System.out.printf("O que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 			escolhaSeguimentoJogo = entrada.nextInt();
-		}
-		
-		
-		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-		System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
-		int continua = entrada. nextInt();
-		
-		if (continua == 1) {
-			System.out.printf("Após derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, e olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.");
-			
-			System.out.println("Decidi se usa a armadura ou não ");
-			
-		} else {
-			System.out.println("Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
-		}
-		
-		
-		/*
-		 * [jogador escolhe pegar ou não as armaduras novas.
-Se escolher pegar, o jogo deve exibir a mensagem: “Você resolve usar os equipamentos do inimigo contra ele, e trocar algumas peças suas, que estavam danificadas, pelas peças de armaduras existentes na sala. De armadura nova, você se sente mais protegido para os desafios à sua frente.” O jogo deve acrescentar +5 pontos de defesa para o jogador.
-Se escolher não pegar, o jogo deve exibir a mensagem: “Você decide que não precisa utilizar nada que venha das mãos do inimigo.”]
+		}*/
 
-		 * */
-		
-		//:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		/*System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
+		int continua = entrada.nextInt();
+
+		if (continua == 1) {
+			System.out.printf(
+					"Após derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, e olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.");
+
+			System.out.println("Decidi se usa a armadura ou não ");
+
+		} else {
+			System.out.println(
+					"Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
+		}*/
+
+		/*
+		 * [jogador escolhe pegar ou não as armaduras novas. Se escolher pegar, o jogo
+		 * deve exibir a mensagem: “Você resolve usar os equipamentos do inimigo contra
+		 * ele, e trocar algumas peças suas, que estavam danificadas, pelas peças de
+		 * armaduras existentes na sala. De armadura nova, você se sente mais protegido
+		 * para os desafios à sua frente.” O jogo deve acrescentar +5 pontos de defesa
+		 * para o jogador. Se escolher não pegar, o jogo deve exibir a mensagem: “Você
+		 * decide que não precisa utilizar nada que venha das mãos do inimigo.”]
+		 * 
+		 */
+
+		// :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 	}
 
@@ -361,7 +424,7 @@ Se escolher não pegar, o jogo deve exibir a mensagem: “Você decide que não preci
 		Scanner entrada = new Scanner(System.in);
 
 		while (continua == 1) {
-			combateFacilPortaDireita();
+			//combateFacilPortaDireita(continua, continua, escolhaMotivacao, escolhaMotivacao, continua);
 
 			System.out.println("Você atacou {COMPLEMENTO DA ARMA} e causou X de dano no inimigo!");
 

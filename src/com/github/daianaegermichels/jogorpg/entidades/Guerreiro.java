@@ -21,7 +21,7 @@ public class Guerreiro extends Jogador {
 
 	public int EscolhaArma(int arma) {
 		int armaJogador = 0;
-		setArma(armaJogador);
+		//setArma(armaJogador);
 		if(arma == 1) {
 			System.out.println("Arma escolhida: Martelo");
 			return armaJogador = 3;

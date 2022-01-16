@@ -1,13 +1,14 @@
 package com.github.daianaegermichels.jogorpg.entidades;
 
-public class Adversario extends Jogador {
+public class Adversario {
 
 	private int vida;
 	private int golpe;
 	private int defesa;
 
-	public Adversario(String nome, int sexo, int arma) {
-		super(nome, sexo, arma);
+	public Adversario(int vida, int defesa) {
+		this.vida = vida;
+		this.defesa = defesa;
 		
 	}
 

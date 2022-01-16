@@ -113,6 +113,7 @@ public class JogoApp {
 					Guerreiro guerreiro = new Guerreiro(nomeAvatar, sexoAvatar);
 					System.out.printf("Escolha uma arma para o combate: %n1 - Martelo %n2 - Machado %n3 - Espada %n4 - Clava");
 					int arma = entrada.nextInt();
+					guerreiro.setArma(arma);
 					int armaJogador = guerreiro.EscolhaArma(arma);
 					System.out.println(armaJogador);
 				} else {
@@ -128,6 +129,7 @@ public class JogoApp {
 					Mago mago = new Mago(nomeAvatar, sexoAvatar);
 					System.out.printf("Escolha uma arma para o combate: %n1 - Livro %n2 - Cajado");
 					int arma = entrada.nextInt();
+					mago.setArma(arma);
 					int armaJogador = mago.EscolhaArma(arma);
 					System.out.println(armaJogador); 
 				} else {
@@ -143,6 +145,7 @@ public class JogoApp {
 					Cacador cacador = new Cacador(nomeAvatar, sexoAvatar);
 					System.out.printf("Escolha uma arma para o combate: %n1 - Arco e Flecha %n2 - Besta e Virote");
 					int arma = entrada.nextInt();
+					cacador.setArma(arma);
 					int armaJogador = cacador.EscolhaArma(arma);
 					System.out.println(armaJogador); 
 					// se armaJogador == 0 perguntar a arma novamente, pois a arma escolhida foi invalida
@@ -168,21 +171,21 @@ public class JogoApp {
 							+ "%nOlha para seu equipamento de combate, já danificado e desgastado depois de tantas lutas. "
 							+ "%nVocê está a um passo de encerrar para sempre esse mal."
 							+ "%n%nBuscando uma injeção de ânimo, você se força a lembrar o que te trouxe até aqui.");
-			System.out.printf("Escolha da motivação: %n 1 - VINGANÇA %n 2 - GLÓRIA ");
-			int escolhaMotivacao = entrada.nextInt();
+			System.out.printf("Escolha da motivação: %n V - VINGANÇA %n G - GLÓRIA ");
+			String escolhaMotivacao = entrada.nextLine().toUpperCase();
 			switch (escolhaMotivacao) {
-			case 1:
+			case "V":
 				System.out.printf(
 						"Imagens daquela noite trágica invadem sua mente. %nVocê nem precisa se esforçar para lembrar, pois essas memórias estão sempre presentes, %nmesmo que de pano de fundo, quando você tem outros pensamentos em foco, elas nunca o deixaram. %nElas são o combustível que te fizeram chegar até aqui. %nE você sabe que não irá desistir até ter vingado a morte daqueles que foram - e pra sempre serão - sua fonte de amor e desejo de continuar vivo. %nO maldito líder finalmente pagará por tanto mal causado na vida de tantos (e principalmente na sua).");
 				break;
-			case 2:
+			case "G":
 				System.out.printf(
 						"Você já consegue visualizar na sua mente o povo da cidade te recebendo de braços abertos, %nbardos criando canções sobre seus feitos heróicos, nobres te presenteando com jóias e diversas riquezas, %ntaberneiros se recusando a cobrar por suas bebedeiras e comilanças. %nDesde já, você sente o amor do público, te louvando a cada passo que dá pelas ruas, depois de %ndestruir o vilão que tanto assombrou a paz de todos. Porém, você sabe que ainda falta o último ato dessa história. %nVocê se concentra na missão. A glória o aguarda, mas não antes da última batalha.");
 				break;
 			default:
 				System.out.println("Escolha inválida, tente novamente");
-				System.out.printf("Escolha da motivação: %n 1 - VINGANÇA %n 2 - GLÓRIA ");
-				escolhaMotivacao = entrada.nextInt();
+				System.out.printf("Escolha da motivação: %n V - VINGANÇA %n G - GLÓRIA ");
+				escolhaMotivacao = entrada.nextLine().toUpperCase();
 				break;
 			}
 
@@ -220,12 +223,6 @@ public class JogoApp {
 			case 1:
 				System.out.printf(
 						"Você toma cuidado e vai caminhando vagarosamente em direção à luz. Quando você pisa exatamente embaixo da porta, você sente o chão ceder levemente, como se tivesse pisado em uma pedra solta. Você ouve um ruído de mecanismos se movimentando, e uma escotilha se abre no teto atrás de você, no corredor. Flechas voam da escotilha em sua direção, e você salta para dentro da sala, porém uma delas te acerta na perna.");
-				
-					//pontosDefesaJogador = 100 - ataqueFlechas();
-
-				
-				// [toma dano utilizando mecanismo de ataque descrito abaixo, porém o rolamento
-				// de dados é só de 1-10]
 				break;
 			case 2:
 				System.out.printf(

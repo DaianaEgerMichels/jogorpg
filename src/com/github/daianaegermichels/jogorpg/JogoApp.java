@@ -270,8 +270,8 @@ public class JogoApp {
 			switch (continua) {
 			case 1:
 				Combate combatePortaDireita = new Combate();
-				combatePortaDireita.combateJogador(armaJogador, modoDeAndar, escolhaMotivacao, classeCombate);
-				continua = combatePortaDireita.batalhaFacilPortaDireita(continua);
+				combatePortaDireita.combateJogador(nivel,armaJogador, modoDeAndar, escolhaMotivacao, classeCombate);
+				continua = combatePortaDireita.batalhaPortaDireita(continua);
 				break;
 			case 2:
 				System.out.println(

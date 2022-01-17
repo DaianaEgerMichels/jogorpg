@@ -12,7 +12,7 @@ public class Combate {
 	int pontosDefesaAdversario;
 	int golpeAdversario;
 	int ataqueAdversario;
-	int armaJogador;// vai depender da arma escolhida de acordo com o personagem;
+	int armaJogador;
 	int armaAdversario;
 	int danoNoAdversario;
 	int danoNoJogador;
@@ -235,8 +235,8 @@ public class Combate {
 					escolhaMotivacao = gloria + mensagemGeneroEscolhido;
 
 				}
-				System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
-				System.out.printf("%nJOGO ENCERRADO");
+				System.out.printf("%nVocê não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
+				System.out.printf("%nJOGO ENCERRADO!");
 				return escolhaSeguimentoJogo = 0;
 			} else if (vidaJogador > 0 && vidaAdversario > 0) {
 
@@ -299,7 +299,7 @@ public class Combate {
 
 		if (golpeJogador == 1) {
 			danoNoAdversario = 0;
-			System.out.println("Você errou seu ataque! O inimigo não sofreu dano algum.");
+			System.out.printf("%nVocê errou seu ataque! O inimigo não sofreu dano algum.");
 		} else if (golpeJogador == 20) {
 			danoNoAdversario = pontosDefesaAdversario;
 			vidaAdversario = 0;
@@ -342,7 +342,7 @@ public class Combate {
 				}
 			}
 
-			System.out.printf("Você atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
+			System.out.printf("%nVocê atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
 		}
 	}
 	
@@ -353,18 +353,18 @@ public class Combate {
 
 		if (golpeAdversario == 1) {
 			danoNoJogador = 0;
-			System.out.println("O inimigo errou o ataque! Você não sofreu dano.%n");
+			System.out.printf("%nO inimigo errou o ataque! Você não sofreu dano.%n");
 		} else if (golpeAdversario == 3) {
 			danoNoJogador = pontosDefesaJogador;
 			vidaJogador = 0;
 			System.out.printf(
-					"O inimigo acertou um ataque crítico! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
+					"%nO inimigo acertou um ataque crítico! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
 					danoNoJogador, vidaJogador);
 		} else {
 			danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
 			pontosDefesaJogador -= danoNoJogador;
 			vidaJogador--;
-			System.out.printf("O inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
+			System.out.printf("%nO inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
 					danoNoJogador, vidaJogador);
 		}
 
@@ -463,7 +463,7 @@ public class Combate {
 					continue;
 				} else {
 					System.out.printf(
-							"O medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
+							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					System.out.printf("%nJOGO ENCERRADO!");
 					break;
 				}
@@ -471,8 +471,8 @@ public class Combate {
 			}
 
 			else if (vidaJogador > 0 && vidaAdversario == 0) {
-				System.out.println("O inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-				System.out.printf("O que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
+				System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
+				System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 
 				switch (escolhaSeguimentoJogo) {

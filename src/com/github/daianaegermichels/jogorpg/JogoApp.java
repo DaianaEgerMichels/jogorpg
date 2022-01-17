@@ -83,7 +83,7 @@ public class JogoApp {
 
 			System.out.println(entrada.nextLine());
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-			System.out.printf("Escolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
+			System.out.printf("%nEscolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
 			int sexoAvatar = entrada.nextInt();
 			if (sexoAvatar == 1) {
 				System.out.printf("O seu avatar será do sexo FEMININO, confirmar? %n1 - Sim %n2 - Não, alterar");
@@ -93,7 +93,7 @@ public class JogoApp {
 					jogador.setSexo(sexoAvatar);
 				} else {
 					System.out.println("Altere o sexo do seu avatar");
-					System.out.printf("Escolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
+					System.out.printf("%nEscolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
 					sexoAvatar = entrada.nextInt();
 				}
 			} else {
@@ -104,7 +104,7 @@ public class JogoApp {
 					jogador.setSexo(sexoAvatar);
 				} else {
 					System.out.println("Altere o sexo do seu avatar");
-					System.out.printf("Escolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
+					System.out.printf("%nEscolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
 					sexoAvatar = entrada.nextInt();
 				}
 			}
@@ -116,7 +116,7 @@ public class JogoApp {
 			int arma;
 			int armaJogador = 0;
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-			System.out.printf("Escolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
+			System.out.printf("%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
 			String classeCombate = entrada.nextLine().toUpperCase();
 			if (classeCombate.equals("G")) {
 				System.out.println("Você escolheu a classe Guerreiro, confirmar? 1 - Sim  2 - Não");
@@ -125,13 +125,13 @@ public class JogoApp {
 					System.out.println("Classe de combate: GUERREIRO ");
 					Guerreiro guerreiro = new Guerreiro(nomeAvatar, sexoAvatar);
 					System.out.printf(
-							"Escolha uma arma para o combate: %n1 - Martelo %n2 - Machado %n3 - Espada %n4 - Clava");
+							"%nEscolha uma arma para o combate: %n1 - Martelo %n2 - Machado %n3 - Espada %n4 - Clava");
 					arma = entrada.nextInt();
 					armaJogador = guerreiro.setArma(arma);
 					System.out.println(armaJogador);
 				} else {
 					System.out.println("Altere a classe de combate do seu avatar");
-					System.out.printf("Escolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
+					System.out.printf("%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
 					classeCombate = entrada.nextLine();
 				}
 			} else if (classeCombate.equals("M")) {
@@ -140,13 +140,13 @@ public class JogoApp {
 				if (confirmacaoClasse == 1) {
 					System.out.println("Classe de combate: MAGO ");
 					Mago mago = new Mago(nomeAvatar, sexoAvatar);
-					System.out.printf("Escolha uma arma para o combate: %n1 - Livro %n2 - Cajado");
+					System.out.printf("%nEscolha uma arma para o combate: %n1 - Livro %n2 - Cajado");
 					arma = entrada.nextInt();
 					armaJogador = mago.setArma(arma);
 					System.out.println(armaJogador);
 				} else {
 					System.out.println("Altere a classe de combate do seu avatar");
-					System.out.printf("Escolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
+					System.out.printf("%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
 					classeCombate = entrada.nextLine();
 				}
 			} else if (classeCombate.equals("C")) {
@@ -155,26 +155,26 @@ public class JogoApp {
 				if (confirmacaoClasse == 1) {
 					System.out.println("Classe de combate: CAÇADOR ");
 					Cacador cacador = new Cacador(nomeAvatar, sexoAvatar);
-					System.out.printf("Escolha uma arma para o combate: %n1 - Arco e Flecha %n2 - Besta e Virote");
+					System.out.printf("%nEscolha uma arma para o combate: %n1 - Arco e Flecha %n2 - Besta e Virote");
 					arma = entrada.nextInt();
 					armaJogador = cacador.setArma(arma);
 					System.out.println(armaJogador);
 					// se armaJogador == 0 perguntar a arma novamente, pois a arma escolhida foi
 					// invalida
 				} else {
-					System.out.println("Altere a classe de combate do seu avatar");
-					System.out.printf("Escolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
+					System.out.printf("%nAltere a classe de combate do seu avatar");
+					System.out.printf("%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
 					classeCombate = entrada.nextLine();
 				}
 			} else {
-				System.out.println("Classe de combate inválida!");
-				System.out.printf("Escolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
+				System.out.printf("%nClasse de combate inválida!");
+				System.out.printf("%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
 				classeCombate = entrada.nextLine();
 			}
 
 			System.out.println(entrada.nextLine());
 
-			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+			System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 			System.out.printf(
 					"A noite se aproxima, a lua já surge no céu, estrelas vão se acendendo, e sob a luz do crepúsculo você está prestes a entrar na fase final da sua missão."
 							+ "%nVocê olha para o portal à sua frente, e sabe que a partir desse ponto, sua vida mudará para sempre. "
@@ -201,12 +201,12 @@ public class JogoApp {
 				break;
 			}
 
-			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+			System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 			System.out.printf(
 					"Inspirado pelo motivo que te trouxe até aqui, você sente seu coração ardendo em chamas, suas mãos formigarem em volta da sua arma. Você a segura com firmeza. Seu foco está renovado. Você avança pelo portal.%n"
 							+ "%n"
 							+ "A escuridão te envolve. Uma iluminação muito fraca entra pelo portal às suas costas. À sua frente, só é possível perceber que você se encontra em um corredor extenso. Você só pode ir à frente, ou desistir.%n");
-			System.out.printf("O que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
+			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 			int escolhaSeguimentoJogo = entrada.nextInt();
 			switch (escolhaSeguimentoJogo) {
 			case 1:
@@ -217,52 +217,52 @@ public class JogoApp {
 			case 2:
 				System.out.printf(
 						"O medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
-				System.out.println("JOGO ENCERRADO!");
+				System.out.printf("%nJOGO ENCERRADO!");
 				entrada.close();
 				break;
 			default:
-				System.out.println("Escolha inválida, tente novamente");
+				System.out.printf("%nEscolha inválida, tente novamente");
 				System.out.printf("O que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 			}
 
-			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+			System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 			System.out.printf(
 					"Você se pergunta se dentro dessa sala pode haver inimigos, ou alguma armadilha, %ne pondera sobre como passar pela porta.");
-			System.out.printf("1 - Andando cuidadosamente %n2 - Correndo %n3 - Saltando");
+			System.out.printf("%n1 - Andando cuidadosamente %n2 - Correndo %n3 - Saltando");
 			int modoDeAndar = entrada.nextInt();
 			switch (modoDeAndar) {
 			case 1:
 				System.out.printf(
-						"Você toma cuidado e vai caminhando vagarosamente em direção à luz. Quando você pisa exatamente embaixo da porta, você sente o chão ceder levemente, como se tivesse pisado em uma pedra solta. Você ouve um ruído de mecanismos se movimentando, e uma escotilha se abre no teto atrás de você, no corredor. Flechas voam da escotilha em sua direção, e você salta para dentro da sala, porém uma delas te acerta na perna.");
+						"%nVocê toma cuidado e vai caminhando vagarosamente em direção à luz. %nQuando você pisa exatamente embaixo da porta, você sente o chão ceder levemente, como se tivesse pisado em uma pedra solta. %nVocê ouve um ruído de mecanismos se movimentando, e uma escotilha se abre no teto atrás de você, no corredor. %nFlechas voam da escotilha em sua direção, e você salta para dentro da sala, %nporém uma delas te acerta na perna.");
 				break;
 			case 2:
 				System.out.printf(
-						"Você respira fundo e desata a correr em direção à sala. Quando passa pela porta, sente que pisou em uma pedra solta, mas não dá muita importância e segue para dentro da sala, olhando ao redor à procura de inimigos. Não tem ninguém, mas você ouve sons de flechas batendo na pedra atrás de você, e quando se vira, vê várias flechas no chão. Espiando pela porta, você entende que pisou em uma armadilha que soltou flechas de uma escotilha aberta no teto, mas por sorte você entrou correndo e conseguiu escapar desse ataque surpresa.");
+						"%nVocê respira fundo e desata a correr em direção à sala. %nQuando passa pela porta, sente que pisou em uma pedra solta, mas não dá muita importância e segue para dentro da sala, %nolhando ao redor à procura de inimigos. Não tem ninguém, mas você ouve sons de %nflechas batendo na pedra atrás de você, e quando se vira, vê várias flechas no chão. %nEspiando pela porta, você entende que pisou em uma armadilha que soltou flechas %nde uma escotilha aberta no teto, mas por sorte você entrou correndo e %nconseguiu escapar desse ataque surpresa.");
 				break;
 			case 3:
 				System.out.printf(
-						"Você se concentra e pula em direção à luz, saltando de antes da porta até o interior da sala.");
+						"%nVocê se concentra e pula em direção à luz, saltando de antes da porta até o interior da sala.");
 				break;
 
 			default:
-				System.out.println("Escolha inválida, tente novamente");
-				System.out.printf("1 - Andando cuidadosamente %n2 - Correndo %n3 - Saltando");
+				System.out.printf("%nEscolha inválida, tente novamente");
+				System.out.printf("%n1 - Andando cuidadosamente %n2 - Correndo %n3 - Saltando");
 				modoDeAndar = entrada.nextInt();
 			}
 
-			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-			System.out.println(
-					"Você se encontra sozinho em uma sala quadrada, contendo uma porta em cada parede. Uma delas foi aquela pela qual você entrou, que estava aberta, e as outras três estão fechadas. A porta à sua frente é a maior das quatro, com inscrições em seu entorno em uma língua que você não sabe ler, mas reconhece como sendo a língua antiga utilizada pelo inimigo. Você se aproxima da porta e percebe que ela está trancada por duas fechaduras douradas, e você entende que precisará primeiro derrotar o que estiver nas outras duas portas laterais, antes de conseguir enfrentar o líder.\r\n"
-							+ "\r\n" + "Você se dirige para a porta à direita.\r\n" + "");
+			System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+			System.out.printf(
+					"%nVocê se encontra sozinho em uma sala quadrada, contendo uma porta em cada parede. %nUma delas foi aquela pela qual você entrou, que estava aberta, e as outras três estão fechadas. %nA porta à sua frente é a maior das quatro, com inscrições em seu entorno em uma língua que você não sabe ler, %nmas reconhece como sendo a língua antiga utilizada pelo inimigo. %nVocê se aproxima da porta e percebe que ela está trancada por duas fechaduras douradas, %ne você entende que precisará primeiro derrotar o que estiver nas outras duas portas laterais, %nantes de conseguir enfrentar o líder."
+							+ "%n" + "%nVocê se dirige para a porta à direita." + "%n");
 
 			System.out
-					.println("::::::::::::::::::::::::::::::::::PORTA DIREITA:::::::::::::::::::::::::::::::::::::::");
+					.printf("%n::::::::::::::::::::::::::::::::::PORTA DIREITA:::::::::::::::::::::::::::::::::::::::");
 			System.out.printf(
-					"Você se aproxima, tentando ouvir o que acontece porta adentro, mas não escuta nada. Segura com mais força sua arma com uma mão, enquanto empurra a porta com a outra. Ao entrar, você se depara com uma sala espaçosa, com vários equipamentos de batalha pendurados nas paredes e dispostos em armários e mesas. Você imagina que este seja o arsenal do inimigo, onde estão guardados os equipamentos que seus soldados utilizam quando saem para espalhar o terror nas cidades e vilas da região.\r\n"
-							+ "\r\n"
-							+ "Enquanto seu olhar percorre a sala, você ouve a porta se fechando e gira rapidamente para olhar para trás. Ali, de pé entre você e a porta fechada, bloqueando o caminho do seu destino, está um dos capitães do inimigo. Um orque horrendo, de armadura, capacete e espada em punho, em posição de combate. Ele avança em sua direção.\r\n"
-							+ "");
+					"%nVocê se aproxima, tentando ouvir o que acontece porta adentro, mas não escuta nada. %nSegura com mais força sua arma com uma mão, enquanto empurra a porta com a outra. %nAo entrar, você se depara com uma sala espaçosa, com vários equipamentos de batalha pendurados %nnas paredes e dispostos em armários e mesas. %nVocê imagina que este seja o arsenal do inimigo, onde estão guardados os equipamentos que seus %nsoldados utilizam quando saem para espalhar o terror nas cidades e vilas da região."
+							+ "%n"
+							+ "%nEnquanto seu olhar percorre a sala, você ouve a porta se fechando e gira rapidamente para olhar para trás. %nAli, de pé entre você e a porta fechada, bloqueando o caminho do seu destino, %nestá um dos capitães do inimigo. Um orque horrendo, de armadura, capacete e espada em punho, %nem posição de combate. Ele avança em sua direção."
+							+ "%n");
 
 			System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
 			int continua = entrada.nextInt();
@@ -270,17 +270,20 @@ public class JogoApp {
 			switch (continua) {
 			case 1:
 				Combate combatePortaDireita = new Combate();
-				combatePortaDireita.combateJogador(nivel,armaJogador, modoDeAndar, escolhaMotivacao, classeCombate);
-				continua = combatePortaDireita.batalhaPortaDireita(continua);
+				//combatePortaDireita.combateJogador(nivel,armaJogador, modoDeAndar, escolhaMotivacao, classeCombate);//isso estava fazendo dar 2 golpes
+				//continua = combatePortaDireita.batalhaPortaDireita(continua);
+				
+				//combatePortaDireita.golpeJogador(armaJogador, modoDeAndar, escolhaMotivacao, classeCombate);
+				continua = combatePortaDireita.combatePortaDireita(continua, nivel, armaJogador, modoDeAndar, escolhaMotivacao, classeCombate);
 				break;
 			case 2:
-				System.out.println(
-						"Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
+				System.out.printf(
+						"%nVocê não estava preparado para a força do inimigo, %ne decide fugir para que possa tentar novamente em uma próxima vez.");
 				break;
 			default:
-				System.out.println("Entrada Inválida!");
+				System.out.printf("%nEntrada Inválida!");
 				while (continua != 1 && continua != 2) {
-					System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
+					System.out.printf("%nO que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
 					continua = entrada.nextInt();
 					// como faz para retornar ao inicio do switch case??
 
@@ -293,16 +296,18 @@ public class JogoApp {
 			//System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
 			//continua = entrada.nextInt();
 
-			//if (continua == 1) {
+			if (continua == 1) {
 				System.out.printf(
-						"Após derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, e olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.");
+						"%nApós derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, %ne olha em volta, encarando todas aquelas peças de armaduras resistentes e em ótimo estado.");
 
-				System.out.println("Decidi se usa a armadura ou não ");
+				System.out.printf("%nDecidi se usa a armadura ou não ");
 
-			//} else {
-				//System.out.println(
-						//"Você não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez.");
-			//}
+			} else {
+				System.out.printf(
+						"%nVocê não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez."
+						+ "%n JOGO ENCERRADO!");
+				return;
+			}
 
 			/*
 			 * [jogador escolhe pegar ou não as armaduras novas. Se escolher pegar, o jogo
@@ -316,21 +321,21 @@ public class JogoApp {
 			 */
 
 			System.out.printf(
-					"Em uma mesa, você encontra uma chave dourada, e sabe que aquela chave abre uma das fechaduras da porta do líder inimigo. Você pega a chave e guarda numa pequena bolsa que leva presa ao cinto.");
+					"%nEm uma mesa, você encontra uma chave dourada, e sabe que aquela chave abre uma das fechaduras da porta do líder inimigo. %nVocê pega a chave e guarda numa pequena bolsa que leva presa ao cinto.");
 
 			System.out
-					.println("::::::::::::::::::::::::::::::::::PORTA ESQUERDA:::::::::::::::::::::::::::::::::::::::");
+					.printf("%n::::::::::::::::::::::::::::::::::PORTA ESQUERDA:::::::::::::::::::::::::::::::::::::::");
 			System.out.printf(
-					"Você retorna à sala anterior e se dirige à porta da esquerda. Você se aproxima, tentando ouvir o que acontece porta adentro, mas não escuta nada. Segura com mais força sua arma com uma mão, enquanto empurra a porta com a outra. Ao entrar, você se depara com uma sala parecida com a do arsenal, mas em vez de armaduras, existem vários potes e garrafas de vidro com conteúdos misteriosos e de cores diversas, e você entende que o capitão que vive ali, realiza experimentos com diversos ingredientes, criando poções utilizadas pelos soldados para aterrorizar a região.\r\n"
-							+ "No fundo da sala, olhando em sua direção, está outro dos capitães do inimigo. Um orque horrendo, de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.\r\n"
-							+ "");
+					"%nVocê retorna à sala anterior e se dirige à porta da esquerda. %nVocê se aproxima, tentando ouvir o que acontece porta adentro, mas não escuta nada. %nSegura com mais força sua arma com uma mão, enquanto empurra a porta com a outra. %nAo entrar, você se depara com uma sala parecida com a do arsenal, mas em vez de armaduras, %nexistem vários potes e garrafas de vidro com conteúdos misteriosos e de cores diversas, %ne você entende que o capitão que vive ali, realiza experimentos com diversos ingredientes, %ncriando poções utilizadas pelos soldados para aterrorizar a região."
+							+ "%nNo fundo da sala, olhando em sua direção, está outro dos capitães do inimigo. %nUm orque horrendo, de armadura, cajado em punho, em posição de combate. %nEle avança em sua direção."
+							+ "%n");
 
-			System.out.println("Loop de combate");
+			System.out.printf("%nLoop de combate");
 
 			// caso vença o combate e queira continuar: continua...
 
 			System.out.printf(
-					"Após derrotar o Alquimista, você olha em volta, tentando reconhecer alguma poção do estoque do inimigo. Em uma mesa, você reconhece uma pequena garrafa de vidro contendo um líquido levemente rosado, pega a garrafa e pondera se deve beber um gole.");
+					"%nApós derrotar o Alquimista, você olha em volta, tentando reconhecer alguma poção do estoque do inimigo. %nEm uma mesa, você reconhece uma pequena garrafa de vidro contendo um líquido levemente rosado, %npega a garrafa e pondera se deve beber um gole.");
 
 			/*
 			 * [jogador escolhe entre beber ou não. Se beber, o jogo exibe a mensagem: “Você
@@ -349,38 +354,39 @@ public class JogoApp {
 							+ "Ele percebe sua chegada e se levanta com um salto, apanhando seu machado de guerra de lâmina dupla.\r\n"
 							+ "");
 
-			System.out.println("::::::::::::::::::::::::::::::::::PORTA FINAL:::::::::::::::::::::::::::::::::::::::");
-			System.out.println("Jogador decidi se Ataca ou Espera");
-			System.out.println("Loop de combate");
+			System.out.printf("%n::::::::::::::::::::::::::::::::::PORTA FINAL:::::::::::::::::::::::::::::::::::::::");
+			System.out.printf("%nJogador decidi se Ataca ou Espera");
+			System.out.printf("%nLoop de combate");
 
 			// caso vença: VITÓRIAAAAA
 
-			System.out.println("Você conseguiu!");
+			System.out.printf("%nVocê conseguiu!");
 
-			System.out.println("Mensagem de acordo com a MOTIVAÇÃO");
+			System.out.printf("%nMensagem de acordo com a MOTIVAÇÃO");
 
 			// VINGANÇA
 			System.out.printf(
-					"Você obteve sua vingança. Você se ajoelha e cai no choro, invadido por uma sensação de alívio e felicidade. Você se vingou, tudo que sempre quis, está feito. Agora você pode seguir sua vida.");
+					"%nVocê obteve sua vingança. Você se ajoelha e cai no choro, invadido por uma sensação de alívio e felicidade. Você se vingou, tudo que sempre quis, está feito. Agora você pode seguir sua vida.");
 
 			// GLÓRIA
 			System.out.printf(
-					"O êxtase em que você se encontra não cabe dentro de si. Você se ajoelha e grita de alegria. A glória o aguarda, você a conquistou.");
+					"%nO êxtase em que você se encontra não cabe dentro de si. Você se ajoelha e grita de alegria. A glória o aguarda, você a conquistou.");
 
 			System.out
-					.println("::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+					.printf("%n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 
-			System.out.println(
-					"Você se levanta, olha para os prisioneiros, vai de um em um e os liberta, e todos vocês saem em direção à noite, retornando à cidade. Seu dever está cumprido.");
+			System.out.printf(
+					"%nVocê se levanta, olha para os prisioneiros, vai de um em um e os liberta, %ne todos vocês saem em direção à noite, retornando à cidade. %nSeu dever está cumprido.");
 
-			System.out.println("JOGO ENCERRADO!");
+			System.out.printf("%nJOGO ENCERRADO!");
 
 		} else if (inicio == 2) {
-			System.out.println("Jogo encerrado!");
+			System.out.printf("%nJOGO ENCERRADO!");
 			entrada.close();
+			return;
 		} else {
-			System.out.println("Entrada inválida! Tente novamente");
-			System.out.printf("Iniciar o jogo:%n 1 - Sim %n 2 - Não");
+			System.out.printf("%nEntrada inválida! Tente novamente");
+			System.out.printf("%nIniciar o jogo:%n 1 - Sim %n 2 - Não");
 			inicio = entrada.nextInt();
 		}
 		// }

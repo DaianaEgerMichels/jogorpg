@@ -1,17 +1,8 @@
 package com.github.daianaegermichels.jogorpg.entidades;
 
-public abstract class Adversario {
-
-	protected int vidaAdversario;
-	protected int ataqueAdversario;
-	protected int pontosDefesaAdversario;
-	protected int armaAdversario;
-
-	public Adversario() {
-		
-		
-	}
-
+public class AdversarioArmeiro extends Adversario {
+	
+	
 	public int getVidaAdversario() {
 		return vidaAdversario;
 	}
@@ -19,7 +10,7 @@ public abstract class Adversario {
 	public void setVidaAdversario(int vidaAdversario) {
 		this.vidaAdversario = vidaAdversario;
 	}
-
+	
 	public int getAtaqueAdversario() {
 		return ataqueAdversario;
 	}
@@ -43,8 +34,4 @@ public abstract class Adversario {
 	public void setArmaAdversario(int armaAdversario) {
 		this.armaAdversario = armaAdversario;
 	}
-	
-
-	
-
 }

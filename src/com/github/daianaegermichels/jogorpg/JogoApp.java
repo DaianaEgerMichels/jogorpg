@@ -28,53 +28,33 @@ public class JogoApp {
 				do {
 					System.out.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
 					nivel = entrada.nextInt();
-					int confirmacao = 0;
-					do {
-						switch (nivel) {
-						case 1:
-							System.out.printf("Você escolheu o nível fácil, correto? %n1 - Sim %n2 - Não, alterar.");
-							confirmacao = entrada.nextInt();
-							if (confirmacao == 1) {
-								nivel = 1;
-								break;
-							} else {
-								System.out
-										.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
-								nivel = entrada.nextInt();
-							}
-							break;
-						case 2:
-							System.out.printf("Você escolheu o nível normal, correto? %n1 - Sim %n2 - Não, alterar.");
-							confirmacao = entrada.nextInt();
-							if (confirmacao == 1) {
-								nivel = 2;
-								break;
-							} else {
-								System.out
-										.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
-								nivel = entrada.nextInt();
-							}
-							break;
-						case 3:
-							System.out.printf("Você escolheu o nível difícil, correto? %n1 - Sim %n2 - Não, alterar.");
-							confirmacao = entrada.nextInt();
-							if (confirmacao == 1) {
-								nivel = 3;
-								break;
-							} else {
-								System.out
-										.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
-								nivel = entrada.nextInt();
-							}
-							break;
-						default:
 
-							System.out.println("Entrada inválida!");
-
-						}
-					} while (confirmacao != 1);
+					if (nivel != 1 && nivel != 2 && nivel != 3) {
+						System.out.println("Entrada inválida!");
+					}
 
 				} while (nivel != 1 && nivel != 2 && nivel != 3);
+
+				switch (nivel) {
+				case 1:
+					System.out.printf("Você escolheu o nível fácil");
+					nivel = 1;
+					break;
+
+				case 2:
+					System.out.printf("Você escolheu o nível normal");
+					nivel = 2;
+					break;
+
+				case 3:
+					System.out.printf("Você escolheu o nível difícil");
+					nivel = 3;
+					break;
+
+				default:
+					System.out.println("Entrada inválida!");
+
+				}
 
 				System.out.println(entrada.nextLine());
 				System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
@@ -97,11 +77,11 @@ public class JogoApp {
 								jogador.setNome(nomeAvatar);
 								System.out.printf("Nome do Avatar: %s ", jogador.getNome());
 							} else if (confirmacaoNome == 2) {
-								entrada.nextLine();
+								System.out.println(entrada.nextLine());
 								System.out.println("Altere o nome do seu avatar");
 								nomeAvatar = entrada.nextLine().toUpperCase();
 								jogador.setNome(nomeAvatar);
-								System.out.printf("Nome do Avatar: %s ", jogador.getNome());
+								System.out.printf("Nome do Avatar: %s. ", jogador.getNome());
 
 							} else {
 								System.out.printf("%nEntrada inválida!%n");
@@ -110,45 +90,22 @@ public class JogoApp {
 					}
 				} while (nomeAvatar.length() == 0);
 
-				System.out.println(entrada.nextLine());
-				System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+				// System.out.println(entrada.nextLine());
+				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
 				int sexoAvatar;
 				do {
 					System.out.printf("%nEscolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
 					sexoAvatar = entrada.nextInt();
-					int confirmacaoSexo;
 
 					if (sexoAvatar == 1) {
-						do {
-							System.out.printf(
-									"O seu avatar será do sexo FEMININO, confirmar? %n1 - Sim %n2 - Não, alterar");
-							confirmacaoSexo = entrada.nextInt();
-							if (confirmacaoSexo == 1) {
-								System.out.println("Sexo do Avatar: FEMININO ");
-								jogador.setSexo(sexoAvatar);
-							} else {
-								System.out.println("Altere o sexo do seu avatar");
-								System.out.printf(
-										"%nEscolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
-								sexoAvatar = entrada.nextInt();
-							}
-						} while (confirmacaoSexo != 1 && confirmacaoSexo != 2);
+						System.out.println("Sexo do Avatar: FEMININO ");
+						jogador.setSexo(sexoAvatar);
+					} else if (sexoAvatar == 2) {
+						System.out.println("Sexo do Avatar: MASCULINO ");
+						jogador.setSexo(sexoAvatar);
 					} else {
-						do {
-							System.out.printf(
-									"O seu avatar será do sexo MASCULINO, confirmar? %n1 - Sim %n2 - Não, alterar");
-							confirmacaoSexo = entrada.nextInt();
-							if (confirmacaoSexo == 1) {
-								System.out.println("Sexo do Avatar: MASCULINO ");
-								jogador.setSexo(sexoAvatar);
-							} else {
-								System.out.println("Altere o sexo do seu avatar");
-								System.out.printf(
-										"%nEscolha um sexo para o seu avatar: %n 1 - Feminino %n 2 - Masculino ");
-								sexoAvatar = entrada.nextInt();
-							}
-						} while (confirmacaoSexo != 1 && confirmacaoSexo != 2);
+						System.out.println("Entrada inválida!");
 					}
 				} while (sexoAvatar != 1 && sexoAvatar != 2);
 
@@ -157,74 +114,57 @@ public class JogoApp {
 				int armaJogador = 0;
 				System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 				String classeCombate;
-				int confirmacaoClasse;
+				// int confirmacaoClasse;
 				do {
 					System.out.printf("%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
 					classeCombate = entrada.nextLine().toUpperCase();
-					if (classeCombate.equals("G")) {
-						do {
-							System.out.println("Você escolheu a classe Guerreiro, confirmar? 1 - Sim  2 - Não");
-							confirmacaoClasse = entrada.nextInt();
-							if (confirmacaoClasse == 1) {
-								System.out.println("Classe de combate: GUERREIRO ");
-								Guerreiro guerreiro = new Guerreiro(nomeAvatar, sexoAvatar);
-								System.out.printf(
-										"%nEscolha uma arma para o combate: %n1 - Martelo %n2 - Machado %n3 - Espada %n4 - Clava");
-								arma = entrada.nextInt();
-								armaJogador = guerreiro.setArma(arma);
-								System.out.println(armaJogador);
-							} else {
-								System.out.println("Altere a classe de combate do seu avatar");
-								System.out.printf(
-										"%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
-								classeCombate = entrada.nextLine();
-							}
-						} while (confirmacaoClasse != 1 && confirmacaoClasse != 2);
-					} else if (classeCombate.equals("M")) {
-						do {
-							System.out.println("Você escolheu a classe Mago, confirmar? 1 - Sim  2 - Não");
-							confirmacaoClasse = entrada.nextInt();
-							if (confirmacaoClasse == 1) {
-								System.out.println("Classe de combate: MAGO ");
-								Mago mago = new Mago(nomeAvatar, sexoAvatar);
-								System.out.printf("%nEscolha uma arma para o combate: %n1 - Livro %n2 - Cajado");
-								arma = entrada.nextInt();
-								armaJogador = mago.setArma(arma);
-								System.out.println(armaJogador);
-							} else {
-								System.out.println("Altere a classe de combate do seu avatar");
-								System.out.printf(
-										"%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
-								classeCombate = entrada.nextLine();
-							}
-						} while (confirmacaoClasse != 1 && confirmacaoClasse != 2);
-					} else if (classeCombate.equals("C")) {
-						do {
-							System.out.println("Você escolheu a classe Caçador, confirmar? 1 - Sim  2 - Não");
-							confirmacaoClasse = entrada.nextInt();
-							if (confirmacaoClasse == 1) {
-								System.out.println("Classe de combate: CAÇADOR ");
-								Cacador cacador = new Cacador(nomeAvatar, sexoAvatar);
-								System.out.printf(
-										"%nEscolha uma arma para o combate: %n1 - Arco e Flecha %n2 - Besta e Virote");
-								arma = entrada.nextInt();
-								armaJogador = cacador.setArma(arma);
-								System.out.println(armaJogador);
-							} else {
-								System.out.printf("%nAltere a classe de combate do seu avatar");
-								System.out.printf(
-										"%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
-								classeCombate = entrada.nextLine();
-							}
-						} while (confirmacaoClasse != 1 && confirmacaoClasse != 2);
-					} else {
+
+					if (!classeCombate.equals("G") && !classeCombate.equals("M") && !classeCombate.equals("C")) {
 						System.out.printf("%nClasse de combate inválida!");
-						// System.out
-						// .printf("%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C -
-						// Caçador");
-						// classeCombate = entrada.nextLine();
 					}
+
 				} while (!classeCombate.equals("G") && !classeCombate.equals("M") && !classeCombate.equals("C"));
+
+				if (classeCombate.equals("G")) {
+					System.out.println("Classe de combate: GUERREIRO ");
+					Guerreiro guerreiro = new Guerreiro(nomeAvatar, sexoAvatar);
+					do {
+						System.out.printf(
+								"%nEscolha uma arma para o combate: %n1 - Martelo %n2 - Machado %n3 - Espada %n4 - Clava");
+						arma = entrada.nextInt();
+						if (arma != 1 && arma != 2 && arma != 3 && arma != 4) {
+							System.out.println("Arma inválida!");
+						}
+					} while (arma != 1 && arma != 2 && arma != 3 && arma != 4);
+					armaJogador = guerreiro.setArma(arma);
+				} else if (classeCombate.equals("M")) {
+					System.out.println("Classe de combate: MAGO ");
+					Mago mago = new Mago(nomeAvatar, sexoAvatar);
+					do {
+						System.out.printf("%nEscolha uma arma para o combate: %n1 - Livro %n2 - Cajado");
+						arma = entrada.nextInt();
+						if (arma != 1 && arma != 2) {
+							System.out.println("Arma inválida!");
+						}
+					} while (arma != 1 && arma != 2);
+					armaJogador = mago.setArma(arma);
+				} else if (classeCombate.equals("C")) {
+					System.out.println("Classe de combate: CAÇADOR ");
+					Cacador cacador = new Cacador(nomeAvatar, sexoAvatar);
+					do {
+						System.out
+								.printf("%nEscolha uma arma para o combate: %n1 - Arco e Flecha %n2 - Besta e Virote");
+						arma = entrada.nextInt();
+						if (arma != 1 && arma != 2) {
+							System.out.println("Arma inválida!");
+						}
+					} while (arma != 1 && arma != 2);
+					armaJogador = cacador.setArma(arma);
+				} else {
+					System.out.printf("%nClasse de combate inválida!");
+					System.out.println("JOGO ENCERRADO!");
+					return;
+				}
 
 				System.out.println(entrada.nextLine());
 
@@ -245,22 +185,26 @@ public class JogoApp {
 					System.out.printf(
 							"%nEscolha sua motivação para invadir a caverna do inimigo e derrotá-lo: %n V - VINGANÇA %n G - GLÓRIA ");
 					escolhaMotivacao = entrada.nextLine().toUpperCase();
-					switch (escolhaMotivacao) {
-					case "V":
-						System.out.printf(
-								"Imagens daquela noite trágica invadem sua mente. %nVocê nem precisa se esforçar para lembrar, pois essas memórias estão sempre presentes, %nmesmo que de pano de fundo, quando você tem outros pensamentos em foco, elas nunca o deixaram. %nElas são o combustível que te fizeram chegar até aqui. %nE você sabe que não irá desistir até ter vingado a morte daqueles que foram - e pra sempre serão - sua fonte de amor e desejo de continuar vivo. %nO maldito líder finalmente pagará por tanto mal causado na vida de tantos (e principalmente na sua).");
-						break;
-					case "G":
-						System.out.printf(
-								"Você já consegue visualizar na sua mente o povo da cidade te recebendo de braços abertos, %nbardos criando canções sobre seus feitos heróicos, nobres te presenteando com jóias e diversas riquezas, %ntaberneiros se recusando a cobrar por suas bebedeiras e comilanças. %nDesde já, você sente o amor do público, te louvando a cada passo que dá pelas ruas, depois de %ndestruir o vilão que tanto assombrou a paz de todos. Porém, você sabe que ainda falta o último ato dessa história. %nVocê se concentra na missão. A glória o aguarda, mas não antes da última batalha.");
-						break;
-					default:
-						System.out.println("Escolha inválida, tente novamente");
-						// System.out.printf("Escolha da motivação: %n V - VINGANÇA %n G - GLÓRIA ");
-						// escolhaMotivacao = entrada.nextLine().toUpperCase();
 
+					if (!escolhaMotivacao.equals("V") && !escolhaMotivacao.equals("G")) {
+						System.out.printf("%nEscolha inválida!");
 					}
+
 				} while (!escolhaMotivacao.equals("V") && !escolhaMotivacao.equals("G"));
+
+				switch (escolhaMotivacao) {
+				case "V":
+					System.out.printf(
+							"%nImagens daquela noite trágica invadem sua mente. %nVocê nem precisa se esforçar para lembrar, pois essas memórias estão sempre presentes, %nmesmo que de pano de fundo, quando você tem outros pensamentos em foco, elas nunca o deixaram. %nElas são o combustível que te fizeram chegar até aqui. %nE você sabe que não irá desistir até ter vingado a morte daqueles que foram - e pra sempre serão - sua fonte de amor e desejo de continuar vivo. %nO maldito líder finalmente pagará por tanto mal causado na vida de tantos (e principalmente na sua).");
+					break;
+				case "G":
+					System.out.printf(
+							"%nVocê já consegue visualizar na sua mente o povo da cidade te recebendo de braços abertos, %nbardos criando canções sobre seus feitos heróicos, nobres te presenteando com jóias e diversas riquezas, %ntaberneiros se recusando a cobrar por suas bebedeiras e comilanças. %nDesde já, você sente o amor do público, te louvando a cada passo que dá pelas ruas, depois de %ndestruir o vilão que tanto assombrou a paz de todos. Porém, você sabe que ainda falta o último ato dessa história. %nVocê se concentra na missão. A glória o aguarda, mas não antes da última batalha.");
+					break;
+				default:
+					System.out.printf("%nEscolha inválida!%n JOGO ENCERRADO!");
+					return;
+				}
 
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
@@ -275,25 +219,29 @@ public class JogoApp {
 				do {
 					System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 					escolhaSeguimentoJogo = entrada.nextInt();
-					switch (escolhaSeguimentoJogo) {
-					case 1:
-						System.out.printf(
-								"Você caminha, atento a todos os seus sentidos, por vários metros, %naté visualizar a frente uma fonte de luz, que você imagina ser a chama de uma tocha, %nvindo de dentro de uma porta aberta.");
-
-						break;
-					case 2:
-						System.out.printf(
-								"O medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
-						System.out.printf("%nJOGO ENCERRADO!");
-						entrada.close();
-						break;
-					default:
-						System.out.printf("%nEscolha inválida, tente novamente");
-						// System.out.printf("O que você deseja? %n 1 - Seguir em frente %n 2 -
-						// Desistir");
-						// escolhaSeguimentoJogo = entrada.nextInt();
+					
+					if(escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
+						System.out.printf("%nEscolha inválida!");
 					}
+					
 				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+				
+				switch (escolhaSeguimentoJogo) {
+				case 1:
+					System.out.printf(
+							"Você caminha, atento a todos os seus sentidos, por vários metros, "
+							+ "%naté visualizar a frente uma fonte de luz, que você imagina ser a chama de uma tocha, "
+							+ "%nvindo de dentro de uma porta aberta.");
+					break;
+				case 2:
+					System.out.printf(
+							"O medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
+					System.out.printf("%nJOGO ENCERRADO!");
+					return;
+				default:
+					System.out.printf("%nEscolha inválida! %n JOGO ENCERRADO!");
+					return;
+				};
 
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 				System.out.printf(
@@ -382,7 +330,7 @@ public class JogoApp {
 
 						if (escolhaArmaduraNova == 1) {
 
-							System.out.printf("%n“Você resolve usar os equipamentos do"
+							System.out.printf("%nVocê resolve usar os equipamentos do"
 									+ "%ninimigo contra ele, e trocar algumas peças suas, que estavam danificadas, pelas peças de"
 									+ "%narmaduras existentes na sala. De armadura nova, você se sente mais protegido para os desafios"
 									+ "%nà sua frente.");
@@ -460,19 +408,16 @@ public class JogoApp {
 						}
 					} while (escolhaBeberPocao != 1 && escolhaBeberPocao != 2);
 
-					//System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
+					// System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
-					
-				}else {
-				System.out.printf(
-				"%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
-				+ "possa tentar novamente em uma próxima vez."
-				+ "%n JOGO ENCERRADO!");
-				break;
+				} else {
+					System.out.printf("%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
+							+ "possa tentar novamente em uma próxima vez." + "%n JOGO ENCERRADO!");
+					break;
 				}
-				
+
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
-				
+
 				System.out.printf(
 						"%nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave"
 								+ "%nabre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa"
@@ -510,8 +455,8 @@ public class JogoApp {
 					}
 				} while (escolhaAtacarEsperar != 1 && escolhaAtacarEsperar != 2);
 
-				combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador, escolhaMotivacao,
-						classeCombate, escolhaBeberPocao, escolhaAtacarEsperar);
+				combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador, escolhaMotivacao, classeCombate,
+						escolhaBeberPocao, escolhaAtacarEsperar);
 
 				if (combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador, escolhaMotivacao,
 						classeCombate, escolhaBeberPocao, escolhaAtacarEsperar) == 1) {
@@ -536,14 +481,12 @@ public class JogoApp {
 
 					System.out.printf("%nJOGO ENCERRADO!");
 				} else {
-					System.out.printf(
-					"%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
-					+ "possa tentar novamente em uma próxima vez."
-					+ "%n JOGO ENCERRADO!");
+					System.out.printf("%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
+							+ "possa tentar novamente em uma próxima vez." + "%n JOGO ENCERRADO!");
 					break;
-					}
+				}
 
-			}else if (inicio == 2) {
+			} else if (inicio == 2) {
 				System.out.printf("%nJOGO ENCERRADO!");
 				entrada.close();
 				return;
@@ -552,7 +495,7 @@ public class JogoApp {
 				// System.out.printf("%nIniciar o jogo:%n 1 - Sim %n 2 - Não");
 				// inicio = entrada.nextInt();
 			}
-		} while (inicio != 1 || inicio != 2);
+		} while (inicio != 1 && inicio != 2);
 		// }
 
 		entrada.close();

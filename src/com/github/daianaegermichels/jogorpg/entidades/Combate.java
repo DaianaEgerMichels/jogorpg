@@ -228,7 +228,7 @@ public class Combate {
 			setPontosDefesaJogador(pontosDefesaJogador);
 		}
 
-		while (vidaJogador > 0 && vidaAdversario > 0 && escolhaSeguimentoJogo == 1) {
+		while (vidaJogador > 0 && vidaAdversario > 0 ) {
 
 			golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
 			golpeAdversario();
@@ -358,7 +358,7 @@ public class Combate {
 
 		}
 
-		while (vidaJogador > 0 && vidaAdversario > 0 && escolhaSeguimentoJogo == 1) {
+		while (vidaJogador > 0 && vidaAdversario > 0) {
 
 			if (escolhaArmaduraNova == 1) {
 				pontosDefesaJogador += 5;

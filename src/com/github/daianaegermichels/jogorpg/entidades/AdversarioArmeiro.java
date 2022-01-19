@@ -1,7 +1,10 @@
 package com.github.daianaegermichels.jogorpg.entidades;
 
 public class AdversarioArmeiro extends Adversario {
-	
+	private int vidaAdversario = 3;
+	private int ataqueAdversario = 13;
+	private int pontosDefesaAdversario = 30;
+	private int armaAdversario = 5;
 	
 	public int getVidaAdversario() {
 		return vidaAdversario;

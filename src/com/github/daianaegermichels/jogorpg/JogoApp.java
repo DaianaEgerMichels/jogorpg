@@ -11,23 +11,32 @@ import com.github.daianaegermichels.jogorpg.entidades.Mago;
 public class JogoApp {
 	static Scanner entrada = new Scanner(System.in);
 	static Combate combate = new Combate();
+	static Jogador jogador = new Jogador();
 
 	public static void main(String[] args) {
+		
+		int inicio;
+		do {
 		System.out.printf("Iniciar o jogo:%n 1 - Sim %n 2 - Não");
-		int inicio = entrada.nextInt();
+		inicio = entrada.nextInt();
 		// while (inicio != 0) {
+		
 		if (inicio == 1) {
 			System.out.println("Seja Bem-Vindo(a) a BATALHA FINAL!");
 
+			int nivel;
+			do {
 			System.out.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
-			int nivel = entrada.nextInt();
-
+			nivel = entrada.nextInt();
+			int confirmacao = 0;
+			do {
 			switch (nivel) {
 			case 1:
 				System.out.printf("Você escolheu o nível fácil, correto? %n1 - Sim %n2 - Não, alterar.");
-				int confirmacao = entrada.nextInt();
+				confirmacao = entrada.nextInt();
 				if (confirmacao == 1) {
 					nivel = 1;
+					break;
 				} else {
 					System.out.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
 					nivel = entrada.nextInt();
@@ -38,6 +47,7 @@ public class JogoApp {
 				confirmacao = entrada.nextInt();
 				if (confirmacao == 1) {
 					nivel = 2;
+					break;
 				} else {
 					System.out.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
 					nivel = entrada.nextInt();
@@ -48,37 +58,53 @@ public class JogoApp {
 				confirmacao = entrada.nextInt();
 				if (confirmacao == 1) {
 					nivel = 3;
+					break;
 				} else {
 					System.out.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
 					nivel = entrada.nextInt();
 				}
 				break;
 			default:
-				while (nivel != 1 && nivel != 2 && nivel != 3) {
+
 					System.out.println("Entrada inválida!");
-					System.out.printf("Escolha um nível de jogo: %n 1 - Fácil  %n 2 - Normal %n 3 - Difícil");
-					nivel = entrada.nextInt();
-				}
-				break;
-			}
+					
+				}} while (confirmacao != 1);
+		
+			} while (nivel != 1 && nivel != 2 && nivel != 3) ;
 
 			System.out.println(entrada.nextLine());
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+			
+			String nomeAvatar;
+			
+			do {
 			System.out.println("De um nome ao seu avatar");
-			String nomeAvatar = entrada.nextLine().toUpperCase();
-			Jogador jogador = new Jogador();
+			
+			nomeAvatar = entrada.nextLine().toUpperCase();
+			
 
 			if (nomeAvatar.length() > 0) {
-				System.out.printf("O nome do seu avatar será %s, confirmar? %n1 - Sim %n2 - Não, alterar", nomeAvatar);
-				int confirmacaoNome = entrada.nextInt();
+				int confirmacaoNome;
+				do {
+				System.out.printf("%nO nome do seu avatar será %s, confirmar? %n1 - Sim %n2 - Não", nomeAvatar);
+				confirmacaoNome = entrada.nextInt();
+				
 				if (confirmacaoNome == 1) {
 					jogador.setNome(nomeAvatar);
 					System.out.printf("Nome do Avatar: %s ", jogador.getNome());
-				} else {
+				} else if (confirmacaoNome == 2){
+					entrada.nextLine();
 					System.out.println("Altere o nome do seu avatar");
-					nomeAvatar = entrada.nextLine();
-				}
-			}
+					nomeAvatar= entrada.nextLine().toUpperCase();
+					jogador.setNome(nomeAvatar); 
+					System.out.printf("Nome do Avatar: %s ", jogador.getNome());
+					
+					
+				} else {
+					System.out.printf("%nEntrada inválida!%n");
+				}}while(confirmacaoNome != 1 || confirmacaoNome ==2 );
+			} 
+			} while (nomeAvatar.length() == 0);
 
 			System.out.println(entrada.nextLine());
 			System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
@@ -518,10 +544,10 @@ public class JogoApp {
 			entrada.close();
 			return;
 		} else {
-			System.out.printf("%nEntrada inválida! Tente novamente");
-			System.out.printf("%nIniciar o jogo:%n 1 - Sim %n 2 - Não");
-			inicio = entrada.nextInt();
-		}
+			System.out.printf("%nEntrada inválida! Tente novamente%n");
+			//System.out.printf("%nIniciar o jogo:%n 1 - Sim %n 2 - Não");
+			//inicio = entrada.nextInt();
+		}} while (inicio != 1 || inicio !=2);
 		// }
 
 		entrada.close();

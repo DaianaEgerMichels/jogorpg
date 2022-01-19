@@ -460,169 +460,90 @@ public class JogoApp {
 						}
 					} while (escolhaBeberPocao != 1 && escolhaBeberPocao != 2);
 
-					System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
+					//System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
-					System.out.printf(
-							"%nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave"
-									+ "%nabre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa"
-									+ "%nque leva presa ao cinto." + "%n");
-
-					System.out.printf(
-							"%nDe volta à sala das portas, você se dirige à porta final. Coloca as chaves nas fechaduras, e a"
-									+ "%nporta se abre. Seu coração acelera, memórias de toda a sua vida passam pela sua mente, e você"
-									+ "%npercebe que está muito próximo do seu objetivo final. Segura sua arma com mais firmeza, foca"
-									+ "%nno combate que você sabe que irá se seguir, e adentra a porta.");
-
-					System.out.printf(
-							"%nLá dentro, você vê o líder sentado em uma poltrona dourada, com duas fogueiras de cada lado, e"
-									+ "%nprisioneiros acorrentados às paredes.%n"
-									+ "%nEle percebe sua chegada e se levanta com um salto, apanhando seu machado de guerra de"
-									+ "%nlâmina dupla.");
-
-					System.out.printf(
-							"%n::::::::::::::::::::::::::::::::::PORTA FINAL:::::::::::::::::::::::::::::::::::::::%n");
-
-					int escolhaAtacarEsperar;
-
-					do {
-						System.out.printf("%nO que você deseja fazer? %n1- Atacar %n2 - Esperar");
-						escolhaAtacarEsperar = entrada.nextInt();
-
-						if (escolhaAtacarEsperar == 1) {
-							System.out.printf("%n Você optou por Atacar");
-						} else if (escolhaAtacarEsperar == 2) {
-							System.out.printf("%n Você optou por Esperar, o inimigo iniciou o combate");
-						} else {
-							System.out.printf("Escolha inválida!");
-							// System.out.printf("%nO que você deseja fazer? %n1- Atacar %n2 - Esperar");
-							// escolhaAtacarEsperar = entrada.nextInt();
-						}
-					} while (escolhaAtacarEsperar != 1 && escolhaAtacarEsperar != 2);
-
-					combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador, escolhaMotivacao,
-							classeCombate, escolhaBeberPocao, escolhaAtacarEsperar);
-
-					if (combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador, escolhaMotivacao,
-							classeCombate, escolhaBeberPocao, escolhaAtacarEsperar) == 1) {
-
-						System.out.printf("%nVocê conseguiu!");
-
-						if (escolhaMotivacao.equals("V")) {
-
-							System.out.printf(
-									"%nVocê obteve sua vingança. Você se ajoelha e cai no choro, invadido por uma sensação de alívio e felicidade. Você se vingou, tudo que sempre quis, está feito. Agora você pode seguir sua vida.");
-						} else {
-
-							System.out.printf(
-									"%nO êxtase em que você se encontra não cabe dentro de si. Você se ajoelha e grita de alegria. A glória o aguarda, você a conquistou.");
-						}
-
-						System.out.printf(
-								"%n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
-
-						System.out.printf(
-								"%nVocê se levanta, olha para os prisioneiros, vai de um em um e os liberta, %ne todos vocês saem em direção à noite, retornando à cidade. %nSeu dever está cumprido.");
-
-						System.out.printf("%nJOGO ENCERRADO!");
-					}
+					
+				}else {
+				System.out.printf(
+				"%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
+				+ "possa tentar novamente em uma próxima vez."
+				+ "%n JOGO ENCERRADO!");
+				break;
 				}
+				
+				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
+				
+				System.out.printf(
+						"%nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave"
+								+ "%nabre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa"
+								+ "%nque leva presa ao cinto." + "%n");
 
-			}
-			// else {
-			// System.out.printf(
-			// "%nVocê não estava preparado para a força do inimigo, e decide fugir para que
-			// possa tentar novamente em uma próxima vez."
-			// + "%n JOGO ENCERRADO!");
-			// return;
-			// }
+				System.out.printf(
+						"%nDe volta à sala das portas, você se dirige à porta final. Coloca as chaves nas fechaduras, e a"
+								+ "%nporta se abre. Seu coração acelera, memórias de toda a sua vida passam pela sua mente, e você"
+								+ "%npercebe que está muito próximo do seu objetivo final. Segura sua arma com mais firmeza, foca"
+								+ "%nno combate que você sabe que irá se seguir, e adentra a porta.");
 
-			// caso vença o combate e queira continuar: continua...
-			/*
-			 * int escolhaBeberPocao; if (continua == 1) { System.out.printf(
-			 * "%nApós derrotar o Alquimista, você olha em volta, tentando reconhecer alguma poção do estoque do inimigo. %nEm uma mesa, você reconhece uma pequena garrafa de vidro contendo um líquido levemente rosado, %npega a garrafa e pondera se deve beber um gole."
-			 * );
-			 * 
-			 * System.out.
-			 * printf("%nVocê deseja ingerir beber um gole da poção? %n1 - Sim %n2 - Não ");
-			 * escolhaBeberPocao = entrada.nextInt(); switch (escolhaBeberPocao) { case 1:
-			 * System.out.printf("%nVocê se sente revigorado para seguir adiante!");
-			 * escolhaBeberPocao = 1; break; case 2:
-			 * System.out.printf("%nVocê fica receoso de beber algo produzido pelo inimigo!"
-			 * ); escolhaBeberPocao = 2; break; default:
-			 * System.out.println("Escolha inválida!"); System.out.
-			 * printf("%nVocê deseja ingerir beber um gole da poção? %n1 - Sim %n2 - Não ");
-			 * escolhaBeberPocao = entrada.nextInt(); } } else { return; }
-			 * 
-			 * System.out.
-			 * printf("%nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave"
-			 * +
-			 * "%nabre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa"
-			 * + "%nque leva presa ao cinto." + "%n");
-			 * 
-			 * System.out.
-			 * printf("De volta à sala das portas, você se dirige à porta final. Coloca as chaves nas fechaduras, e a\r\n"
-			 * +
-			 * "porta se abre. Seu coração acelera, memórias de toda a sua vida passam pela sua mente, e você\r\n"
-			 * +
-			 * "percebe que está muito próximo do seu objetivo final. Segura sua arma com mais firmeza, foca\r\n"
-			 * + "no combate que você sabe que irá se seguir, e adentra a porta.");
-			 * 
-			 * System.out.
-			 * printf("%nLá dentro, você vê o líder sentado em uma poltrona dourada, com duas fogueiras de cada lado, e"
-			 * + "%nprisioneiros acorrentados às paredes.%n" +
-			 * "%nEle percebe sua chegada e se levanta com um salto, apanhando seu machado de guerra de"
-			 * + "%nlâmina dupla.");
-			 * 
-			 * System.out.
-			 * printf("%n::::::::::::::::::::::::::::::::::PORTA FINAL:::::::::::::::::::::::::::::::::::::::%n"
-			 * );
-			 * 
-			 * 
-			 * System.out.printf("%nO que você deseja fazer? %n1- Atacar %n2 - Esperar");//
-			 * dependendo da escolha inverte a ordem do ataque int escolhaAtacarEsperar =
-			 * entrada.nextInt(); if(escolhaAtacarEsperar == 1) {
-			 * System.out.printf("%n Você optou por Atacar"); } else if
-			 * (escolhaAtacarEsperar == 2) {
-			 * System.out.printf("%n Você optou por Esperar, o inimigo iniciou o combate");
-			 * } else { System.out.printf("Escolha inválida!");
-			 * System.out.printf("%nO que você deseja fazer? %n1- Atacar %n2 - Esperar"); }
-			 * 
-			 * 
-			 * 
-			 * continua = combate.combatePortaFinal(escolhaSeguimentoJogo, nivel,
-			 * armaJogador, escolhaMotivacao, classeCombate, escolhaBeberPocao,
-			 * escolhaAtacarEsperar);
-			 * 
-			 * 
-			 * 
-			 * // caso vença: VITÓRIAAAAA
-			 * 
-			 * System.out.printf("%nVocê conseguiu!");
-			 * 
-			 * 
-			 * if(escolhaMotivacao.equals("V")) {
-			 * 
-			 * System.out.printf(
-			 * "%nVocê obteve sua vingança. Você se ajoelha e cai no choro, invadido por uma sensação de alívio e felicidade. Você se vingou, tudo que sempre quis, está feito. Agora você pode seguir sua vida."
-			 * ); } else {
-			 * 
-			 * System.out.printf(
-			 * "%nO êxtase em que você se encontra não cabe dentro de si. Você se ajoelha e grita de alegria. A glória o aguarda, você a conquistou."
-			 * ); }
-			 * 
-			 * System.out .printf(
-			 * "%n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-			 * );
-			 * 
-			 * System.out.printf(
-			 * "%nVocê se levanta, olha para os prisioneiros, vai de um em um e os liberta, %ne todos vocês saem em direção à noite, retornando à cidade. %nSeu dever está cumprido."
-			 * );
-			 * 
-			 * System.out.printf("%nJOGO ENCERRADO!");
-			 */
+				System.out.printf(
+						"%nLá dentro, você vê o líder sentado em uma poltrona dourada, com duas fogueiras de cada lado, e"
+								+ "%nprisioneiros acorrentados às paredes.%n"
+								+ "%nEle percebe sua chegada e se levanta com um salto, apanhando seu machado de guerra de"
+								+ "%nlâmina dupla.");
 
-			// }
-			else if (inicio == 2) {
+				System.out.printf(
+						"%n::::::::::::::::::::::::::::::::::PORTA FINAL:::::::::::::::::::::::::::::::::::::::%n");
+
+				int escolhaAtacarEsperar;
+
+				do {
+					System.out.printf("%nO que você deseja fazer? %n1- Atacar %n2 - Esperar");
+					escolhaAtacarEsperar = entrada.nextInt();
+
+					if (escolhaAtacarEsperar == 1) {
+						System.out.printf("%n Você optou por Atacar");
+					} else if (escolhaAtacarEsperar == 2) {
+						System.out.printf("%n Você optou por Esperar, o inimigo iniciou o combate");
+					} else {
+						System.out.printf("Escolha inválida!");
+						// System.out.printf("%nO que você deseja fazer? %n1- Atacar %n2 - Esperar");
+						// escolhaAtacarEsperar = entrada.nextInt();
+					}
+				} while (escolhaAtacarEsperar != 1 && escolhaAtacarEsperar != 2);
+
+				combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador, escolhaMotivacao,
+						classeCombate, escolhaBeberPocao, escolhaAtacarEsperar);
+
+				if (combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador, escolhaMotivacao,
+						classeCombate, escolhaBeberPocao, escolhaAtacarEsperar) == 1) {
+
+					System.out.printf("%nVocê conseguiu!");
+
+					if (escolhaMotivacao.equals("V")) {
+
+						System.out.printf(
+								"%nVocê obteve sua vingança. Você se ajoelha e cai no choro, invadido por uma sensação de alívio e felicidade. Você se vingou, tudo que sempre quis, está feito. Agora você pode seguir sua vida.");
+					} else {
+
+						System.out.printf(
+								"%nO êxtase em que você se encontra não cabe dentro de si. Você se ajoelha e grita de alegria. A glória o aguarda, você a conquistou.");
+					}
+
+					System.out.printf(
+							"%n::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+
+					System.out.printf(
+							"%nVocê se levanta, olha para os prisioneiros, vai de um em um e os liberta, %ne todos vocês saem em direção à noite, retornando à cidade. %nSeu dever está cumprido.");
+
+					System.out.printf("%nJOGO ENCERRADO!");
+				} else {
+					System.out.printf(
+					"%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
+					+ "possa tentar novamente em uma próxima vez."
+					+ "%n JOGO ENCERRADO!");
+					break;
+					}
+
+			}else if (inicio == 2) {
 				System.out.printf("%nJOGO ENCERRADO!");
 				entrada.close();
 				return;

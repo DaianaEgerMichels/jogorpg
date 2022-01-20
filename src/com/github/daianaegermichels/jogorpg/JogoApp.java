@@ -19,7 +19,7 @@ public class JogoApp {
 		do {
 			System.out.printf("Iniciar o jogo:%n 1 - Sim %n 2 - Não");
 			inicio = entrada.nextInt();
-			// while (inicio != 0) {
+			
 
 			if (inicio == 1) {
 				System.out.println("Seja Bem-Vindo(a) a BATALHA FINAL!");
@@ -90,7 +90,7 @@ public class JogoApp {
 					}
 				} while (nomeAvatar.length() == 0);
 
-				// System.out.println(entrada.nextLine());
+				
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
 				int sexoAvatar;
@@ -114,7 +114,7 @@ public class JogoApp {
 				int armaJogador = 0;
 				System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
 				String classeCombate;
-				// int confirmacaoClasse;
+				
 				do {
 					System.out.printf("%nEscolha uma classe de combate: %n G - Guerreiro %n M - Mago %n C - Caçador");
 					classeCombate = entrada.nextLine().toUpperCase();
@@ -414,8 +414,7 @@ public class JogoApp {
 
 				switch (continua) {
 				case 1:
-					combateEsquerda = combate.combatePortaEsquerda(escolhaSeguimentoJogo, nivel, armaJogador,
-							escolhaMotivacao, classeCombate, escolhaArmaduraNova);
+					System.out.printf("%nInício do combate%n");
 					break;
 				case 2:
 					System.out.printf("%nVocê não estava preparado para a força do inimigo, "
@@ -426,6 +425,11 @@ public class JogoApp {
 					return;
 
 				}
+				
+				combateEsquerda = combate.combatePortaEsquerda(escolhaSeguimentoJogo, nivel, armaJogador,
+						escolhaMotivacao, classeCombate, escolhaArmaduraNova);
+				
+				//System.out.println(combateEsquerda);
 				
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
@@ -456,8 +460,8 @@ public class JogoApp {
 						escolhaBeberPocao = 2;
 						break;
 					default:
-						System.out.println("Opção inválida!");
-
+						System.out.println("Opção inválida! JOGO ENCERRADO!");
+						return;
 					}
 
 				} else if (combateEsquerda == 2) {
@@ -502,10 +506,12 @@ public class JogoApp {
 				} else if (escolhaAtacarEsperar == 2) {
 					System.out.printf("%n Você optou por Esperar, o inimigo iniciou o combate");
 				} else {
-					System.out.printf("%nOpção inválida!");
+					System.out.printf("%nOpção inválida! %n JOGO ENCERRADO!");
+					return;
 				}
 
 				int combateFinal;
+				
 				combateFinal = combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador, escolhaMotivacao,
 						classeCombate, escolhaBeberPocao, escolhaAtacarEsperar);
 

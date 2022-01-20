@@ -64,7 +64,7 @@ public class Combate {
 		return geradorGolpe.nextInt(3) + 1;
 	}
 
-	public void golpeJogador(int armaJogador, String escolhaMotivacao, String classeCombate) {
+	public void golpeJogador(int armaJogador, String escolhaMotivacao, String classeCombate, int nivel) {
 
 		this.armaJogador = armaJogador;
 		this.escolhaMotivacao = escolhaMotivacao;
@@ -76,9 +76,51 @@ public class Combate {
 			danoNoAdversario = 0;
 			System.out.printf("%nVocê errou seu ataque! O inimigo não sofreu dano algum.");
 		} else if (golpeJogador == 20) {
-			pontosDefesaAdversario = 0;
-			vidaAdversario = 0;
+			danoNoAdversario = 50;
+			
+			if (nivel == 1) {
+				vidaAdversario = 0;
+			} else if (nivel == 2) {
+				vidaAdversario -= 5;
+			} else {
+				vidaAdversario -= 4;
+			}
+			
 			System.out.printf("%n Você acertou um ataque crítico!");
+			
+			String complementoArma = "";
+			String arma = "";
+			if (classeCombate.equals("G")) {
+				if (armaJogador == 3) {
+					arma = "Martelo";
+				} else if (armaJogador == 7) {
+					arma = "Machado";
+				} else if (armaJogador == 5) {
+					arma = "Espada";
+				} else {
+					arma = "Clava";
+				}
+				complementoArma = "com sua/seu " + arma;
+			} else if (classeCombate.equals("M")) {
+				if (armaJogador == 5) {
+					arma = "Livro";
+					complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
+				} else {
+					arma = "Cajado";
+					complementoArma = "com seu cajado, lançando uma bola de fogo";
+				}
+			} else if (classeCombate.equals("C")) {
+				if (armaJogador == 7) {
+					arma = "Arco e Flecha";
+					complementoArma = "com seu Arco, a Flecha atingiu";
+				} else {
+					arma = "Besta e Virote";
+					complementoArma = "com sua Besta, o Virote atingiu";
+				}
+			}
+
+			System.out.printf("%nVocê atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
+			
 
 		} else if (pontosDefesaAdversario > 0 && vidaAdversario > 0) {
 			danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
@@ -126,7 +168,7 @@ public class Combate {
 		}
 	}
 
-	public void golpeAdversario() {
+	public void golpeAdversario(int nivel) {
 
 		golpeAdversario = ataqueAdversario();
 
@@ -134,13 +176,19 @@ public class Combate {
 			danoNoJogador = 0;
 			System.out.printf("%nO inimigo errou o ataque! Você não sofreu dano.%n");
 		} else if (golpeAdversario == 3) {
-			danoNoJogador = pontosDefesaJogador;
-			vidaJogador = 0;
-			setPontosDefesaJogador(0);
+			
+			if (nivel == 1) {
+				vidaJogador -= 2;
+			} else if (nivel == 2) {
+				vidaJogador -= 4;
+			} else {
+				vidaJogador -= 6;
+			}
+			
 			setVidaJogador(vidaJogador);
 			System.out.printf(
-					"%nO inimigo acertou um ataque crítico! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
-					danoNoJogador, vidaJogador);
+					"%nO inimigo acertou um ataque crítico! Você agora possui %d pontos de vida.%n",
+					 vidaJogador);
 		} else {
 			danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
 			if (pontosDefesaJogador > 0) {
@@ -179,7 +227,9 @@ public class Combate {
 
 		if (nivel == 1) {
 			vidaJogador = 10;
+			setVidaJogador(vidaJogador);
 			pontosDefesaJogador = 100;
+			setPontosDefesaJogador(pontosDefesaJogador);
 			ataqueJogador = 15;
 			ataqueAdversario = adversarioArmeiro.getAtaqueAdversario();
 			vidaAdversario = adversarioArmeiro.getVidaAdversario();
@@ -190,9 +240,11 @@ public class Combate {
 			danoNoJogador = danoNoJogadorFacil;
 
 		} else if (nivel == 2) {
-			vidaJogador = 12;
-			pontosDefesaJogador = 120;
-			ataqueJogador = 15;
+			vidaJogador = 15;
+			setVidaJogador(vidaJogador);
+			pontosDefesaJogador = 150;
+			setPontosDefesaJogador(pontosDefesaJogador);
+			ataqueJogador = 14;
 			ataqueAdversario = 15;
 			adversarioArmeiro.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 6;
@@ -205,9 +257,11 @@ public class Combate {
 			danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
 
 		} else {
-			vidaJogador = 12;
-			pontosDefesaJogador = 110;
-			ataqueJogador = 15;
+			vidaJogador = 15;
+			setVidaJogador(vidaJogador);
+			pontosDefesaJogador = 180;
+			setPontosDefesaJogador(pontosDefesaJogador);
+			ataqueJogador = 13;
 			ataqueAdversario = 17;
 			adversarioArmeiro.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 8;
@@ -229,16 +283,17 @@ public class Combate {
 
 		while (vidaJogador > 0 && vidaAdversario > 0) {
 
-			if (vidaJogador > 0 && vidaAdversario > 0) {
-				if (getVidaJogador() > 0) {
-					golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
-				}
-				adversarioArmeiro.setVidaAdversario(vidaAdversario);
-				if (adversarioArmeiro.getVidaAdversario() > 0) {
-					golpeAdversario();
-				}
-				;
+			if (getVidaJogador() > 0) {
+				golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
+			}
+			adversarioArmeiro.setVidaAdversario(vidaAdversario);
+			if (adversarioArmeiro.getVidaAdversario() > 0) {
+				golpeAdversario(nivel);
+			}
+			;
+			setVidaJogador(vidaJogador);
 
+			if (vidaJogador > 0) {
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 				if (escolhaSeguimentoJogo == 1) {
@@ -248,50 +303,52 @@ public class Combate {
 							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
 				}
-
-			} else if (vidaJogador > 0 && vidaAdversario == 0) {
-				System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-				System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
-				escolhaSeguimentoJogo = entrada.nextInt();
-
-				switch (escolhaSeguimentoJogo) {
-				case 1:
-					return escolhaSeguimentoJogo = 1;
-				case 2:
-					return escolhaSeguimentoJogo = 2;
-				default:
-					System.out.printf("%n Entrada Inválida!");
-					return escolhaSeguimentoJogo = 0;
-				}
-
-			} else if (vidaJogador == 0 && vidaAdversario > 0) {
-				if (escolhaMotivacao.equals("V")) {
-					String vinganca;
-					vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-					escolhaMotivacao = vinganca;
-				} else {
-					String gloria;
-					String genero = "";
-					String mensagemGeneroEscolhido = "";
-					if (genero.equals("Feminino")) {
-						mensagemGeneroEscolhido = "sua próxima heróina";
-					} else {
-						mensagemGeneroEscolhido = "seu próximo herói";
-					}
-					gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
-
-					escolhaMotivacao = gloria + mensagemGeneroEscolhido;
-
-				}
-				System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
-				System.out.printf("%nFim de jogo para você!");
-				return escolhaSeguimentoJogo = 0;
 			} else {
 				return escolhaSeguimentoJogo = 0;
 			}
-
 		}
-		return escolhaSeguimentoJogo;
+
+		if (vidaJogador > 0 && vidaAdversario == 0) {
+			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
+			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
+			escolhaSeguimentoJogo = entrada.nextInt();
+
+			switch (escolhaSeguimentoJogo) {
+			case 1:
+				return escolhaSeguimentoJogo = 1;
+			case 2:
+				return escolhaSeguimentoJogo = 2;
+			default:
+				System.out.printf("%n Entrada Inválida!");
+				return escolhaSeguimentoJogo = 0;
+			}
+
+		} else if (vidaJogador <= 0 && vidaAdversario > 0) {
+			if (escolhaMotivacao.equals("V")) {
+				String vinganca;
+				vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
+				escolhaMotivacao = vinganca;
+			} else {
+				String gloria;
+				String genero = "";
+				String mensagemGeneroEscolhido = "";
+				if (genero.equals("Feminino")) {
+					mensagemGeneroEscolhido = "sua próxima heróina";
+				} else {
+					mensagemGeneroEscolhido = "seu próximo herói";
+				}
+				gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
+
+				escolhaMotivacao = gloria + mensagemGeneroEscolhido;
+
+			}
+			System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
+			System.out.printf("%nFim de jogo para você!");
+			return escolhaSeguimentoJogo = 0;
+		} else {
+			return escolhaSeguimentoJogo = 0;
+		}
+
 	}
 
 	@SuppressWarnings("resource")
@@ -355,22 +412,26 @@ public class Combate {
 
 		}
 
+		if (escolhaArmaduraNova == 1) {
+			pontosDefesaJogador += 5;
+			setPontosDefesaJogador(pontosDefesaJogador);
+		}
+
 		while (vidaJogador > 0 && vidaAdversario > 0) {
 
-			if (escolhaArmaduraNova == 1) {
-				pontosDefesaJogador += 5;
-				setPontosDefesaJogador(pontosDefesaJogador);
+			if (getVidaJogador() > 0) {
+				golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 			}
+			adversarioAlquimista.setVidaAdversario(vidaAdversario);
+			if (adversarioAlquimista.getVidaAdversario() > 0) {
+				golpeAdversario(nivel);
+			} else {
+				System.out.println("Inimigo Derrotado!");
+			}
+			;
+			setVidaJogador(vidaJogador);
 
-			if (vidaJogador > 0 && vidaAdversario > 0) {
-
-				golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
-				adversarioAlquimista.setVidaAdversario(vidaAdversario);
-				if (adversarioAlquimista.getVidaAdversario() > 0) {
-					golpeAdversario();
-				}
-				;
-
+			if (vidaJogador > 0) {
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 				if (escolhaSeguimentoJogo == 1) {
@@ -381,55 +442,51 @@ public class Combate {
 					System.out.printf("%nJOGO ENCERRADO!");
 					return escolhaSeguimentoJogo = 2;
 				}
-
-			} else if (vidaJogador > 0 && vidaAdversario == 0) {
-				System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-				System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
-				escolhaSeguimentoJogo = entrada.nextInt();
-
-				switch (escolhaSeguimentoJogo) {
-				case 1:
-					return escolhaSeguimentoJogo = 1;
-				case 2:
-					return escolhaSeguimentoJogo = 2;
-				default:
-					System.out.printf("%n Entrada Inválida!");
-					return escolhaSeguimentoJogo = 0;
-				}
-
 			}
+		}
 
-			// golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
-			// golpeAdversario();
+		 if (vidaJogador > 0 && vidaAdversario <= 0) {
+			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
+			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
+			escolhaSeguimentoJogo = entrada.nextInt();
 
-			else if (vidaJogador == 0 && vidaAdversario > 0) {
-				if (escolhaMotivacao.equals("V")) {
-					String vinganca;
-					vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-					escolhaMotivacao = vinganca;
-				} else {
-					String gloria;
-					String genero = "";
-					String mensagemGeneroEscolhido = "";
-					if (genero.equals("Feminino")) {
-						mensagemGeneroEscolhido = "sua próxima heróina";
-					} else {
-						mensagemGeneroEscolhido = "seu próximo herói";
-					}
-					gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
-
-					escolhaMotivacao = gloria + mensagemGeneroEscolhido;
-
-				}
-				System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
-				System.out.printf("%nFim de jogo para você!");
-				return escolhaSeguimentoJogo = 0;
-			} else {
+			switch (escolhaSeguimentoJogo) {
+			case 1:
+				return escolhaSeguimentoJogo = 1;
+			case 2:
+				return escolhaSeguimentoJogo = 2;
+			default:
+				System.out.printf("%n Entrada Inválida!");
 				return escolhaSeguimentoJogo = 0;
 			}
 
 		}
-		return escolhaSeguimentoJogo;
+
+		else if (vidaJogador <= 0 && vidaAdversario > 0) {
+			if (escolhaMotivacao.equals("V")) {
+				String vinganca;
+				vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
+				escolhaMotivacao = vinganca;
+			} else {
+				String gloria;
+				String genero = "";
+				String mensagemGeneroEscolhido = "";
+				if (genero.equals("Feminino")) {
+					mensagemGeneroEscolhido = "sua próxima heróina";
+				} else {
+					mensagemGeneroEscolhido = "seu próximo herói";
+				}
+				gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
+
+				escolhaMotivacao = gloria + mensagemGeneroEscolhido;
+
+			}
+			System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
+			System.out.printf("%nFim de jogo para você!");
+			return escolhaSeguimentoJogo = 0;
+		} else {
+			return escolhaSeguimentoJogo = 0;
+		}
 
 	}
 
@@ -439,7 +496,7 @@ public class Combate {
 		Scanner entrada = new Scanner(System.in);
 
 		this.nivel = nivel;
-
+		vidaJogador = getVidaJogador();
 		pontosDefesaJogador = getPontosDefesaJogador();
 		this.ataqueAdversario = 0;
 		this.vidaAdversario = 0;
@@ -497,10 +554,13 @@ public class Combate {
 
 		if (escolhaBeberPocao == 1 && nivel == 1) {
 			vidaJogador = 10;
+			setVidaJogador(vidaJogador);
 		} else if (escolhaBeberPocao == 1 && nivel == 2) {
-			vidaJogador = 12;
+			vidaJogador = 15;
+			setVidaJogador(vidaJogador);
 		} else if (escolhaBeberPocao == 1 && nivel == 3) {
-			vidaJogador = 12;
+			vidaJogador = 15;
+			setVidaJogador(vidaJogador);
 		} else if (escolhaBeberPocao == 2) {
 			vidaJogador = getVidaJogador();
 		}
@@ -509,25 +569,32 @@ public class Combate {
 
 			if (vidaJogador > 0 && vidaAdversario > 0) {
 				if (escolhaAtacarEsperar == 1) {
-					golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
+					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 					adversarioLider.setVidaAdversario(vidaAdversario);
 					if (adversarioLider.getVidaAdversario() > 0) {
-						golpeAdversario();
+						golpeAdversario(nivel);
+					} else {
+						System.out.println("Inimigo Derrotado!");
 					}
 					;
+					setVidaJogador(vidaJogador);
 
 				} else if (escolhaAtacarEsperar == 2) {
 					if (adversarioLider.getVidaAdversario() > 0) {
-						golpeAdversario();
+						golpeAdversario(nivel);
+					} else {
+						System.out.println("inimigo Derrotado!");
 					}
 					;
-					golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
+					setVidaJogador(vidaJogador);
+					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 					adversarioLider.setVidaAdversario(vidaAdversario);
 				}
 
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 				if (escolhaSeguimentoJogo == 1) {
+					System.out.println("Novo round!");
 					continue;
 				} else {
 					System.out.printf(
@@ -536,11 +603,11 @@ public class Combate {
 					return escolhaSeguimentoJogo = 2;
 				}
 
-			} else if (vidaJogador > 0 && vidaAdversario == 0) {
+			} else if (vidaJogador > 0 && vidaAdversario <= 0) {
 				System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 				System.out.printf("%nVITÓRIA DO JOGADOR");
 				return escolhaSeguimentoJogo = 1;
-			} else if (vidaJogador == 0 && vidaAdversario > 0) {
+			} else if (vidaJogador <= 0 && vidaAdversario > 0) {
 				if (escolhaMotivacao.equals("V")) {
 					String vinganca;
 					vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";

@@ -362,17 +362,21 @@ public class JogoApp {
 								+ "%ninimigo contra ele, e trocar algumas peças suas, que estavam danificadas, pelas peças de"
 								+ "%narmaduras existentes na sala. De armadura nova, você se sente mais protegido para os desafios"
 								+ "%nà sua frente.");
-						break;
+						continue;
 					} else if (escolhaArmaduraNova == 2) {
 						System.out.printf("%nVocê decide que não precisa utilizar nada que venha das mãos do inimigo.");
-						break;
+						continue;
 					} else {
 						System.out.println("Opção inválida!");
 					}
-				} else {
+				} else if (combateDireita == 2){
 					System.out.printf(
 							"%nVocê não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez."
 									+ "%n JOGO ENCERRADO!");
+					return;
+				} else {
+					System.out.printf(
+							"%n JOGO ENCERRADO!");
 					return;
 				}
 
@@ -400,7 +404,7 @@ public class JogoApp {
 							+ "%ne decide fugir para que possa tentar novamente em uma próxima vez. %n JOGO ENCERRADO!");
 					return;
 				default:
-					System.out.printf("%nEntrada Inválida! %nJOGO ENCERRADO!");
+					System.out.printf("%nJOGO ENCERRADO!");
 					return;
 
 				}
@@ -438,9 +442,12 @@ public class JogoApp {
 
 					}
 
-				} else {
+				} else if (combateEsquerda == 2){
 					System.out.printf("%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
 							+ "possa tentar novamente em uma próxima vez." + "%n JOGO ENCERRADO!");
+					return;
+				} else {
+					System.out.printf("%nJOGO ENCERRADO!");
 					return;
 				}
 
@@ -511,9 +518,13 @@ public class JogoApp {
 
 					System.out.printf("%nJOGO ENCERRADO!");
 					return;
-				} else {
+				} else if (combateFinal == 2){
 					System.out.printf("%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
 							+ "possa tentar novamente em uma próxima vez." + "%n JOGO ENCERRADO!");
+					return;
+				}
+				else {
+					System.out.printf("%nJOGO ENCERRADO!");
 					return;
 				}
 

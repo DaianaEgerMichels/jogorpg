@@ -230,7 +230,9 @@ public class Combate {
 		while (vidaJogador > 0 && vidaAdversario > 0) {
 
 			if (vidaJogador > 0 && vidaAdversario > 0) {
-				golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
+				if (getVidaJogador() > 0) {
+					golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
+				}
 				adversarioArmeiro.setVidaAdversario(vidaAdversario);
 				if (adversarioArmeiro.getVidaAdversario() > 0) {
 					golpeAdversario();
@@ -522,7 +524,7 @@ public class Combate {
 					golpeJogador(armaJogador, escolhaMotivacao, classeCombate);
 					adversarioLider.setVidaAdversario(vidaAdversario);
 				}
-				
+
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 				if (escolhaSeguimentoJogo == 1) {
@@ -533,8 +535,8 @@ public class Combate {
 					System.out.printf("%nJOGO ENCERRADO!");
 					return escolhaSeguimentoJogo = 2;
 				}
-				
-			}else if (vidaJogador > 0 && vidaAdversario == 0) {
+
+			} else if (vidaJogador > 0 && vidaAdversario == 0) {
 				System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 				System.out.printf("%nVITÓRIA DO JOGADOR");
 				return escolhaSeguimentoJogo = 1;
@@ -563,7 +565,6 @@ public class Combate {
 				return escolhaSeguimentoJogo = 0;
 			}
 
-			
 		}
 		return escolhaSeguimentoJogo;
 

@@ -362,25 +362,44 @@ public class JogoApp {
 								+ "%ninimigo contra ele, e trocar algumas peças suas, que estavam danificadas, pelas peças de"
 								+ "%narmaduras existentes na sala. De armadura nova, você se sente mais protegido para os desafios"
 								+ "%nà sua frente.");
-						continue;
+
 					} else if (escolhaArmaduraNova == 2) {
 						System.out.printf("%nVocê decide que não precisa utilizar nada que venha das mãos do inimigo.");
-						continue;
+
 					} else {
 						System.out.println("Opção inválida!");
 					}
-				} else if (combateDireita == 2){
+				} else if (combateDireita == 2) {
 					System.out.printf(
 							"%nVocê não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez."
 									+ "%n JOGO ENCERRADO!");
 					return;
 				} else {
-					System.out.printf(
-							"%n JOGO ENCERRADO!");
+					System.out.printf("%n JOGO ENCERRADO!");
 					return;
 				}
 
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
+				System.out.println(entrada.nextLine());
+
+				System.out.printf(
+						"%nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave"
+								+ "%nabre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa"
+								+ "%nque leva presa ao cinto." + "%n");
+				
+				System.out.printf(
+						"%n::::::::::::::::::::::::::::::::::PORTA ESQUERDA:::::::::::::::::::::::::::::::::::::::%n");
+				
+				System.out.printf(" Você retorna à sala anterior e se dirige à porta da esquerda. Você se\r\n"
+						+ "aproxima, tentando ouvir o que acontece porta adentro, mas não escuta nada. Segura com mais\r\n"
+						+ "força sua arma com uma mão, enquanto empurra a porta com a outra. Ao entrar, você se depara\r\n"
+						+ "com uma sala parecida com a do arsenal, mas em vez de armaduras, existem vários potes e\r\n"
+						+ "garrafas de vidro com conteúdos misteriosos e de cores diversas, e você entende que o capitão\r\n"
+						+ "que vive ali, realiza experimentos com diversos ingredientes, criando poções utilizadas pelos\r\n"
+						+ "soldados para aterrorizar a região.\r\n"
+						+ "No fundo da sala, olhando em sua direção, está outro dos capitães do inimigo. Um orque\r\n"
+						+ "horrendo, de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.");
+				
 
 				do {
 					System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
@@ -395,7 +414,6 @@ public class JogoApp {
 
 				switch (continua) {
 				case 1:
-
 					combateEsquerda = combate.combatePortaEsquerda(escolhaSeguimentoJogo, nivel, armaJogador,
 							escolhaMotivacao, classeCombate, escolhaArmaduraNova);
 					break;
@@ -408,7 +426,7 @@ public class JogoApp {
 					return;
 
 				}
-
+				
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
 				int escolhaBeberPocao;
@@ -442,7 +460,7 @@ public class JogoApp {
 
 					}
 
-				} else if (combateEsquerda == 2){
+				} else if (combateEsquerda == 2) {
 					System.out.printf("%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
 							+ "possa tentar novamente em uma próxima vez." + "%n JOGO ENCERRADO!");
 					return;
@@ -452,11 +470,6 @@ public class JogoApp {
 				}
 
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
-
-				System.out.printf(
-						"%nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave"
-								+ "%nabre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa"
-								+ "%nque leva presa ao cinto." + "%n");
 
 				System.out.printf(
 						"%nDe volta à sala das portas, você se dirige à porta final. Coloca as chaves nas fechaduras, e a"
@@ -518,12 +531,11 @@ public class JogoApp {
 
 					System.out.printf("%nJOGO ENCERRADO!");
 					return;
-				} else if (combateFinal == 2){
+				} else if (combateFinal == 2) {
 					System.out.printf("%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
 							+ "possa tentar novamente em uma próxima vez." + "%n JOGO ENCERRADO!");
 					return;
-				}
-				else {
+				} else {
 					System.out.printf("%nJOGO ENCERRADO!");
 					return;
 				}

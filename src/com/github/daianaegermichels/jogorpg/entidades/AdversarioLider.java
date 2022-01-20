@@ -3,7 +3,7 @@ package com.github.daianaegermichels.jogorpg.entidades;
 public class AdversarioLider extends Adversario{
 	private int vidaAdversario = 5;
 	private int ataqueAdversario = 17;
-	private int pontosDefesaAdversario = 70;
+	private int pontosDefesaAdversario = 170;
 	private int armaAdversario = 9;
 	
 	public int getVidaAdversario() {

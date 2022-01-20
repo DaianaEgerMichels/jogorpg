@@ -249,7 +249,7 @@ public class Combate {
 			adversarioArmeiro.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 6;
 			adversarioArmeiro.setVidaAdversario(vidaAdversario);
-			pontosDefesaAdversario = 60;
+			pontosDefesaAdversario = 120;
 			adversarioArmeiro.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 7;
 			adversarioArmeiro.setArmaAdversario(armaAdversario);
@@ -266,7 +266,7 @@ public class Combate {
 			adversarioArmeiro.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 8;
 			adversarioArmeiro.setVidaAdversario(vidaAdversario);
-			pontosDefesaAdversario = 100;
+			pontosDefesaAdversario = 170;
 			adversarioArmeiro.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 10;
 			adversarioArmeiro.setArmaAdversario(armaAdversario);
@@ -388,7 +388,7 @@ public class Combate {
 			adversarioAlquimista.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 7;
 			adversarioAlquimista.setVidaAdversario(vidaAdversario);
-			pontosDefesaAdversario = 70;
+			pontosDefesaAdversario = 170;
 			adversarioAlquimista.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 8;
 			adversarioAlquimista.setArmaAdversario(armaAdversario);
@@ -402,7 +402,7 @@ public class Combate {
 			adversarioAlquimista.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 9;
 			adversarioAlquimista.setVidaAdversario(vidaAdversario);
-			pontosDefesaAdversario = 100;
+			pontosDefesaAdversario = 190;
 			adversarioAlquimista.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 10;
 			adversarioAlquimista.setArmaAdversario(armaAdversario);
@@ -528,7 +528,7 @@ public class Combate {
 			adversarioLider.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 7;
 			adversarioLider.setVidaAdversario(vidaAdversario);
-			pontosDefesaAdversario = 90;
+			pontosDefesaAdversario = 190;
 			adversarioLider.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 12;
 			adversarioLider.setArmaAdversario(armaAdversario);
@@ -542,7 +542,7 @@ public class Combate {
 			adversarioLider.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 8;
 			adversarioLider.setVidaAdversario(vidaAdversario);
-			pontosDefesaAdversario = 100;
+			pontosDefesaAdversario = 220;
 			adversarioLider.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 13;
 			adversarioLider.setArmaAdversario(armaAdversario);

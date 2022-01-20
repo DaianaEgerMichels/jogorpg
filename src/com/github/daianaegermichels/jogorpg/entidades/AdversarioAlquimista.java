@@ -3,7 +3,7 @@ package com.github.daianaegermichels.jogorpg.entidades;
 public class AdversarioAlquimista extends Adversario {
 	private int vidaAdversario = 4;
 	private int ataqueAdversario = 15;
-	private int pontosDefesaAdversario = 50;
+	private int pontosDefesaAdversario = 120;
 	private int armaAdversario = 7;
 	
 	public int getVidaAdversario() {

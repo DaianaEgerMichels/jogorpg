@@ -381,28 +381,30 @@ public class JogoApp {
 
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 				System.out.println(entrada.nextLine());
+				
+				System.out.printf("%nEm uma mesa, você encontra uma chave dourada, e sabe que aquela chave abre uma das"
+						+ "%nfechaduras da porta do líder inimigo. Você pega a chave e guarda numa pequena bolsa que leva"
+						+ "%npresa ao cinto."
+						+ "%n");
 
-				System.out.printf(
-						"%nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave"
-								+ "%nabre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa"
-								+ "%nque leva presa ao cinto." + "%n");
+				
 				
 				System.out.printf(
 						"%n::::::::::::::::::::::::::::::::::PORTA ESQUERDA:::::::::::::::::::::::::::::::::::::::%n");
 				
-				System.out.printf(" Você retorna à sala anterior e se dirige à porta da esquerda. Você se\r\n"
-						+ "aproxima, tentando ouvir o que acontece porta adentro, mas não escuta nada. Segura com mais\r\n"
-						+ "força sua arma com uma mão, enquanto empurra a porta com a outra. Ao entrar, você se depara\r\n"
-						+ "com uma sala parecida com a do arsenal, mas em vez de armaduras, existem vários potes e\r\n"
-						+ "garrafas de vidro com conteúdos misteriosos e de cores diversas, e você entende que o capitão\r\n"
-						+ "que vive ali, realiza experimentos com diversos ingredientes, criando poções utilizadas pelos\r\n"
-						+ "soldados para aterrorizar a região.\r\n"
-						+ "No fundo da sala, olhando em sua direção, está outro dos capitães do inimigo. Um orque\r\n"
-						+ "horrendo, de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.");
+				System.out.printf("%nVocê retorna à sala anterior e se dirige à porta da esquerda. Você se"
+						+ "%naproxima, tentando ouvir o que acontece porta adentro, mas não escuta nada. Segura com mais"
+						+ "%nforça sua arma com uma mão, enquanto empurra a porta com a outra. Ao entrar, você se depara"
+						+ "%ncom uma sala parecida com a do arsenal, mas em vez de armaduras, existem vários potes e"
+						+ "%ngarrafas de vidro com conteúdos misteriosos e de cores diversas, e você entende que o capitão"
+						+ "%nque vive ali, realiza experimentos com diversos ingredientes, criando poções utilizadas pelos"
+						+ "%nsoldados para aterrorizar a região."
+						+ "%nNo fundo da sala, olhando em sua direção, está outro dos capitães do inimigo. Um orque"
+						+ "%nhorrendo, de armadura, cajado em punho, em posição de combate. Ele avança em sua direção.");
 				
 
 				do {
-					System.out.printf("O que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
+					System.out.printf("%nO que você deseja fazer? %n1 - Seguir em frente %n2 - Fugir");
 					continua = entrada.nextInt();
 					if (continua != 1 && continua != 2) {
 						System.out.printf("%nEntrada Inválida!%n");
@@ -474,6 +476,11 @@ public class JogoApp {
 				}
 
 				System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
+				
+				System.out.printf(
+						"%nAo lado da porta, você vê uma chave dourada em cima de uma mesa, e sabe que aquela chave"
+								+ "%nabre a outra fechadura da porta do líder inimigo. Você pega a chave e guarda na pequena bolsa"
+								+ "%nque leva presa ao cinto." + "%n");
 
 				System.out.printf(
 						"%nDe volta à sala das portas, você se dirige à porta final. Coloca as chaves nas fechaduras, e a"

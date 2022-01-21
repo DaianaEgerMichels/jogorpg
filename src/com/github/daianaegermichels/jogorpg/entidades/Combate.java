@@ -337,6 +337,8 @@ public class Combate {
 			adversarioArmeiro.setVidaAdversario(vidaAdversario);
 			if (adversarioArmeiro.getVidaAdversario() > 0) {
 				golpeAdversario(nivel);
+			} else {
+				System.out.println("Inimigo Derrotado!");
 			}
 			;
 			setVidaJogador(vidaJogador);}
@@ -348,6 +350,8 @@ public class Combate {
 				adversarioArmeiro.setVidaAdversario(vidaAdversario);
 				if (adversarioArmeiro.getVidaAdversario() > 0) {
 					golpeAdversario(nivel);
+				}else {
+					System.out.println("Inimigo Derrotado!");
 				}
 				;
 				setVidaJogador(vidaJogador);
@@ -643,7 +647,7 @@ public class Combate {
 					if (adversarioLider.getVidaAdversario() > 0) {
 						golpeAdversario(nivel);
 					} else {
-						System.out.println("inimigo Derrotado!");
+						System.out.println("Inimigo Derrotado!");
 					}
 					;
 					setVidaJogador(vidaJogador);

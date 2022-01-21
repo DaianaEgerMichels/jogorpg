@@ -14,7 +14,7 @@ public class JogoApp {
 	static Jogador jogador = new Jogador();
 
 	public static void main(String[] args) {
-
+		try{
 		int inicio;
 		do {
 			System.out.printf("Iniciar o jogo:%n 1 - Sim %n 2 - Não");
@@ -586,5 +586,8 @@ public class JogoApp {
 		} while (inicio != 1 && inicio != 2);
 
 		entrada.close();
+		} catch (Error inicio ){System.out.println("Algo deu errado! Estamos trabalhando para resolver o problema...");} finally{
+			System.out.println("JOGO ENCERRADO!");
+		};
 	}
 }

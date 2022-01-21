@@ -41,8 +41,5 @@ public class Guerreiro extends Jogador {
 		
 	}
 	
-	//se arma = martelo::: armaJogador = 3 |||| se arma = machado ::: armaJogador = 7  
-	//se arma = espada ::: armaJogador=5 ||| se arma = clava ::: armaJogador = 6
-
 
 }

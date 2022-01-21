@@ -34,5 +34,5 @@ public class Mago extends Jogador{
 		}
 		
 	}
-//arma = livro , cajado
+
 }

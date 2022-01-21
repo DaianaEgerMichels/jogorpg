@@ -32,6 +32,5 @@ public class Cacador extends Jogador {
 		}
 		
 	}
-//arma = arcoFlecha ou bestaVirote
 	
 }

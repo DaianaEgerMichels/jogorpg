@@ -69,6 +69,7 @@ public class Combate {
 		this.armaJogador = armaJogador;
 		this.escolhaMotivacao = escolhaMotivacao;
 		this.classeCombate = classeCombate;
+		this.nivel = nivel;
 
 		golpeJogador = ataqueJogador();
 
@@ -77,7 +78,7 @@ public class Combate {
 			System.out.printf("%nVocê errou seu ataque! O inimigo não sofreu dano algum.");
 		} else if (golpeJogador == 20) {
 			danoNoAdversario = 50;
-			
+
 			if (nivel == 1) {
 				vidaAdversario = 0;
 			} else if (nivel == 2) {
@@ -85,9 +86,9 @@ public class Combate {
 			} else {
 				vidaAdversario -= 4;
 			}
-			
+
 			System.out.printf("%n Você acertou um ataque crítico!");
-			
+
 			String complementoArma = "";
 			String arma = "";
 			if (classeCombate.equals("G")) {
@@ -120,7 +121,6 @@ public class Combate {
 			}
 
 			System.out.printf("%nVocê atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
-			
 
 		} else if (pontosDefesaAdversario > 0 && vidaAdversario > 0) {
 			danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
@@ -162,6 +162,48 @@ public class Combate {
 
 			System.out.printf("%nVocê atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
 
+		} else if (pontosDefesaAdversario <= 0 && vidaAdversario > 0) {
+			danoNoAdversario = 0;
+
+			pontosDefesaAdversario = danoNoAdversario;
+
+			vidaAdversario -= 2;
+
+			String complementoArma = "";
+			String arma = "";
+			if (classeCombate.equals("G")) {
+				if (armaJogador == 3) {
+					arma = "Martelo";
+				} else if (armaJogador == 7) {
+					arma = "Machado";
+				} else if (armaJogador == 5) {
+					arma = "Espada";
+				} else {
+					arma = "Clava";
+				}
+				complementoArma = "com sua/seu " + arma;
+			} else if (classeCombate.equals("M")) {
+				if (armaJogador == 5) {
+					arma = "Livro";
+					complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
+				} else {
+					arma = "Cajado";
+					complementoArma = "com seu cajado, lançando uma bola de fogo";
+				}
+			} else if (classeCombate.equals("C")) {
+				if (armaJogador == 7) {
+					arma = "Arco e Flecha";
+					complementoArma = "com seu Arco, a Flecha atingiu";
+				} else {
+					arma = "Besta e Virote";
+					complementoArma = "com sua Besta, o Virote atingiu";
+				}
+			}
+
+			System.out.printf(
+					"%nVocê atacou %s e causou a perda de 2 pontos de vida no inimigo! O inimigo possui %d pontos de defesa. %n",
+					complementoArma, danoNoAdversario);
+
 		} else {
 			vidaAdversario = 0;
 			System.out.printf("%n O inimigo sem pontos de defesa foi golpeado e morreu!");
@@ -176,7 +218,7 @@ public class Combate {
 			danoNoJogador = 0;
 			System.out.printf("%nO inimigo errou o ataque! Você não sofreu dano.%n");
 		} else if (golpeAdversario == 3) {
-			
+
 			if (nivel == 1) {
 				vidaJogador -= 2;
 			} else if (nivel == 2) {
@@ -184,22 +226,25 @@ public class Combate {
 			} else {
 				vidaJogador -= 6;
 			}
-			
+
 			setVidaJogador(vidaJogador);
-			System.out.printf(
-					"%nO inimigo acertou um ataque crítico! Você agora possui %d pontos de vida.%n",
-					 vidaJogador);
+			System.out.printf("%nO inimigo acertou um ataque crítico! Você agora possui %d pontos de vida.%n",
+					vidaJogador);
 		} else {
 			danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
 			if (pontosDefesaJogador > 0) {
 				pontosDefesaJogador -= danoNoJogador;
 				setPontosDefesaJogador(pontosDefesaJogador);
+				vidaJogador--;
+				setVidaJogador(vidaJogador);
+
 			} else {
 				pontosDefesaJogador = 0;
 				setPontosDefesaJogador(pontosDefesaJogador);
+				vidaJogador -= 2;
+				setVidaJogador(vidaJogador);
 			}
-			vidaJogador--;
-			setVidaJogador(vidaJogador);
+
 			System.out.printf("%nO inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
 					danoNoJogador, vidaJogador);
 		}
@@ -294,17 +339,18 @@ public class Combate {
 			setVidaJogador(vidaJogador);
 
 			if (vidaJogador > 0) {
+
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 				if (escolhaSeguimentoJogo == 1) {
 					continue;
-				} else {
+				} else if (escolhaSeguimentoJogo == 2) {
 					System.out.printf(
 							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
+				} else {
+					return escolhaSeguimentoJogo = 0;
 				}
-			} else {
-				return escolhaSeguimentoJogo = 0;
 			}
 		}
 
@@ -348,7 +394,6 @@ public class Combate {
 		} else {
 			return escolhaSeguimentoJogo = 0;
 		}
-
 	}
 
 	@SuppressWarnings("resource")
@@ -445,7 +490,7 @@ public class Combate {
 			}
 		}
 
-		 if (vidaJogador > 0 && vidaAdversario <= 0) {
+		if (vidaJogador > 0 && vidaAdversario <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 			escolhaSeguimentoJogo = entrada.nextInt();
@@ -594,7 +639,6 @@ public class Combate {
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 				if (escolhaSeguimentoJogo == 1) {
-					System.out.println("Novo round!");
 					continue;
 				} else {
 					System.out.printf(

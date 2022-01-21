@@ -4,14 +4,16 @@ public class Jogador {
 	protected String nome;
 	protected int sexo;
 	protected int arma;
+	protected int agilidade;
 	
 	public Jogador() {
 		
 	}
 	
-	public Jogador(String nome, int sexo) {
+	public Jogador(String nome, int sexo, int agilidade) {
 		this.nome = nome;
 		this.sexo = sexo;
+		this.agilidade = agilidade;
 	
 	}
 	
@@ -42,6 +44,14 @@ public class Jogador {
 
 	public void setSexo(int sexo) {
 		this.sexo = sexo;
+	}
+	
+	public int getAgilidade() {
+		return agilidade;
+	}
+
+	public void setAgilidade(int agilidade) {
+		this.agilidade = agilidade;
 	}
 
 

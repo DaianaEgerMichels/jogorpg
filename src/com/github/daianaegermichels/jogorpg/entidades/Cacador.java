@@ -2,8 +2,8 @@ package com.github.daianaegermichels.jogorpg.entidades;
 
 public class Cacador extends Jogador {
 
-	public Cacador(String nome, int sexo) {
-		super(nome, sexo);
+	public Cacador(String nome, int sexo, int agilidade) {
+		super(nome, sexo, agilidade);
 	}
 	
 	@Override

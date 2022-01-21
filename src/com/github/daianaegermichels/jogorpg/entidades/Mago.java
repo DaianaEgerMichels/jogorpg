@@ -3,8 +3,8 @@ package com.github.daianaegermichels.jogorpg.entidades;
 public class Mago extends Jogador{
 
 
-	public Mago(String nome, int sexo) {
-		super(nome, sexo);
+	public Mago(String nome, int sexo, int agilidade) {
+		super(nome, sexo, agilidade);
 	}
 	
 	@Override

@@ -110,9 +110,32 @@ public class JogoApp {
 				} while (sexoAvatar != 1 && sexoAvatar != 2);
 
 				System.out.println(entrada.nextLine());
+				
+				System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+				
+
+				int agilidadeJogador;
+				do {
+					System.out.printf("%nEscolha um nível de agilidade para o seu avatar: %n 1 - Normal %n 2 - Rápido ");
+					agilidadeJogador = entrada.nextInt();
+
+					if (agilidadeJogador == 1) {
+						System.out.println("Agilidade do Avatar: NORMAL ");
+						jogador.setAgilidade(agilidadeJogador);
+					} else if (agilidadeJogador == 2) {
+						System.out.println("Agilidade do Avatar: RÁPIDO ");
+						jogador.setAgilidade(agilidadeJogador);
+					} else {
+						System.out.println("Entrada inválida!");
+					}
+				} while (agilidadeJogador != 1 && agilidadeJogador != 2);
+
+				System.out.println(entrada.nextLine());
 				int arma;
 				int armaJogador = 0;
 				System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+				
+				
 				String classeCombate;
 				
 				do {
@@ -127,7 +150,7 @@ public class JogoApp {
 
 				if (classeCombate.equals("G")) {
 					System.out.println("Classe de combate: GUERREIRO ");
-					Guerreiro guerreiro = new Guerreiro(nomeAvatar, sexoAvatar);
+					Guerreiro guerreiro = new Guerreiro(nomeAvatar, sexoAvatar, agilidadeJogador);
 					do {
 						System.out.printf(
 								"%nEscolha uma arma para o combate: %n1 - Martelo %n2 - Machado %n3 - Espada %n4 - Clava");
@@ -139,7 +162,7 @@ public class JogoApp {
 					armaJogador = guerreiro.setArma(arma);
 				} else if (classeCombate.equals("M")) {
 					System.out.println("Classe de combate: MAGO ");
-					Mago mago = new Mago(nomeAvatar, sexoAvatar);
+					Mago mago = new Mago(nomeAvatar, sexoAvatar, agilidadeJogador);
 					do {
 						System.out.printf("%nEscolha uma arma para o combate: %n1 - Livro %n2 - Cajado");
 						arma = entrada.nextInt();
@@ -150,7 +173,7 @@ public class JogoApp {
 					armaJogador = mago.setArma(arma);
 				} else if (classeCombate.equals("C")) {
 					System.out.println("Classe de combate: CAÇADOR ");
-					Cacador cacador = new Cacador(nomeAvatar, sexoAvatar);
+					Cacador cacador = new Cacador(nomeAvatar, sexoAvatar, agilidadeJogador);
 					do {
 						System.out
 								.printf("%nEscolha uma arma para o combate: %n1 - Arco e Flecha %n2 - Besta e Virote");
@@ -329,7 +352,7 @@ public class JogoApp {
 				switch (continua) {
 				case 1:
 					combateDireita = combate.combatePortaDireita(continua, nivel, armaJogador, modoDeAndar,
-							escolhaMotivacao, classeCombate);
+							escolhaMotivacao, classeCombate, agilidadeJogador);
 					break;
 				case 2:
 					System.out.printf("%nVocê não estava preparado para a força do inimigo, "

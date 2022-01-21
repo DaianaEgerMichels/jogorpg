@@ -2,8 +2,8 @@ package com.github.daianaegermichels.jogorpg.entidades;
 
 public class Guerreiro extends Jogador {
 
-	public Guerreiro(String nome, int sexo) {
-		super(nome, sexo);
+	public Guerreiro(String nome, int sexo, int agilidade) {
+		super(nome, sexo, agilidade);
 	}
 	
 	

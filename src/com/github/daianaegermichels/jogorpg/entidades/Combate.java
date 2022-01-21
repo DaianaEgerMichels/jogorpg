@@ -27,6 +27,7 @@ public class Combate {
 	int escolhaArmaduraNova;
 	int escolhaBeberPocao;
 	int escolhaAtacarEsperar;
+	int agilidadeJogador;
 
 	public int getVidaJogador() {
 		return vidaJogador;
@@ -253,7 +254,7 @@ public class Combate {
 
 	@SuppressWarnings("resource")
 	public int combatePortaDireita(int escolhaSeguimentoJogo, int nivel, int armaJogador, int modoDeAndar,
-			String escolhaMotivacao, String classeCombate) {
+			String escolhaMotivacao, String classeCombate, int agilidadeJogador) {
 		Scanner entrada = new Scanner(System.in);
 
 		this.nivel = nivel;
@@ -269,6 +270,7 @@ public class Combate {
 		this.ataqueJogador = 0;
 		this.danoNoAdversario = 0;
 		this.golpeJogador = 0;
+		this.agilidadeJogador = agilidadeJogador;
 
 		if (nivel == 1) {
 			vidaJogador = 10;
@@ -328,6 +330,7 @@ public class Combate {
 
 		while (vidaJogador > 0 && vidaAdversario > 0) {
 
+			if(agilidadeJogador == 1) {
 			if (getVidaJogador() > 0) {
 				golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 			}
@@ -336,7 +339,19 @@ public class Combate {
 				golpeAdversario(nivel);
 			}
 			;
-			setVidaJogador(vidaJogador);
+			setVidaJogador(vidaJogador);}
+			else {
+				if (getVidaJogador() > 0) {
+					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
+					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
+				}
+				adversarioArmeiro.setVidaAdversario(vidaAdversario);
+				if (adversarioArmeiro.getVidaAdversario() > 0) {
+					golpeAdversario(nivel);
+				}
+				;
+				setVidaJogador(vidaJogador);
+			}
 
 			if (vidaJogador > 0) {
 

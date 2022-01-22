@@ -8,7 +8,7 @@ public class Combate {
 	static AdversarioArmeiro adversarioArmeiro = new AdversarioArmeiro();
 	static AdversarioAlquimista adversarioAlquimista = new AdversarioAlquimista();
 	static AdversarioLider adversarioLider = new AdversarioLider();
-
+	
 	private int vidaJogador;
 	private int pontosDefesaJogador;
 	private int golpeJogador;
@@ -29,22 +29,6 @@ public class Combate {
 	protected int escolhaBeberPocao;
 	protected int escolhaAtacarEsperar;
 	protected int agilidadeJogador;
-
-	/*public int getVidaJogador() {
-		return vidaJogador;
-	}
-
-	public void setVidaJogador(int vidaJogador) {
-		this.vidaJogador = vidaJogador;
-	}
-
-	public int getPontosDefesaJogador() {
-		return pontosDefesaJogador;
-	}
-
-	public void setPontosDefesaJogador(int pontosDefesaJogador) {
-		this.pontosDefesaJogador = pontosDefesaJogador;
-	}*/
 
 	public Combate() {
 
@@ -232,7 +216,7 @@ public class Combate {
 				jogador.setVidaJogador(vidaJogador);
 			}
 
-			setVidaJogador(vidaJogador);
+			jogador.setVidaJogador(vidaJogador);
 			System.out.printf("%nO inimigo acertou um ataque crítico! Você agora possui %d pontos de vida.%n",
 					jogador.getVidaJogador());
 		} else {
@@ -265,7 +249,7 @@ public class Combate {
 		this.modoDeAndar = modoDeAndar;
 		this.agilidadeJogador = agilidadeJogador;
 		
-		this.vidaJogador = 0;
+		/*this.vidaJogador = 0;
 		this.pontosDefesaJogador = 0;
 		this.ataqueAdversario = 0;
 		this.vidaAdversario = 0;
@@ -275,7 +259,7 @@ public class Combate {
 		this.golpeAdversario = 0;
 		this.ataqueJogador = 0;
 		this.danoNoAdversario = 0;
-		this.golpeJogador = 0;
+		this.golpeJogador = 0;*/
 
 		if (nivel == 1) {
 			vidaJogador = 10;

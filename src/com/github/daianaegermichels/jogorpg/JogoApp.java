@@ -590,7 +590,7 @@ public class JogoApp {
 		} catch (Error inicio) {
 			System.out.println("Algo deu errado! Estamos trabalhando para resolver o problema...");
 		} finally {
-			System.out.println("JOGO ENCERRADO!");
+			System.out.println("FIM");
 		}
 		;
 	}

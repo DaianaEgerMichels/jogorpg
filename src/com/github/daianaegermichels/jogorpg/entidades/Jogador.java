@@ -4,7 +4,7 @@ public class Jogador {
 	protected String nome;
 	protected int sexo;
 	protected int arma;
-	protected int agilidade;
+	private int agilidade;
 	private int vidaJogador;
 	private int pontosDefesaJogador;
 	

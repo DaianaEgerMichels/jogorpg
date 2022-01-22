@@ -248,18 +248,6 @@ public class Combate {
 		this.nivel = nivel;
 		this.modoDeAndar = modoDeAndar;
 		this.agilidadeJogador = agilidadeJogador;
-		
-		/*this.vidaJogador = 0;
-		this.pontosDefesaJogador = 0;
-		this.ataqueAdversario = 0;
-		this.vidaAdversario = 0;
-		this.pontosDefesaAdversario = 0;
-		this.armaAdversario = 0;
-		this.danoNoJogador = 0;
-		this.golpeAdversario = 0;
-		this.ataqueJogador = 0;
-		this.danoNoAdversario = 0;
-		this.golpeJogador = 0;*/
 
 		if (nivel == 1) {
 			vidaJogador = 10;
@@ -410,19 +398,9 @@ public class Combate {
 		Scanner entrada = new Scanner(System.in);
 
 		this.nivel = nivel;
-		vidaJogador = jogador.getVidaJogador();
-		pontosDefesaJogador = jogador.getPontosDefesaJogador();
+		this.vidaJogador = jogador.getVidaJogador();
+		this.pontosDefesaJogador = jogador.getPontosDefesaJogador();
 		this.escolhaArmaduraNova = escolhaArmaduraNova;
-		
-		this.ataqueAdversario = 0;
-		this.vidaAdversario = 0;
-		this.pontosDefesaAdversario = 0;
-		this.armaAdversario = 0;
-		this.danoNoJogador = 0;
-		this.golpeAdversario = 0;
-		this.ataqueJogador = 0;
-		this.danoNoAdversario = 0;
-		this.golpeJogador = 0;
 
 		if (nivel == 1) {
 
@@ -550,17 +528,8 @@ public class Combate {
 		Scanner entrada = new Scanner(System.in);
 
 		this.nivel = nivel;
-		vidaJogador = jogador.getVidaJogador();
-		pontosDefesaJogador = jogador.getPontosDefesaJogador();
-		this.ataqueAdversario = 0;
-		this.vidaAdversario = 0;
-		this.pontosDefesaAdversario = 0;
-		this.armaAdversario = 0;
-		this.danoNoJogador = 0;
-		this.golpeAdversario = 0;
-		this.ataqueJogador = 0;
-		this.danoNoAdversario = 0;
-		this.golpeJogador = 0;
+		this.vidaJogador = jogador.getVidaJogador();
+		this.pontosDefesaJogador = jogador.getPontosDefesaJogador();
 		this.escolhaBeberPocao = escolhaBeberPocao;
 		this.escolhaAtacarEsperar = escolhaAtacarEsperar;
 

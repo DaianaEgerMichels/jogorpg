@@ -588,9 +588,9 @@ public class JogoApp {
 
 			entrada.close();
 		} catch (Error inicio) {
-			System.out.println("Algo deu errado! Estamos trabalhando para resolver o problema...");
+			System.out.printf("%nAlgo deu errado! Estamos trabalhando para resolver o problema...");
 		} finally {
-			System.out.println("FIM");
+			System.out.printf("%nFIM");
 		}
 		;
 	}

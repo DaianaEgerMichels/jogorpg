@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Combate {
+	static Jogador jogador = new Jogador();
 	static AdversarioArmeiro adversarioArmeiro = new AdversarioArmeiro();
 	static AdversarioAlquimista adversarioAlquimista = new AdversarioAlquimista();
 	static AdversarioLider adversarioLider = new AdversarioLider();
@@ -19,17 +20,17 @@ public class Combate {
 	private int armaAdversario;
 	private int danoNoAdversario;
 	private int danoNoJogador;
-	int armaJogador;
-	String escolhaMotivacao;
-	int modoDeAndar;
-	String classeCombate;
-	int nivel;
-	int escolhaArmaduraNova;
-	int escolhaBeberPocao;
-	int escolhaAtacarEsperar;
-	int agilidadeJogador;
+	protected int armaJogador;
+	protected String escolhaMotivacao;
+	protected int modoDeAndar;
+	protected String classeCombate;
+	protected int nivel;
+	protected int escolhaArmaduraNova;
+	protected int escolhaBeberPocao;
+	protected int escolhaAtacarEsperar;
+	protected int agilidadeJogador;
 
-	public int getVidaJogador() {
+	/*public int getVidaJogador() {
 		return vidaJogador;
 	}
 
@@ -43,7 +44,7 @@ public class Combate {
 
 	public void setPontosDefesaJogador(int pontosDefesaJogador) {
 		this.pontosDefesaJogador = pontosDefesaJogador;
-	}
+	}*/
 
 	public Combate() {
 
@@ -222,32 +223,35 @@ public class Combate {
 
 			if (nivel == 1) {
 				vidaJogador -= 2;
+				jogador.setVidaJogador(vidaJogador);
 			} else if (nivel == 2) {
 				vidaJogador -= 4;
+				jogador.setVidaJogador(vidaJogador);
 			} else {
 				vidaJogador -= 6;
+				jogador.setVidaJogador(vidaJogador);
 			}
 
 			setVidaJogador(vidaJogador);
 			System.out.printf("%nO inimigo acertou um ataque crítico! Você agora possui %d pontos de vida.%n",
-					vidaJogador);
+					jogador.getVidaJogador());
 		} else {
 			danoNoJogador = ataqueAdversario + armaAdversario + golpeAdversario;
 			if (pontosDefesaJogador > 0) {
 				pontosDefesaJogador -= danoNoJogador;
-				setPontosDefesaJogador(pontosDefesaJogador);
+				jogador.setPontosDefesaJogador(pontosDefesaJogador);
 				vidaJogador--;
-				setVidaJogador(vidaJogador);
+				jogador.setVidaJogador(vidaJogador);
 
 			} else {
 				pontosDefesaJogador = 0;
-				setPontosDefesaJogador(pontosDefesaJogador);
+				jogador.setPontosDefesaJogador(pontosDefesaJogador);
 				vidaJogador -= 2;
-				setVidaJogador(vidaJogador);
+				jogador.setVidaJogador(vidaJogador);
 			}
 
 			System.out.printf("%nO inimigo atacou! Você sofreu %d de dano e agora possui %d pontos de vida.%n",
-					danoNoJogador, vidaJogador);
+					danoNoJogador, jogador.getVidaJogador());
 		}
 
 	}
@@ -259,6 +263,8 @@ public class Combate {
 
 		this.nivel = nivel;
 		this.modoDeAndar = modoDeAndar;
+		this.agilidadeJogador = agilidadeJogador;
+		
 		this.vidaJogador = 0;
 		this.pontosDefesaJogador = 0;
 		this.ataqueAdversario = 0;
@@ -270,13 +276,12 @@ public class Combate {
 		this.ataqueJogador = 0;
 		this.danoNoAdversario = 0;
 		this.golpeJogador = 0;
-		this.agilidadeJogador = agilidadeJogador;
 
 		if (nivel == 1) {
 			vidaJogador = 10;
-			setVidaJogador(vidaJogador);
+			jogador.setVidaJogador(vidaJogador);
 			pontosDefesaJogador = 100;
-			setPontosDefesaJogador(pontosDefesaJogador);
+			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 			ataqueJogador = 15;
 			ataqueAdversario = adversarioArmeiro.getAtaqueAdversario();
 			vidaAdversario = adversarioArmeiro.getVidaAdversario();
@@ -288,9 +293,9 @@ public class Combate {
 
 		} else if (nivel == 2) {
 			vidaJogador = 15;
-			setVidaJogador(vidaJogador);
+			jogador.setVidaJogador(vidaJogador);
 			pontosDefesaJogador = 150;
-			setPontosDefesaJogador(pontosDefesaJogador);
+			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 			ataqueJogador = 14;
 			ataqueAdversario = 15;
 			adversarioArmeiro.setAtaqueAdversario(ataqueAdversario);
@@ -305,9 +310,9 @@ public class Combate {
 
 		} else {
 			vidaJogador = 15;
-			setVidaJogador(vidaJogador);
+			jogador.setVidaJogador(vidaJogador);
 			pontosDefesaJogador = 180;
-			setPontosDefesaJogador(pontosDefesaJogador);
+			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 			ataqueJogador = 13;
 			ataqueAdversario = 17;
 			adversarioArmeiro.setAtaqueAdversario(ataqueAdversario);
@@ -325,13 +330,13 @@ public class Combate {
 
 		if (modoDeAndar == 1) {
 			pontosDefesaJogador -= ataqueFlechas();
-			setPontosDefesaJogador(pontosDefesaJogador);
+			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 		}
 
 		while (vidaJogador > 0 && vidaAdversario > 0) {
 
 			if(agilidadeJogador == 1) {
-			if (getVidaJogador() > 0) {
+			if (jogador.getVidaJogador() > 0) {
 				golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 			}
 			adversarioArmeiro.setVidaAdversario(vidaAdversario);
@@ -341,9 +346,9 @@ public class Combate {
 				System.out.println("Inimigo Derrotado!");
 			}
 			;
-			setVidaJogador(vidaJogador);}
+			jogador.setVidaJogador(vidaJogador);}
 			else {
-				if (getVidaJogador() > 0) {
+				if (jogador.getVidaJogador() > 0) {
 					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 				}
@@ -354,7 +359,7 @@ public class Combate {
 					System.out.println("Inimigo Derrotado!");
 				}
 				;
-				setVidaJogador(vidaJogador);
+				jogador.setVidaJogador(vidaJogador);
 			}
 
 			if (vidaJogador > 0) {
@@ -421,8 +426,10 @@ public class Combate {
 		Scanner entrada = new Scanner(System.in);
 
 		this.nivel = nivel;
-		vidaJogador = getVidaJogador();
-		pontosDefesaJogador = getPontosDefesaJogador();
+		vidaJogador = jogador.getVidaJogador();
+		pontosDefesaJogador = jogador.getPontosDefesaJogador();
+		this.escolhaArmaduraNova = escolhaArmaduraNova;
+		
 		this.ataqueAdversario = 0;
 		this.vidaAdversario = 0;
 		this.pontosDefesaAdversario = 0;
@@ -432,7 +439,6 @@ public class Combate {
 		this.ataqueJogador = 0;
 		this.danoNoAdversario = 0;
 		this.golpeJogador = 0;
-		this.escolhaArmaduraNova = escolhaArmaduraNova;
 
 		if (nivel == 1) {
 
@@ -478,12 +484,12 @@ public class Combate {
 
 		if (escolhaArmaduraNova == 1) {
 			pontosDefesaJogador += 5;
-			setPontosDefesaJogador(pontosDefesaJogador);
+			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 		}
 
 		while (vidaJogador > 0 && vidaAdversario > 0) {
 
-			if (getVidaJogador() > 0) {
+			if (jogador.getVidaJogador() > 0) {
 				golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 			}
 			adversarioAlquimista.setVidaAdversario(vidaAdversario);
@@ -493,7 +499,7 @@ public class Combate {
 				System.out.println("Inimigo Derrotado!");
 			}
 			;
-			setVidaJogador(vidaJogador);
+			jogador.setVidaJogador(vidaJogador);
 
 			if (vidaJogador > 0) {
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
@@ -560,8 +566,8 @@ public class Combate {
 		Scanner entrada = new Scanner(System.in);
 
 		this.nivel = nivel;
-		vidaJogador = getVidaJogador();
-		pontosDefesaJogador = getPontosDefesaJogador();
+		vidaJogador = jogador.getVidaJogador();
+		pontosDefesaJogador = jogador.getPontosDefesaJogador();
 		this.ataqueAdversario = 0;
 		this.vidaAdversario = 0;
 		this.pontosDefesaAdversario = 0;
@@ -618,15 +624,15 @@ public class Combate {
 
 		if (escolhaBeberPocao == 1 && nivel == 1) {
 			vidaJogador = 10;
-			setVidaJogador(vidaJogador);
+			jogador.setVidaJogador(vidaJogador);
 		} else if (escolhaBeberPocao == 1 && nivel == 2) {
 			vidaJogador = 15;
-			setVidaJogador(vidaJogador);
+			jogador.setVidaJogador(vidaJogador);
 		} else if (escolhaBeberPocao == 1 && nivel == 3) {
 			vidaJogador = 15;
-			setVidaJogador(vidaJogador);
+			jogador.setVidaJogador(vidaJogador);
 		} else if (escolhaBeberPocao == 2) {
-			vidaJogador = getVidaJogador();
+			vidaJogador = jogador.getVidaJogador();
 		}
 
 		while (vidaJogador > 0 && vidaAdversario > 0) {
@@ -641,7 +647,7 @@ public class Combate {
 						System.out.println("Inimigo Derrotado!");
 					}
 					;
-					setVidaJogador(vidaJogador);
+					jogador.setVidaJogador(vidaJogador);
 
 				} else if (escolhaAtacarEsperar == 2) {
 					if (adversarioLider.getVidaAdversario() > 0) {
@@ -650,7 +656,7 @@ public class Combate {
 						System.out.println("Inimigo Derrotado!");
 					}
 					;
-					setVidaJogador(vidaJogador);
+					jogador.setVidaJogador(vidaJogador);
 					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 					adversarioLider.setVidaAdversario(vidaAdversario);
 				}

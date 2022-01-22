@@ -5,6 +5,8 @@ public class Jogador {
 	protected int sexo;
 	protected int arma;
 	protected int agilidade;
+	private int vidaJogador;
+	private int pontosDefesaJogador;
 	
 	public Jogador() {
 		
@@ -54,6 +56,21 @@ public class Jogador {
 		this.agilidade = agilidade;
 	}
 
+	public int getVidaJogador() {
+		return vidaJogador;
+	}
+
+	public void setVidaJogador(int vidaJogador) {
+		this.vidaJogador = vidaJogador;
+	}
+
+	public int getPontosDefesaJogador() {
+		return pontosDefesaJogador;
+	}
+
+	public void setPontosDefesaJogador(int pontosDefesaJogador) {
+		this.pontosDefesaJogador = pontosDefesaJogador;
+	}
 
 	
 	

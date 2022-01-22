@@ -8,6 +8,7 @@ public class Combate {
 	static AdversarioArmeiro adversarioArmeiro = new AdversarioArmeiro();
 	static AdversarioAlquimista adversarioAlquimista = new AdversarioAlquimista();
 	static AdversarioLider adversarioLider = new AdversarioLider();
+	static Scanner entrada = new Scanner(System.in);
 	
 	private int vidaJogador;
 	private int pontosDefesaJogador;
@@ -240,11 +241,9 @@ public class Combate {
 
 	}
 
-	@SuppressWarnings("resource")
 	public int combatePortaDireita(int escolhaSeguimentoJogo, int nivel, int armaJogador, int modoDeAndar,
 			String escolhaMotivacao, String classeCombate, int agilidadeJogador) {
-		Scanner entrada = new Scanner(System.in);
-
+	
 		this.nivel = nivel;
 		this.modoDeAndar = modoDeAndar;
 		this.agilidadeJogador = agilidadeJogador;
@@ -305,7 +304,7 @@ public class Combate {
 			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 		}
 
-		while (vidaJogador > 0 && vidaAdversario > 0) {
+		while (jogador.getVidaJogador() > 0 && adversarioArmeiro.getVidaAdversario() > 0) {
 
 			if(agilidadeJogador == 1) {
 			if (jogador.getVidaJogador() > 0) {
@@ -334,7 +333,7 @@ public class Combate {
 				jogador.setVidaJogador(vidaJogador);
 			}
 
-			if (vidaJogador > 0) {
+			if (jogador.getVidaJogador() > 0) {
 
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
@@ -342,7 +341,8 @@ public class Combate {
 					continue;
 				} else if (escolhaSeguimentoJogo == 2) {
 					System.out.printf(
-							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
+							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
+							+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
 				} else {
 					return escolhaSeguimentoJogo = 0;
@@ -350,7 +350,7 @@ public class Combate {
 			}
 		}
 
-		if (vidaJogador > 0 && vidaAdversario == 0) {
+		if (jogador.getVidaJogador() > 0 && adversarioArmeiro.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 			escolhaSeguimentoJogo = entrada.nextInt();
@@ -365,7 +365,7 @@ public class Combate {
 				return escolhaSeguimentoJogo = 0;
 			}
 
-		} else if (vidaJogador <= 0 && vidaAdversario > 0) {
+		} else if (jogador.getVidaJogador() <= 0 && adversarioArmeiro.getVidaAdversario() > 0) {
 			if (escolhaMotivacao.equals("V")) {
 				String vinganca;
 				vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -392,10 +392,8 @@ public class Combate {
 		}
 	}
 
-	@SuppressWarnings("resource")
 	public int combatePortaEsquerda(int escolhaSeguimentoJogo, int nivel, int armaJogador, String escolhaMotivacao,
 			String classeCombate, int escolhaArmaduraNova) {
-		Scanner entrada = new Scanner(System.in);
 
 		this.nivel = nivel;
 		this.vidaJogador = jogador.getVidaJogador();
@@ -449,7 +447,7 @@ public class Combate {
 			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 		}
 
-		while (vidaJogador > 0 && vidaAdversario > 0) {
+		while (jogador.getVidaJogador() > 0 && adversarioAlquimista.getVidaAdversario() > 0) {
 
 			if (jogador.getVidaJogador() > 0) {
 				golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
@@ -463,21 +461,21 @@ public class Combate {
 			;
 			jogador.setVidaJogador(vidaJogador);
 
-			if (vidaJogador > 0) {
+			if (jogador.getVidaJogador() > 0) {
 				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 				escolhaSeguimentoJogo = entrada.nextInt();
 				if (escolhaSeguimentoJogo == 1) {
 					continue;
 				} else {
 					System.out.printf(
-							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
-					System.out.printf("%nJOGO ENCERRADO!");
+							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
+							+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
 				}
 			}
 		}
 
-		if (vidaJogador > 0 && vidaAdversario <= 0) {
+		if (jogador.getVidaJogador() > 0 && adversarioAlquimista.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 			escolhaSeguimentoJogo = entrada.nextInt();
@@ -494,7 +492,7 @@ public class Combate {
 
 		}
 
-		else if (vidaJogador <= 0 && vidaAdversario > 0) {
+		else if (jogador.getVidaJogador() <= 0 && adversarioAlquimista.getVidaAdversario() > 0) {
 			if (escolhaMotivacao.equals("V")) {
 				String vinganca;
 				vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -522,10 +520,8 @@ public class Combate {
 
 	}
 
-	@SuppressWarnings("resource")
 	public int combatePortaFinal(int escolhaSeguimentoJogo, int nivel, int armaJogador, String escolhaMotivacao,
 			String classeCombate, int escolhaBeberPocao, int escolhaAtacarEsperar) {
-		Scanner entrada = new Scanner(System.in);
 
 		this.nivel = nivel;
 		this.vidaJogador = jogador.getVidaJogador();
@@ -588,9 +584,9 @@ public class Combate {
 			vidaJogador = jogador.getVidaJogador();
 		}
 
-		while (vidaJogador > 0 && vidaAdversario > 0) {
+		while (jogador.getVidaJogador() > 0 && adversarioLider.getVidaAdversario() > 0) {
 
-			if (vidaJogador > 0 && vidaAdversario > 0) {
+			if (jogador.getVidaJogador() > 0 && adversarioLider.getVidaAdversario() > 0) {
 				if (escolhaAtacarEsperar == 1) {
 					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 					adversarioLider.setVidaAdversario(vidaAdversario);
@@ -620,16 +616,16 @@ public class Combate {
 					continue;
 				} else {
 					System.out.printf(
-							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. %nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
-					System.out.printf("%nJOGO ENCERRADO!");
+							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
+							+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
 				}
 
-			} else if (vidaJogador > 0 && vidaAdversario <= 0) {
+			} else if (jogador.getVidaJogador() > 0 && adversarioLider.getVidaAdversario() <= 0) {
 				System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 				System.out.printf("%nVITÓRIA DO JOGADOR");
 				return escolhaSeguimentoJogo = 1;
-			} else if (vidaJogador <= 0 && vidaAdversario > 0) {
+			} else if (jogador.getVidaJogador() <= 0 && adversarioLider.getVidaAdversario() > 0) {
 				if (escolhaMotivacao.equals("V")) {
 					String vinganca;
 					vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";

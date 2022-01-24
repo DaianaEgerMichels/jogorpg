@@ -337,7 +337,7 @@ public class Combate {
 				do {
 					System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 					escolhaSeguimentoJogo = entrada.nextInt();
-					if (escolhaSeguimentoJogo == 2) {
+					if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
 						System.out.printf("Escolha Inválida!");
 
 					}
@@ -357,15 +357,15 @@ public class Combate {
 
 		if (jogador.getVidaJogador() > 0 && adversarioArmeiro.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-			do{
-			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
-			escolhaSeguimentoJogo = entrada.nextInt();
-			
-			if(escolhaSeguimentoJogo !=1 && escolhaSeguimentoJogo !=2) {
-				System.out.printf("%n Entrada Inválida!");
-			}
-			} while (escolhaSeguimentoJogo !=1 && escolhaSeguimentoJogo !=2);
-			
+			do {
+				System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
+				escolhaSeguimentoJogo = entrada.nextInt();
+
+				if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
+					System.out.printf("%n Entrada Inválida!");
+				}
+			} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+
 			switch (escolhaSeguimentoJogo) {
 			case 1:
 				return escolhaSeguimentoJogo = 1;
@@ -470,8 +470,14 @@ public class Combate {
 			jogador.setVidaJogador(vidaJogador);
 
 			if (jogador.getVidaJogador() > 0) {
-				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
-				escolhaSeguimentoJogo = entrada.nextInt();
+				do {
+					System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
+					escolhaSeguimentoJogo = entrada.nextInt();
+					if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo !=2) {
+						System.out.printf("Escolha Inválida!");
+					}
+				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+
 				if (escolhaSeguimentoJogo == 1) {
 					continue;
 				} else {
@@ -480,22 +486,26 @@ public class Combate {
 									+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
 				}
+
 			}
 		}
 
 		if (jogador.getVidaJogador() > 0 && adversarioAlquimista.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
-			escolhaSeguimentoJogo = entrada.nextInt();
+			do {
+				System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
+				escolhaSeguimentoJogo = entrada.nextInt();
+
+				if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
+					System.out.printf("%n Entrada Inválida!");
+				}
+			} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
 
 			switch (escolhaSeguimentoJogo) {
 			case 1:
 				return escolhaSeguimentoJogo = 1;
-			case 2:
-				return escolhaSeguimentoJogo = 2;
 			default:
-				System.out.printf("%n Entrada Inválida!");
-				return escolhaSeguimentoJogo = 0;
+				return escolhaSeguimentoJogo = 2;
 			}
 
 		}

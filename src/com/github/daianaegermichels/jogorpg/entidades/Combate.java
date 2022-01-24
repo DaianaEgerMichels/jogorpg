@@ -363,8 +363,28 @@ public class Combate {
 					return escolhaSeguimentoJogo = 2;
 				}
 
-			} else {
-				return escolhaSeguimentoJogo = 2;
+			} else if (jogador.getVidaJogador() <= 0 && adversarioArmeiro.getVidaAdversario() > 0) {
+				if (escolhaMotivacao.equals("V")) {
+					String vinganca;
+					vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
+					escolhaMotivacao = vinganca;
+				} else {
+					String gloria;
+					String genero = "";
+					String mensagemGeneroEscolhido = "";
+					if (genero.equals("Feminino")) {
+						mensagemGeneroEscolhido = "sua próxima heróina";
+					} else {
+						mensagemGeneroEscolhido = "seu próximo herói";
+					}
+					gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
+
+					escolhaMotivacao = gloria + mensagemGeneroEscolhido;
+
+				}
+				System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
+				System.out.printf("%nFim de jogo para você!");
+				return escolhaSeguimentoJogo = 0;
 			}
 		}
 
@@ -385,32 +405,8 @@ public class Combate {
 			default:
 				return escolhaSeguimentoJogo = 2;
 			}
-
-		} else if (jogador.getVidaJogador() <= 0 && adversarioArmeiro.getVidaAdversario() > 0) {
-			if (escolhaMotivacao.equals("V")) {
-				String vinganca;
-				vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-				escolhaMotivacao = vinganca;
-			} else {
-				String gloria;
-				String genero = "";
-				String mensagemGeneroEscolhido = "";
-				if (genero.equals("Feminino")) {
-					mensagemGeneroEscolhido = "sua próxima heróina";
-				} else {
-					mensagemGeneroEscolhido = "seu próximo herói";
-				}
-				gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
-
-				escolhaMotivacao = gloria + mensagemGeneroEscolhido;
-
-			}
-			System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
-			System.out.printf("%nFim de jogo para você!");
-			return escolhaSeguimentoJogo = 0;
-		} else {
-			return escolhaSeguimentoJogo = 0;
 		}
+		return escolhaSeguimentoJogo;
 	}
 
 	public int combatePortaEsquerda(int escolhaSeguimentoJogo, int nivel, int armaJogador, String escolhaMotivacao,
@@ -487,11 +483,32 @@ public class Combate {
 							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
 									+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
-				} 
+				}
 
-			} else {
-				return escolhaSeguimentoJogo = 2;
+			} else if (jogador.getVidaJogador() <= 0 && adversarioAlquimista.getVidaAdversario() > 0) {
+				if (escolhaMotivacao.equals("V")) {
+					String vinganca;
+					vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
+					escolhaMotivacao = vinganca;
+				} else {
+					String gloria;
+					String genero = "";
+					String mensagemGeneroEscolhido = "";
+					if (genero.equals("Feminino")) {
+						mensagemGeneroEscolhido = "sua próxima heróina";
+					} else {
+						mensagemGeneroEscolhido = "seu próximo herói";
+					}
+					gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
+
+					escolhaMotivacao = gloria + mensagemGeneroEscolhido;
+
+				}
+				System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
+				System.out.printf("%nFim de jogo para você!");
+				return escolhaSeguimentoJogo = 0;
 			}
+
 		}
 
 		if (jogador.getVidaJogador() > 0 && adversarioAlquimista.getVidaAdversario() <= 0) {
@@ -511,35 +528,8 @@ public class Combate {
 			default:
 				return escolhaSeguimentoJogo = 2;
 			}
-
 		}
-
-		else if (jogador.getVidaJogador() <= 0 && adversarioAlquimista.getVidaAdversario() > 0) {
-			if (escolhaMotivacao.equals("V")) {
-				String vinganca;
-				vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-				escolhaMotivacao = vinganca;
-			} else {
-				String gloria;
-				String genero = "";
-				String mensagemGeneroEscolhido = "";
-				if (genero.equals("Feminino")) {
-					mensagemGeneroEscolhido = "sua próxima heróina";
-				} else {
-					mensagemGeneroEscolhido = "seu próximo herói";
-				}
-				gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
-
-				escolhaMotivacao = gloria + mensagemGeneroEscolhido;
-
-			}
-			System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
-			System.out.printf("%nFim de jogo para você!");
-			return escolhaSeguimentoJogo = 0;
-		} else {
-			return escolhaSeguimentoJogo = 0;
-		}
-
+		return escolhaSeguimentoJogo;
 	}
 
 	public int combatePortaFinal(int escolhaSeguimentoJogo, int nivel, int armaJogador, String escolhaMotivacao,
@@ -626,7 +616,7 @@ public class Combate {
 					adversarioLider.setVidaAdversario(vidaAdversario);
 				}
 
-				if (jogador.getVidaJogador()>0) {
+				if (jogador.getVidaJogador() > 0) {
 					do {
 						System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
 						escolhaSeguimentoJogo = entrada.nextInt();
@@ -643,11 +633,28 @@ public class Combate {
 										+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 						return escolhaSeguimentoJogo = 2;
 					}
-				} else {
-					return escolhaSeguimentoJogo = 2;
+				} else if (jogador.getVidaJogador() <= 0 && adversarioLider.getVidaAdversario() > 0) {
+					if (escolhaMotivacao.equals("V")) {
+						String vinganca;
+						vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
+						escolhaMotivacao = vinganca;
+					} else {
+						String gloria;
+						String genero = "";
+						String mensagemGeneroEscolhido = "";
+						if (genero.equals("Feminino")) {
+							mensagemGeneroEscolhido = "sua próxima heróina";
+						} else {
+							mensagemGeneroEscolhido = "seu próximo herói";
+						}
+						gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
+
+						escolhaMotivacao = gloria + mensagemGeneroEscolhido;
+
+					}
+					System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
+					return escolhaSeguimentoJogo = 0;
 				}
-				
-				
 			}
 		}
 
@@ -655,27 +662,6 @@ public class Combate {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
 			System.out.printf("%nVITÓRIA DO JOGADOR");
 			return escolhaSeguimentoJogo = 1;
-		} else if (jogador.getVidaJogador() <= 0 && adversarioLider.getVidaAdversario() > 0) {
-			if (escolhaMotivacao.equals("V")) {
-				String vinganca;
-				vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-				escolhaMotivacao = vinganca;
-			} else {
-				String gloria;
-				String genero = "";
-				String mensagemGeneroEscolhido = "";
-				if (genero.equals("Feminino")) {
-					mensagemGeneroEscolhido = "sua próxima heróina";
-				} else {
-					mensagemGeneroEscolhido = "seu próximo herói";
-				}
-				gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
-
-				escolhaMotivacao = gloria + mensagemGeneroEscolhido;
-
-			}
-			System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
-			return escolhaSeguimentoJogo = 0;
 		} else {
 			return escolhaSeguimentoJogo = 0;
 		}

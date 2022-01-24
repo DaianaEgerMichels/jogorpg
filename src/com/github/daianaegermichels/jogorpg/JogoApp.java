@@ -366,7 +366,7 @@ public class JogoApp {
 					}
 					;
 
-					int escolhaArmaduraNova;
+					int escolhaArmaduraNova = 0;
 					if (combateDireita == 1) {
 						System.out.printf(
 								"%nApós derrotar o Armeiro, você percebe que seus equipamentos estão muito danificados, "
@@ -399,8 +399,8 @@ public class JogoApp {
 								"%nVocê não estava preparado para a força do inimigo, e decide fugir para que possa tentar novamente em uma próxima vez."
 										+ "%n JOGO ENCERRADO!");
 						return;
-					} else {
-						System.out.printf("%n JOGO ENCERRADO!");
+					} else if (combateDireita == 0) {
+						System.out.printf("%nJOGO ENCERRADO!");
 						return;
 					}
 
@@ -453,11 +453,9 @@ public class JogoApp {
 					combateEsquerda = combate.combatePortaEsquerda(escolhaSeguimentoJogo, nivel, armaJogador,
 							escolhaMotivacao, classeCombate, escolhaArmaduraNova);
 
-					// System.out.println(combateEsquerda);
-
 					System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
-					int escolhaBeberPocao;
+					int escolhaBeberPocao = 0;
 
 					if (combateEsquerda == 1) {
 						System.out.printf(
@@ -493,7 +491,7 @@ public class JogoApp {
 								.printf("%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
 										+ "possa tentar novamente em uma próxima vez." + "%n JOGO ENCERRADO!");
 						return;
-					} else {
+					} else if (combateEsquerda == 0) {
 						System.out.printf("%nJOGO ENCERRADO!");
 						return;
 					}

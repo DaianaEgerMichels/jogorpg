@@ -572,8 +572,10 @@ public class JogoApp {
 								.printf("%nVocê não estava preparado para a força do inimigo, e decide fugir para que "
 										+ "possa tentar novamente em uma próxima vez." + "%n JOGO ENCERRADO!");
 						return;
-					} else {
+					} else if (combateFinal == 0) {
 						System.out.printf("%nJOGO ENCERRADO!");
+						return;
+					} else {
 						return;
 					}
 

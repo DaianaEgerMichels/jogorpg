@@ -9,7 +9,7 @@ public class Combate {
 	static AdversarioAlquimista adversarioAlquimista = new AdversarioAlquimista();
 	static AdversarioLider adversarioLider = new AdversarioLider();
 	static Scanner entrada = new Scanner(System.in);
-	
+
 	private int vidaJogador;
 	private int pontosDefesaJogador;
 	private int golpeJogador;
@@ -243,7 +243,7 @@ public class Combate {
 
 	public int combatePortaDireita(int escolhaSeguimentoJogo, int nivel, int armaJogador, int modoDeAndar,
 			String escolhaMotivacao, String classeCombate, int agilidadeJogador) {
-	
+
 		this.nivel = nivel;
 		this.modoDeAndar = modoDeAndar;
 		this.agilidadeJogador = agilidadeJogador;
@@ -306,19 +306,19 @@ public class Combate {
 
 		while (jogador.getVidaJogador() > 0 && adversarioArmeiro.getVidaAdversario() > 0) {
 
-			if(agilidadeJogador == 1) {
-			if (jogador.getVidaJogador() > 0) {
-				golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
-			}
-			adversarioArmeiro.setVidaAdversario(vidaAdversario);
-			if (adversarioArmeiro.getVidaAdversario() > 0) {
-				golpeAdversario(nivel);
+			if (agilidadeJogador == 1) {
+				if (jogador.getVidaJogador() > 0) {
+					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
+				}
+				adversarioArmeiro.setVidaAdversario(vidaAdversario);
+				if (adversarioArmeiro.getVidaAdversario() > 0) {
+					golpeAdversario(nivel);
+				} else {
+					System.out.println("Inimigo Derrotado!");
+				}
+				;
+				jogador.setVidaJogador(vidaJogador);
 			} else {
-				System.out.println("Inimigo Derrotado!");
-			}
-			;
-			jogador.setVidaJogador(vidaJogador);}
-			else {
 				if (jogador.getVidaJogador() > 0) {
 					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 					golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
@@ -326,7 +326,7 @@ public class Combate {
 				adversarioArmeiro.setVidaAdversario(vidaAdversario);
 				if (adversarioArmeiro.getVidaAdversario() > 0) {
 					golpeAdversario(nivel);
-				}else {
+				} else {
 					System.out.println("Inimigo Derrotado!");
 				}
 				;
@@ -334,35 +334,43 @@ public class Combate {
 			}
 
 			if (jogador.getVidaJogador() > 0) {
+				do {
+					System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
+					escolhaSeguimentoJogo = entrada.nextInt();
+					if (escolhaSeguimentoJogo == 2) {
+						System.out.printf("Escolha Inválida!");
 
-				System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
-				escolhaSeguimentoJogo = entrada.nextInt();
+					}
+				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+
 				if (escolhaSeguimentoJogo == 1) {
 					continue;
-				} else if (escolhaSeguimentoJogo == 2) {
+				} else {
 					System.out.printf(
 							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
-							+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
+									+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
-				} else {
-					return escolhaSeguimentoJogo = 0;
 				}
+
 			}
 		}
 
 		if (jogador.getVidaJogador() > 0 && adversarioArmeiro.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
+			do{
 			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
 			escolhaSeguimentoJogo = entrada.nextInt();
-
+			
+			if(escolhaSeguimentoJogo !=1 && escolhaSeguimentoJogo !=2) {
+				System.out.printf("%n Entrada Inválida!");
+			}
+			} while (escolhaSeguimentoJogo !=1 && escolhaSeguimentoJogo !=2);
+			
 			switch (escolhaSeguimentoJogo) {
 			case 1:
 				return escolhaSeguimentoJogo = 1;
-			case 2:
-				return escolhaSeguimentoJogo = 2;
 			default:
-				System.out.printf("%n Entrada Inválida!");
-				return escolhaSeguimentoJogo = 0;
+				return escolhaSeguimentoJogo = 2;
 			}
 
 		} else if (jogador.getVidaJogador() <= 0 && adversarioArmeiro.getVidaAdversario() > 0) {
@@ -469,7 +477,7 @@ public class Combate {
 				} else {
 					System.out.printf(
 							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
-							+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
+									+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
 				}
 			}
@@ -617,7 +625,7 @@ public class Combate {
 				} else {
 					System.out.printf(
 							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
-							+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
+									+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
 				}
 

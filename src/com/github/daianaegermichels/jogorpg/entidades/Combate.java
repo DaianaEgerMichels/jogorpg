@@ -345,7 +345,7 @@ public class Combate {
 						System.out.printf("Escolha Inválida!");
 
 					}
-				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2 && jogador.getVidaJogador() > 0);
+				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
 
 				if (escolhaSeguimentoJogo == 1) {
 					continue;
@@ -482,7 +482,7 @@ public class Combate {
 					if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
 						System.out.printf("Escolha Inválida!");
 					}
-				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2 && jogador.getVidaJogador() > 0);
+				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
 
 				if (escolhaSeguimentoJogo == 1) {
 					continue;
@@ -650,7 +650,7 @@ public class Combate {
 					if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
 						System.out.println("Entrada Inválida!");
 					}
-				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2 && jogador.getVidaJogador() > 0);
+				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
 
 				if (escolhaSeguimentoJogo == 1) {
 					continue;

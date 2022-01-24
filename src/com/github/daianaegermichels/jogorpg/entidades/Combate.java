@@ -363,6 +363,8 @@ public class Combate {
 					return escolhaSeguimentoJogo = 2;
 				}
 
+			} else {
+				return escolhaSeguimentoJogo = 2;
 			}
 		}
 
@@ -485,8 +487,10 @@ public class Combate {
 							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
 									+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
-				}
+				} 
 
+			} else {
+				return escolhaSeguimentoJogo = 2;
 			}
 		}
 
@@ -618,27 +622,32 @@ public class Combate {
 						golpeJogador(armaJogador, escolhaMotivacao, classeCombate, nivel);
 					} else {
 						System.out.println("Você foi derrotado!");
-						return escolhaSeguimentoJogo = 2;
 					}
 					adversarioLider.setVidaAdversario(vidaAdversario);
 				}
 
-				do {
-					System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
-					escolhaSeguimentoJogo = entrada.nextInt();
-					if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
-						System.out.println("Entrada Inválida!");
-					}
-				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+				if (jogador.getVidaJogador()>0) {
+					do {
+						System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
+						escolhaSeguimentoJogo = entrada.nextInt();
+						if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
+							System.out.println("Entrada Inválida!");
+						}
+					} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
 
-				if (escolhaSeguimentoJogo == 1) {
-					continue;
+					if (escolhaSeguimentoJogo == 1) {
+						continue;
+					} else {
+						System.out.printf(
+								"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
+										+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
+						return escolhaSeguimentoJogo = 2;
+					}
 				} else {
-					System.out.printf(
-							"%nO medo invade o seu coração e você sente que ainda não está à altura do desafio. "
-									+ "%nVocê se volta para a noite lá fora e corre em direção à segurança.%n");
 					return escolhaSeguimentoJogo = 2;
 				}
+				
+				
 			}
 		}
 

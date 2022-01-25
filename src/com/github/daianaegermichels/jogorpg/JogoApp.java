@@ -352,7 +352,7 @@ public class JogoApp {
 					switch (continua) {
 					case 1:
 						combateDireita = combate.combatePortaDireita(continua, nivel, armaJogador, modoDeAndar,
-								escolhaMotivacao, classeCombate, agilidadeJogador);
+								escolhaMotivacao, classeCombate, agilidadeJogador, sexoAvatar);
 						break;
 					case 2:
 						System.out.printf("%nVocê não estava preparado para a força do inimigo, "
@@ -451,7 +451,7 @@ public class JogoApp {
 					}
 
 					combateEsquerda = combate.combatePortaEsquerda(escolhaSeguimentoJogo, nivel, armaJogador,
-							escolhaMotivacao, classeCombate, escolhaArmaduraNova);
+							escolhaMotivacao, classeCombate, escolhaArmaduraNova, sexoAvatar);
 
 					System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
@@ -541,7 +541,7 @@ public class JogoApp {
 					int combateFinal;
 
 					combateFinal = combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador,
-							escolhaMotivacao, classeCombate, escolhaBeberPocao, escolhaAtacarEsperar);
+							escolhaMotivacao, classeCombate, escolhaBeberPocao, escolhaAtacarEsperar, sexoAvatar);
 
 					if (combateFinal == 1) {
 

@@ -325,7 +325,7 @@ public class Combate {
 				}
 
 			} else if (jogador.getVidaJogador() <= 0 && adversarioArmeiro.getVidaAdversario() > 0) {
-				mensagemDerrota(escolhaMotivacao, sexoAvatar);
+				mensagemDerrota(escolhaMotivacao, jogador.getSexo());
 				return escolhaSeguimentoJogo = 0;
 			}
 		}
@@ -428,7 +428,7 @@ public class Combate {
 				}
 
 			} else if (jogador.getVidaJogador() <= 0 && adversarioAlquimista.getVidaAdversario() > 0) {
-				mensagemDerrota(escolhaMotivacao, sexoAvatar);
+				mensagemDerrota(escolhaMotivacao, jogador.getSexo());
 				return escolhaSeguimentoJogo = 0;
 			}
 
@@ -557,7 +557,7 @@ public class Combate {
 						return escolhaSeguimentoJogo = 2;
 					}
 				} else if (jogador.getVidaJogador() <= 0 && adversarioLider.getVidaAdversario() > 0) {
-					mensagemDerrota(escolhaMotivacao, sexoAvatar);
+					mensagemDerrota(escolhaMotivacao, jogador.getSexo());
 					return escolhaSeguimentoJogo = 0;
 				}
 			}
@@ -565,7 +565,7 @@ public class Combate {
 
 		if (jogador.getVidaJogador() > 0 && adversarioLider.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-			System.out.printf("%nVITÓRIA DO JOGADOR");
+			System.out.printf("%nVITÓRIA DO JOGADOR: %s%n", jogador.getNome());
 			return escolhaSeguimentoJogo = 1;
 		} else {
 			return escolhaSeguimentoJogo = 0;

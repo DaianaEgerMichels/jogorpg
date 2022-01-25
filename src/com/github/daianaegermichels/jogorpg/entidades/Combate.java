@@ -73,41 +73,8 @@ public class Combate {
 			} else {
 				vidaAdversario -= 4;
 			}
-
 			System.out.printf("%n Você acertou um ataque crítico!");
-
-			String complementoArma = "";
-			String arma = "";
-			if (classeCombate.equals("G")) {
-				if (armaJogador == 3) {
-					arma = "Martelo";
-				} else if (armaJogador == 7) {
-					arma = "Machado";
-				} else if (armaJogador == 5) {
-					arma = "Espada";
-				} else {
-					arma = "Clava";
-				}
-				complementoArma = "com sua/seu " + arma;
-			} else if (classeCombate.equals("M")) {
-				if (armaJogador == 5) {
-					arma = "Livro";
-					complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
-				} else {
-					arma = "Cajado";
-					complementoArma = "com seu cajado, lançando uma bola de fogo";
-				}
-			} else if (classeCombate.equals("C")) {
-				if (armaJogador == 7) {
-					arma = "Arco e Flecha";
-					complementoArma = "com seu Arco, a Flecha atingiu";
-				} else {
-					arma = "Besta e Virote";
-					complementoArma = "com sua Besta, o Virote atingiu";
-				}
-			}
-
-			System.out.printf("%nVocê atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
+			mensagemArmaAtaque(classeCombate, armaJogador);
 
 		} else if (pontosDefesaAdversario > 0 && vidaAdversario > 0) {
 
@@ -119,94 +86,64 @@ public class Combate {
 			} else {
 				danoNoAdversario = 0;
 			}
-
 			pontosDefesaAdversario -= danoNoAdversario;
-
 			vidaAdversario--;
-
-			String complementoArma = "";
-			String arma = "";
-			if (classeCombate.equals("G")) {
-				if (armaJogador == 3) {
-					arma = "Martelo";
-				} else if (armaJogador == 7) {
-					arma = "Machado";
-				} else if (armaJogador == 5) {
-					arma = "Espada";
-				} else {
-					arma = "Clava";
-				}
-				complementoArma = "com sua/seu " + arma;
-			} else if (classeCombate.equals("M")) {
-				if (armaJogador == 5) {
-					arma = "Livro";
-					complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
-				} else {
-					arma = "Cajado";
-					complementoArma = "com seu cajado, lançando uma bola de fogo";
-				}
-			} else if (classeCombate.equals("C")) {
-				if (armaJogador == 7) {
-					arma = "Arco e Flecha";
-					complementoArma = "com seu Arco, a Flecha atingiu";
-				} else {
-					arma = "Besta e Virote";
-					complementoArma = "com sua Besta, o Virote atingiu";
-				}
-			}
-
-			System.out.printf("%nVocê atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
+			mensagemArmaAtaque(classeCombate, armaJogador);
 
 		} else if (pontosDefesaAdversario <= 0 && vidaAdversario > 0) {
 			danoNoAdversario = 0;
-
 			pontosDefesaAdversario = danoNoAdversario;
-
 			vidaAdversario -= 2;
-
-			String complementoArma = "";
-			String arma = "";
-			if (classeCombate.equals("G")) {
-				if (armaJogador == 3) {
-					arma = "Martelo";
-				} else if (armaJogador == 7) {
-					arma = "Machado";
-				} else if (armaJogador == 5) {
-					arma = "Espada";
-				} else {
-					arma = "Clava";
-				}
-				complementoArma = "com sua/seu " + arma;
-			} else if (classeCombate.equals("M")) {
-				if (armaJogador == 5) {
-					arma = "Livro";
-					complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
-				} else {
-					arma = "Cajado";
-					complementoArma = "com seu cajado, lançando uma bola de fogo";
-				}
-			} else if (classeCombate.equals("C")) {
-				if (armaJogador == 7) {
-					arma = "Arco e Flecha";
-					complementoArma = "com seu Arco, a Flecha atingiu";
-				} else {
-					arma = "Besta e Virote";
-					complementoArma = "com sua Besta, o Virote atingiu";
-				}
-			}
-
-			System.out.printf(
-					"%nVocê atacou %s e causou a perda de 2 pontos de vida no inimigo! O inimigo possui %d pontos de defesa. %n",
-					complementoArma, danoNoAdversario);
-
+			mensagemArmaAtaque(classeCombate, armaJogador);
 		} else {
 			vidaAdversario = 0;
 			System.out.printf("%n O inimigo sem pontos de defesa foi golpeado e morreu!");
 		}
 	}
-	
-	
-	public void mensagemDerrota (String escolhaMotivacao, int sexoAvatar) {
+
+	public void mensagemArmaAtaque(String classeCombate, int armaJogador) {
+		String complementoArma = "";
+		String arma = "";
+		if (classeCombate.equals("G")) {
+			if (armaJogador == 3) {
+				arma = "Martelo";
+			} else if (armaJogador == 7) {
+				arma = "Machado";
+			} else if (armaJogador == 5) {
+				arma = "Espada";
+			} else {
+				arma = "Clava";
+			}
+			complementoArma = "com sua/seu " + arma;
+		} else if (classeCombate.equals("M")) {
+			if (armaJogador == 5) {
+				arma = "Livro";
+				complementoArma = "absorvendo energia do livro com uma mão e liberando com a outra";
+			} else {
+				arma = "Cajado";
+				complementoArma = "com seu cajado, lançando uma bola de fogo";
+			}
+		} else if (classeCombate.equals("C")) {
+			if (armaJogador == 7) {
+				arma = "Arco e Flecha";
+				complementoArma = "com seu Arco, a Flecha atingiu";
+			} else {
+				arma = "Besta e Virote";
+				complementoArma = "com sua Besta, o Virote atingiu";
+			}
+		}
+
+		if (pontosDefesaAdversario > 0 && vidaAdversario > 0 || golpeJogador == 20) {
+			System.out.printf("%nVocê atacou %s e causou %d de dano no inimigo! %n", complementoArma, danoNoAdversario);
+		} else {
+			System.out.printf(
+					"%nVocê atacou %s e causou a perda de 2 pontos de vida no inimigo! O inimigo possui 0 pontos de defesa. %n",
+					complementoArma);
+		}
+
+	}
+
+	public void mensagemDerrota(String escolhaMotivacao, int sexoAvatar) {
 		if (escolhaMotivacao.equals("V")) {
 			String vinganca;
 			vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
@@ -227,7 +164,6 @@ public class Combate {
 		}
 		System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
 		System.out.printf("%nFim de jogo para você!");
-		//return 0;
 	}
 
 	public void golpeAdversario(int nivel) {
@@ -389,29 +325,8 @@ public class Combate {
 				}
 
 			} else if (jogador.getVidaJogador() <= 0 && adversarioArmeiro.getVidaAdversario() > 0) {
-				/*if (escolhaMotivacao.equals("V")) {
-					String vinganca;
-					vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-					escolhaMotivacao = vinganca;
-				} else {
-					String gloria;
-					genero = sexoAvatar;
-					String mensagemGeneroEscolhido = "";
-					if (genero == 1) {
-						mensagemGeneroEscolhido = "sua próxima heróina";
-					} else {
-						mensagemGeneroEscolhido = "seu próximo herói";
-					}
-					gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
-
-					escolhaMotivacao = gloria + mensagemGeneroEscolhido;
-
-				}
-				System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
-				System.out.printf("%nFim de jogo para você!");*/
 				mensagemDerrota(escolhaMotivacao, sexoAvatar);
 				return escolhaSeguimentoJogo = 0;
-				
 			}
 		}
 
@@ -513,27 +428,6 @@ public class Combate {
 				}
 
 			} else if (jogador.getVidaJogador() <= 0 && adversarioAlquimista.getVidaAdversario() > 0) {
-				/*if (escolhaMotivacao.equals("V")) {
-					String vinganca;
-					vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-					escolhaMotivacao = vinganca;
-				} else {
-					String gloria;
-					String genero = "";
-					String mensagemGeneroEscolhido = "";
-					if (genero.equals("Feminino")) {
-						mensagemGeneroEscolhido = "sua próxima heróina";
-					} else {
-						mensagemGeneroEscolhido = "seu próximo herói";
-					}
-					gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
-
-					escolhaMotivacao = gloria + mensagemGeneroEscolhido;
-
-				}
-				System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);
-				System.out.printf("%nFim de jogo para você!");*/
-				
 				mensagemDerrota(escolhaMotivacao, sexoAvatar);
 				return escolhaSeguimentoJogo = 0;
 			}
@@ -663,28 +557,8 @@ public class Combate {
 						return escolhaSeguimentoJogo = 2;
 					}
 				} else if (jogador.getVidaJogador() <= 0 && adversarioLider.getVidaAdversario() > 0) {
-					/*if (escolhaMotivacao.equals("V")) {
-						String vinganca;
-						vinganca = "Não foi possível concluir sua vingança, e agora resta saber se alguém se vingará por você.";
-						escolhaMotivacao = vinganca;
-					} else {
-						String gloria;
-						String genero = "";
-						String mensagemGeneroEscolhido = "";
-						if (genero.equals("Feminino")) {
-							mensagemGeneroEscolhido = "sua próxima heróina";
-						} else {
-							mensagemGeneroEscolhido = "seu próximo herói";
-						}
-						gloria = "A glória que buscavas não será sua, e a cidade aguarda por ";
-
-						escolhaMotivacao = gloria + mensagemGeneroEscolhido;
-
-					}
-					System.out.printf("Você não estava preparado para a força do inimigo. %s%n", escolhaMotivacao);*/
 					mensagemDerrota(escolhaMotivacao, sexoAvatar);
 					return escolhaSeguimentoJogo = 0;
-					
 				}
 			}
 		}

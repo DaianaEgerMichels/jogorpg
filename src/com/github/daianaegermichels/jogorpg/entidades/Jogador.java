@@ -7,7 +7,10 @@ public class Jogador {
 	private int agilidade;
 	private int vidaJogador;
 	private int pontosDefesaJogador;
+	private int ataqueJogador;
 	
+	
+
 	public Jogador() {
 		
 	}
@@ -71,8 +74,13 @@ public class Jogador {
 	public void setPontosDefesaJogador(int pontosDefesaJogador) {
 		this.pontosDefesaJogador = pontosDefesaJogador;
 	}
+	
+	public int getAtaqueJogador() {
+		return ataqueJogador;
+	}
 
-	
-	
+	public void setAtaqueJogador(int ataqueJogador) {
+		this.ataqueJogador = ataqueJogador;
+	}
 	
 }

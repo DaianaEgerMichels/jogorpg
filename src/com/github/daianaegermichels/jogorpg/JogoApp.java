@@ -64,6 +64,7 @@ public class JogoApp {
 						System.out.println("De um nome ao seu avatar");
 
 						nomeAvatar = entrada.nextLine().toUpperCase();
+						jogador.setNome(nomeAvatar);
 
 						if (nomeAvatar.length() > 0) {
 							int confirmacaoNome;
@@ -73,7 +74,6 @@ public class JogoApp {
 								confirmacaoNome = entrada.nextInt();
 
 								if (confirmacaoNome == 1) {
-									jogador.setNome(nomeAvatar);
 									System.out.printf("Nome do Avatar: %s ", jogador.getNome());
 								} else if (confirmacaoNome == 2) {
 									System.out.println(entrada.nextLine());
@@ -352,7 +352,7 @@ public class JogoApp {
 					switch (continua) {
 					case 1:
 						combateDireita = combate.combatePortaDireita(continua, nivel, armaJogador, modoDeAndar,
-								escolhaMotivacao, classeCombate, agilidadeJogador, sexoAvatar);
+								escolhaMotivacao, classeCombate, agilidadeJogador);
 						break;
 					case 2:
 						System.out.printf("%nVocê não estava preparado para a força do inimigo, "
@@ -451,7 +451,7 @@ public class JogoApp {
 					}
 
 					combateEsquerda = combate.combatePortaEsquerda(escolhaSeguimentoJogo, nivel, armaJogador,
-							escolhaMotivacao, classeCombate, escolhaArmaduraNova, sexoAvatar);
+							escolhaMotivacao, classeCombate, escolhaArmaduraNova);
 
 					System.out.printf("%n:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::%n");
 
@@ -541,7 +541,7 @@ public class JogoApp {
 					int combateFinal;
 
 					combateFinal = combate.combatePortaFinal(escolhaSeguimentoJogo, nivel, armaJogador,
-							escolhaMotivacao, classeCombate, escolhaBeberPocao, escolhaAtacarEsperar, sexoAvatar);
+							escolhaMotivacao, classeCombate, escolhaBeberPocao, escolhaAtacarEsperar);
 
 					if (combateFinal == 1) {
 

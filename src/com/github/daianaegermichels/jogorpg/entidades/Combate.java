@@ -51,56 +51,6 @@ public class Combate {
 		return geradorGolpe.nextInt(3) + 1;
 	}
 
-	public void golpeJogador(int armaJogador, String escolhaMotivacao, String classeCombate, int nivel) {
-
-		this.armaJogador = armaJogador;
-		this.escolhaMotivacao = escolhaMotivacao;
-		this.classeCombate = classeCombate;
-		this.nivel = nivel;
-
-		golpeJogador = ataqueJogador();
-
-		if (golpeJogador == 1) {
-			danoNoAdversario = 0;
-			System.out.printf("%nVocê errou seu ataque! O inimigo não sofreu dano algum.");
-		} else if (golpeJogador == 20) {
-			danoNoAdversario = 50;
-
-			if (nivel == 1) {
-				vidaAdversario = 0;
-			} else if (nivel == 2) {
-				vidaAdversario -= 5;
-			} else {
-				vidaAdversario -= 4;
-			}
-			System.out.printf("%n Você acertou um ataque crítico!");
-			mensagemArmaAtaque(classeCombate, armaJogador);
-
-		} else if (pontosDefesaAdversario > 0 && vidaAdversario > 0) {
-
-			if (nivel == 1 || nivel == 2) {
-				danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
-			} else if (nivel == 3) {
-				int danoNoAdversarioDificil = 17;
-				danoNoAdversario = danoNoAdversarioDificil;
-			} else {
-				danoNoAdversario = 0;
-			}
-			pontosDefesaAdversario -= danoNoAdversario;
-			vidaAdversario--;
-			mensagemArmaAtaque(classeCombate, armaJogador);
-
-		} else if (pontosDefesaAdversario <= 0 && vidaAdversario > 0) {
-			danoNoAdversario = 0;
-			pontosDefesaAdversario = danoNoAdversario;
-			vidaAdversario -= 2;
-			mensagemArmaAtaque(classeCombate, armaJogador);
-		} else {
-			vidaAdversario = 0;
-			System.out.printf("%n O inimigo sem pontos de defesa foi golpeado e morreu!");
-		}
-	}
-
 	public void mensagemArmaAtaque(String classeCombate, int armaJogador) {
 		String complementoArma = "";
 		String arma = "";
@@ -166,6 +116,81 @@ public class Combate {
 		System.out.printf("%nFim de jogo para você!");
 	}
 
+	public int mensagemContinuarFugir(int escolhaSeguimentoJogo) {
+		do {
+			System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
+			escolhaSeguimentoJogo = entrada.nextInt();
+			if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
+				System.out.println("Entrada Inválida!");
+			}
+		} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+
+		return escolhaSeguimentoJogo;
+	}
+
+	public int mensagemSeguirDesistir(int escolhaSeguimentoJogo) {
+		do {
+			System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
+			escolhaSeguimentoJogo = entrada.nextInt();
+
+			if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
+				System.out.printf("%n Entrada Inválida!");
+			}
+		} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+
+		return escolhaSeguimentoJogo;
+	}
+
+	public void golpeJogador(int armaJogador, String escolhaMotivacao, String classeCombate, int nivel) {
+
+		this.armaJogador = armaJogador;
+		this.escolhaMotivacao = escolhaMotivacao;
+		this.classeCombate = classeCombate;
+		this.nivel = nivel;
+
+		golpeJogador = ataqueJogador();
+
+		if (golpeJogador == 1) {
+			danoNoAdversario = 0;
+			System.out.printf("%nVocê errou seu ataque! O inimigo não sofreu dano algum.");
+		} else if (golpeJogador == 20) {
+			danoNoAdversario = 50;
+
+			if (nivel == 1) {
+				vidaAdversario = 0;
+			} else if (nivel == 2) {
+				vidaAdversario -= 5;
+			} else {
+				vidaAdversario -= 4;
+			}
+			System.out.printf("%n Você acertou um ataque crítico!");
+			mensagemArmaAtaque(classeCombate, armaJogador);
+
+		} else if (pontosDefesaAdversario > 0 && vidaAdversario > 0) {
+
+			if (nivel == 1 || nivel == 2) {
+				danoNoAdversario = ataqueJogador + armaJogador + golpeJogador;
+			} else if (nivel == 3) {
+				int danoNoAdversarioDificil = 17;
+				danoNoAdversario = danoNoAdversarioDificil;
+			} else {
+				danoNoAdversario = 0;
+			}
+			pontosDefesaAdversario -= danoNoAdversario;
+			vidaAdversario--;
+			mensagemArmaAtaque(classeCombate, armaJogador);
+
+		} else if (pontosDefesaAdversario <= 0 && vidaAdversario > 0) {
+			danoNoAdversario = 0;
+			pontosDefesaAdversario = danoNoAdversario;
+			vidaAdversario -= 2;
+			mensagemArmaAtaque(classeCombate, armaJogador);
+		} else {
+			vidaAdversario = 0;
+			System.out.printf("%n O inimigo sem pontos de defesa foi golpeado e morreu!");
+		}
+	}
+	
 	public void golpeAdversario(int nivel) {
 
 		golpeAdversario = ataqueAdversario();
@@ -221,7 +246,7 @@ public class Combate {
 	}
 
 	public int combatePortaDireita(int escolhaSeguimentoJogo, int nivel, int armaJogador, int modoDeAndar,
-			String escolhaMotivacao, String classeCombate, int agilidadeJogador, int sexoAvatar) {
+			String escolhaMotivacao, String classeCombate, int agilidadeJogador) {
 
 		this.nivel = nivel;
 		this.modoDeAndar = modoDeAndar;
@@ -233,6 +258,7 @@ public class Combate {
 			pontosDefesaJogador = 100;
 			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 			ataqueJogador = 15;
+			jogador.setAtaqueJogador(ataqueJogador);
 			ataqueAdversario = adversarioArmeiro.getAtaqueAdversario();
 			vidaAdversario = adversarioArmeiro.getVidaAdversario();
 			pontosDefesaAdversario = adversarioArmeiro.getPontosDefesaAdversario();
@@ -243,6 +269,7 @@ public class Combate {
 			pontosDefesaJogador = 150;
 			jogador.setPontosDefesaJogador(pontosDefesaJogador);
 			ataqueJogador = 14;
+			jogador.setAtaqueJogador(ataqueJogador);
 			ataqueAdversario = 15;
 			adversarioArmeiro.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 6;
@@ -256,7 +283,6 @@ public class Combate {
 			jogador.setVidaJogador(vidaJogador);
 			pontosDefesaJogador = 180;
 			jogador.setPontosDefesaJogador(pontosDefesaJogador);
-			ataqueJogador = 13;
 			ataqueAdversario = 17;
 			adversarioArmeiro.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 8;
@@ -306,15 +332,7 @@ public class Combate {
 			}
 
 			if (jogador.getVidaJogador() > 0) {
-				do {
-					System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
-					escolhaSeguimentoJogo = entrada.nextInt();
-					if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
-						System.out.printf("Escolha Inválida!");
-
-					}
-				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
-
+				escolhaSeguimentoJogo = mensagemContinuarFugir(escolhaSeguimentoJogo);
 				if (escolhaSeguimentoJogo == 1) {
 					continue;
 				} else {
@@ -332,14 +350,7 @@ public class Combate {
 
 		if (jogador.getVidaJogador() > 0 && adversarioArmeiro.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-			do {
-				System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
-				escolhaSeguimentoJogo = entrada.nextInt();
-
-				if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
-					System.out.printf("%n Entrada Inválida!");
-				}
-			} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+			escolhaSeguimentoJogo = mensagemSeguirDesistir(escolhaSeguimentoJogo);
 
 			switch (escolhaSeguimentoJogo) {
 			case 1:
@@ -352,7 +363,7 @@ public class Combate {
 	}
 
 	public int combatePortaEsquerda(int escolhaSeguimentoJogo, int nivel, int armaJogador, String escolhaMotivacao,
-			String classeCombate, int escolhaArmaduraNova, int sexoAvatar) {
+			String classeCombate, int escolhaArmaduraNova) {
 
 		this.nivel = nivel;
 		this.vidaJogador = jogador.getVidaJogador();
@@ -360,13 +371,12 @@ public class Combate {
 		this.escolhaArmaduraNova = escolhaArmaduraNova;
 
 		if (nivel == 1) {
-			ataqueJogador = 15;
 			ataqueAdversario = adversarioAlquimista.getAtaqueAdversario();
 			vidaAdversario = adversarioAlquimista.getVidaAdversario();
 			pontosDefesaAdversario = adversarioAlquimista.getPontosDefesaAdversario();
 			armaAdversario = adversarioAlquimista.getArmaAdversario();
+			ataqueJogador = jogador.getAtaqueJogador();
 		} else if (nivel == 2) {
-			ataqueJogador = 15;
 			ataqueAdversario = 17;
 			adversarioAlquimista.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 7;
@@ -375,8 +385,8 @@ public class Combate {
 			adversarioAlquimista.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 8;
 			adversarioAlquimista.setArmaAdversario(armaAdversario);
+			ataqueJogador = jogador.getAtaqueJogador();
 		} else {
-			ataqueJogador = 15;
 			ataqueAdversario = 19;
 			adversarioAlquimista.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 9;
@@ -385,7 +395,6 @@ public class Combate {
 			adversarioAlquimista.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 10;
 			adversarioAlquimista.setArmaAdversario(armaAdversario);
-
 		}
 
 		if (escolhaArmaduraNova == 1) {
@@ -410,14 +419,7 @@ public class Combate {
 			jogador.setVidaJogador(vidaJogador);
 
 			if (jogador.getVidaJogador() > 0) {
-				do {
-					System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
-					escolhaSeguimentoJogo = entrada.nextInt();
-					if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
-						System.out.printf("Escolha Inválida!");
-					}
-				} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
-
+				escolhaSeguimentoJogo = mensagemContinuarFugir(escolhaSeguimentoJogo);
 				if (escolhaSeguimentoJogo == 1) {
 					continue;
 				} else {
@@ -436,14 +438,7 @@ public class Combate {
 
 		if (jogador.getVidaJogador() > 0 && adversarioAlquimista.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-			do {
-				System.out.printf("%nO que você deseja? %n 1 - Seguir em frente %n 2 - Desistir");
-				escolhaSeguimentoJogo = entrada.nextInt();
-
-				if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
-					System.out.printf("%n Entrada Inválida!");
-				}
-			} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
+			escolhaSeguimentoJogo = mensagemSeguirDesistir(escolhaSeguimentoJogo);
 
 			switch (escolhaSeguimentoJogo) {
 			case 1:
@@ -456,7 +451,7 @@ public class Combate {
 	}
 
 	public int combatePortaFinal(int escolhaSeguimentoJogo, int nivel, int armaJogador, String escolhaMotivacao,
-			String classeCombate, int escolhaBeberPocao, int escolhaAtacarEsperar, int sexoAvatar) {
+			String classeCombate, int escolhaBeberPocao, int escolhaAtacarEsperar) {
 
 		this.nivel = nivel;
 		this.vidaJogador = jogador.getVidaJogador();
@@ -465,13 +460,12 @@ public class Combate {
 		this.escolhaAtacarEsperar = escolhaAtacarEsperar;
 
 		if (nivel == 1) {
-			ataqueJogador = 15;
 			ataqueAdversario = adversarioLider.getAtaqueAdversario();
 			vidaAdversario = adversarioLider.getVidaAdversario();
 			pontosDefesaAdversario = adversarioLider.getPontosDefesaAdversario();
 			armaAdversario = adversarioLider.getArmaAdversario();
+			ataqueJogador = jogador.getAtaqueJogador();
 		} else if (nivel == 2) {
-			ataqueJogador = 15;
 			ataqueAdversario = 18;
 			adversarioLider.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 7;
@@ -480,8 +474,8 @@ public class Combate {
 			adversarioLider.setPontosDefesaAdversario(pontosDefesaAdversario);
 			armaAdversario = 12;
 			adversarioLider.setArmaAdversario(armaAdversario);
+			ataqueJogador = jogador.getAtaqueJogador();
 		} else {
-			ataqueJogador = 15;
 			ataqueAdversario = 20;
 			adversarioLider.setAtaqueAdversario(ataqueAdversario);
 			vidaAdversario = 8;
@@ -540,14 +534,7 @@ public class Combate {
 				}
 
 				if (jogador.getVidaJogador() > 0) {
-					do {
-						System.out.printf("O que você deseja? %n 1 - Continuar %n 2 - Fugir");
-						escolhaSeguimentoJogo = entrada.nextInt();
-						if (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2) {
-							System.out.println("Entrada Inválida!");
-						}
-					} while (escolhaSeguimentoJogo != 1 && escolhaSeguimentoJogo != 2);
-
+					escolhaSeguimentoJogo = mensagemContinuarFugir(escolhaSeguimentoJogo);
 					if (escolhaSeguimentoJogo == 1) {
 						continue;
 					} else {
@@ -565,11 +552,9 @@ public class Combate {
 
 		if (jogador.getVidaJogador() > 0 && adversarioLider.getVidaAdversario() <= 0) {
 			System.out.printf("%nO inimigo não é páreo para o seu heroísmo, e jaz imóvel aos seus pés.");
-			System.out.printf("%nVITÓRIA DO JOGADOR: %s%n", jogador.getNome());
 			return escolhaSeguimentoJogo = 1;
 		} else {
 			return escolhaSeguimentoJogo = 0;
 		}
-
 	}
 }
